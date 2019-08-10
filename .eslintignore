@@ -2,4 +2,4 @@ public/
 
 webpack.config.js
 webpack.prod.js
-./serviceWorker.js
+./src/serviceWorker.js
