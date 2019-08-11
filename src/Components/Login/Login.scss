@@ -1,0 +1,16 @@
+
+// Login page left side
+
+.login__left{
+    background-color: var(--color-Grey-light-1);
+}
+
+.login__left--image{
+    background-image: linear-gradient(to right bottom, rgba(189, 249, 139, 0.5882352941176471), rgba(131, 220, 57, 0.8)),url(../../assets//login-background.jpg);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-right: 0;
+    border-bottom-right-radius: 40%;
+}
