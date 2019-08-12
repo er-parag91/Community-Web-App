@@ -27,7 +27,7 @@
     background-size: cover;
 }
 
-@media only screen and (orientation: landscape) {
+@media (orientation: landscape) {
     .login {
         min-height: 100vh;
         height: 100%;
@@ -43,31 +43,17 @@
 }
 
 
-@media only screen and (max-width: 601px) {
+@media (max-width: 601px) {
     .login {
-        min-height: 100%;
-        width: 100vw;
-    }
-
-    .login__right {
+        max-height: 100vh;
         max-width: 100vw;
-        max-height: 100%;
-    }
-
-    .login__left {
-        display: none;
-    }
-
-    .login__left--image {
-        display: none;
     }
 }
 
-@media only screen and (max-width: 601px), (orientation: landscape) {
+@media (max-width: 601px), (orientation: landscape) {
     .login__right {
         width: 100vw;
         height: 100%;
-        padding-bottom: 5rem;
     }
 }
 

@@ -32,7 +32,7 @@ const SignUp = (props) => {
       >
         <span className="heading-secondary">sign-up</span>
         <Grid container spacing={1}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <TextField
               value={firstName}
               id="firstName"
@@ -46,7 +46,7 @@ const SignUp = (props) => {
               onChange={(e) => changeHandler('firstName', e.target)}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <TextField
               value={lastName}
               id="lastName"
@@ -75,7 +75,7 @@ const SignUp = (props) => {
           onChange={(e) => changeHandler('email', e.target)}
         />
         <Grid container spacing={1}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <TextField
               value={password}
               id="password"
@@ -90,7 +90,7 @@ const SignUp = (props) => {
               onChange={(e) => changeHandler('password', e.target)}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <TextField
               value={confirmPassword}
               id="confirmPassword"

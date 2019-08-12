@@ -48,8 +48,7 @@ html {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  box-sizing: border-box;
-
+  margin: 0;
   /* Change the white to any color ;) */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -57,4 +56,18 @@ body {
   input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
   }
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5){
+
+  html,
+  body{
+    width:100%;
+    overflow-x:hidden;
+  }
+
 }

@@ -66,13 +66,13 @@ class Login extends Component {
     return (
       <Grid item container className="login">
         {width > 601 && (
-        <Grid item xs={1} sm={4} md={8} lg={8}>
+        <Grid item xs={1} sm={4} md={6} lg={8}>
           <div className="login__left">
             <div className="login__left--image" />
           </div>
         </Grid>
         )}
-        <Grid item xs={12} sm={8} md={4} lg={4}>
+        <Grid item xs={12} sm={8} md={6} lg={4}>
           <Grid
             className="login__right"
             container
