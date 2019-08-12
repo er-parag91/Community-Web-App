@@ -16,11 +16,18 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-right: 0;
     border-bottom-right-radius: 40%;
 }
 
-@media screen and (orientation: landscape) {
+
+// Login right
+.login__right {
+    height: 100vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, .9) 80%), url(../../assets/background-image.png);
+    background-size: cover;
+}
+
+@media only screen and (orientation: landscape) {
     .login {
         min-height: 100vh;
         height: 100%;
@@ -35,24 +42,28 @@
     }
 }
 
-// Login right
-.login__right {
-    height: 100vh;
-    background-color: red;
-    background-image: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, .9) 80%), url(../../assets/background-image.png);
-    background-size: cover;
-}
 
-
-@media screen and (max-width: 601px) and (orientation: landscape) {
-    .login__right {
+@media only screen and (max-width: 601px) {
+    .login {
+        min-height: 100%;
         width: 100vw;
-        height: 100%;
-        padding-bottom: 5rem;
+    }
+
+    .login__right {
+        max-width: 100vw;
+        max-height: 100%;
+    }
+
+    .login__left {
+        display: none;
+    }
+
+    .login__left--image {
+        display: none;
     }
 }
 
-@media screen and (orientation: landscape) {
+@media only screen and (max-width: 601px), (orientation: landscape) {
     .login__right {
         width: 100vw;
         height: 100%;
