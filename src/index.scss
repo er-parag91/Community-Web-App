@@ -1,6 +1,4 @@
-
-
-:root{
+:root {
   --color-primary: rgb(27, 247, 27);
   --color-Primary-light: rgb(101, 207, 14);
   --color-Primary-dark: rgb(1, 131, 22);
@@ -13,6 +11,9 @@
   --color-Grey-dark-2: #777;
   --color-Grey-dark-3: #999;
 
+  --color-black: #000;
+  --color-white: #fff;
+
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
   --line: 1px solid var(--color-Grey-light-2);
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, .06);
@@ -23,34 +24,43 @@ $bp-large: 68.75em; //1100px
 $bp-medium: 56.25em; //900px
 $bp-small: 37.5em; //600px
 
+$default-font-size: 1.6rem;
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
+
 *,
 *::after,
-*::before{
+*::before {
   box-sizing: inherit;
 }
 
-html{
+html {
   box-sizing: border-box;
   font-size: 62.5%;
 
-  @media only screen and (max-width: $bp-large){
+  @media only screen and (max-width: $bp-large) {
     font-size: 50%;
   }
 }
 
-body{
+body {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  line-height: 1.6;
+  box-sizing: border-box;
+  overflow: hidden
   // color: var(--color-Grey-dark-2);
   // background-image: linear-gradient(to right bottom, var(--color-Primary-light), var(--color-Primary-dark));
   // background-size: cover;
   // background-repeat: no-repeat;
 
   // min-height: 100vh;
+  /* Change the white to any color ;) */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
 }

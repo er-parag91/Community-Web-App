@@ -1,16 +1,145 @@
-
-// Login page left side
-
-.login__left{
-    background-color: var(--color-Grey-light-1);
+//Login - Container
+.login {
+    height: 100vh;
+    width: 100vw;
 }
 
-.login__left--image{
-    background-image: linear-gradient(to right bottom, rgba(189, 249, 139, 0.5882352941176471), rgba(131, 220, 57, 0.8)),url(../../assets//login-background.jpg);
+
+// Login page left side
+.login__left {
+    background-color: var(--color-Grey-dark-1);
+}
+
+.login__left--image {
+    background-image: linear-gradient(to right bottom, rgba(189, 249, 139, 0.5882352941176471), rgba(131, 220, 57, 0.8)), url(../../assets//login-background.jpg);
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     border-right: 0;
     border-bottom-right-radius: 40%;
+}
+
+@media screen and (orientation: landscape) {
+    .login {
+        min-height: 100vh;
+        height: 100%;
+    }
+
+    .login__left {
+        height: 100%;
+    }
+
+    .login__left--image {
+        height: 100%;
+    }
+}
+
+// Login right
+.login__right {
+    height: 100vh;
+    background-color: red;
+    background-image: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, .9) 80%), url(../../assets/background-image.png);
+    background-size: cover;
+}
+
+
+@media screen and (max-width: 601px) and (orientation: landscape) {
+    .login__right {
+        width: 100vw;
+        height: 100%;
+        padding-bottom: 5rem;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .login__right {
+        width: 100vw;
+        height: 100%;
+        padding-bottom: 5rem;
+    }
+}
+
+.login__right--logo {
+    text-align: center;
+
+    img {
+        width: 20rem;
+    }
+}
+
+
+// sign-up form
+.login__right--signup {
+    text-align: left;
+    width: 100%;
+    padding: 0 3rem;
+
+    span {
+        font-size: 1.6rem;
+    }
+}
+
+.login__right--signup-form>* {
+    margin: 2rem auto !important;
+}
+
+@media screen and (max-width: 601px) {
+    .login__right--signup-form>* {
+        margin: 1rem auto !important;
+    }
+}
+
+.span__click {
+    cursor: pointer;
+    outline: none;
+}
+
+.terms__condition {
+    font-size: 1.6rem !important;
+    font-weight: 200 !important;
+
+    span {
+        text-decoration: underline;
+        color: var(--color-Primary-dark);
+        margin-left: 3px;
+        font-weight: 600 !important;
+        &:hover {
+            transform: scale(1.2);
+            text-shadow: .5rem 1rem 2rem rgba(0, 0, 0, 0.315);
+        }
+    }
+}
+
+// Style overwrite
+.MuiInputBase-input {
+    font-size: 1.6rem !important;
+    font-weight: 200 !important;
+}
+
+.MuiInputLabel-filled {
+    color: #3b3b3bc7 !important;
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+}
+
+.MuiFilledInput-underline:after {
+    border-bottom: 3px solid #1c9e3c !important;
+}
+
+.MuiFormControl-marginNormal {
+    margin-top: 0 !important;
+}
+
+.MuiSvgIcon-root {
+    font-size: 2.5rem !important;
+}
+
+.MuiInputBase-input {
+    line-height: 1.4rem !important
+}
+
+.MuiCheckbox-colorSecondary.Mui-checked {
+    color: var(--color-Primary-dark) !important;
+    display: block !important;
 }
