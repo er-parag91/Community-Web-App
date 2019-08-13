@@ -1,72 +1,80 @@
-//Login - Container
+//
+////Login - Container
+//
 .login {
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
 }
 
-
-// Login page left side
+//
+//// Login page left side
+//
 .login__left {
     background-color: var(--color-Grey-dark-1);
+
+    //
+    //// background Image
+    //
+    &--image {
+        background-image: linear-gradient(to right bottom, rgba(189, 249, 139, 0.5882352941176471), rgba(131, 220, 57, 0.8)), url(../../assets//login-background.jpg);
+        height: 100vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-bottom-right-radius: 40%;
+    }
+
+    &--moreInfo {
+        position: relative;
+        bottom: 70px;
+        left: 90%;
+        font-size: 4rem;
+        color: var(--color-Primary-light);
+        border-radius: 50%;
+        opacity: 0.9;
+        cursor: pointer;
+    }
 }
 
-.login__left--image {
-    background-image: linear-gradient(to right bottom, rgba(189, 249, 139, 0.5882352941176471), rgba(131, 220, 57, 0.8)), url(../../assets//login-background.jpg);
-    height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-bottom-right-radius: 40%;
-}
-
-
-// Login right
+//
+//// Login right
+//
 .login__right {
     height: 100vh;
     background-image: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, .9) 80%), url(../../assets/background-image.png);
     background-size: cover;
-}
 
-@media (orientation: landscape) {
-    .login {
-        min-height: 100vh;
-        height: 100%;
+    //
+    //// Company Logo
+    //
+    &--logo {
+        text-align: center;
+
+        img {
+            width: 20rem;
+        }
     }
 
-    .login__left {
-        height: 100%;
-    }
-
-    .login__left--image {
-        height: 100%;
-    }
-}
-
-
-@media (max-width: 601px) {
-    .login {
-        max-height: 100vh;
-        max-width: 100vw;
-    }
-}
-
-@media (max-width: 601px), (orientation: landscape) {
-    .login__right {
-        width: 100vw;
-        height: 100%;
+    //
+    //// more info icon - only visible for mobile device. For bigger screen "login__left-moreInfo will appear
+    //
+    &--moreInfo {
+        position: relative;
+        visibility: hidden;
+        bottom: 45px;
+        left: 5%;
+        font-size: 4rem;
+        color: var(--color-Primary-dark);
+        border-radius: 50%;
+        opacity: 0.9;
+        cursor: pointer;
     }
 }
 
-.login__right--logo {
-    text-align: center;
-
-    img {
-        width: 20rem;
-    }
-}
-
-
-// sign-up form
+//
+//// sign-up form
+//
 .login__right--signup {
     text-align: left;
     width: 100%;
@@ -82,17 +90,16 @@
     margin-bottom: 2rem !important;
 }
 
-@media screen and (max-width: 601px) {
-    .login__right--signup-form>* {
-        margin: 1rem auto !important;
-    }
-}
-
-.span__click {
+//
+//// Login/Sign up toggle span text style
+.login-signup__toggle {
     cursor: pointer;
     outline: none;
 }
 
+//
+//// "Terms and Condiation" text
+//
 .terms__condition {
     font-size: 1.6rem !important;
     font-weight: 200 !important;
@@ -102,6 +109,7 @@
         color: var(--color-Primary-dark);
         margin-left: 3px;
         font-weight: 600 !important;
+
         &:hover {
             transform: scale(1.2);
             text-shadow: .5rem 1rem 2rem rgba(0, 0, 0, 0.315);
@@ -109,7 +117,9 @@
     }
 }
 
-// Style overwrite
+//
+//// Style overwrite
+//
 .MuiInputBase-input {
     font-size: 1.6rem !important;
     font-weight: 200 !important;
@@ -140,4 +150,54 @@
 .MuiCheckbox-colorSecondary.Mui-checked {
     color: var(--color-Primary-dark) !important;
     display: block !important;
+}
+
+
+//
+//// Media Queries
+//
+@media (orientation: landscape) {
+    .login {
+        min-height: 100vh;
+        height: 100%;
+    }
+
+    .login__left {
+        height: 100%;
+    }
+
+    .login__left--image {
+        height: 100%;
+    }
+}
+
+
+@media (max-width: 601px) {
+    .login {
+        max-height: 100vh;
+        max-width: 100vw;
+    }
+
+    .login__right--signup-form>* {
+        margin: 1rem auto !important;
+    }
+
+    .login__right--moreInfo{
+            visibility: visible;
+    }
+}
+
+@media (max-width: 601px), (orientation: landscape) {
+    .login__right {
+        width: 100vw;
+        height: 100%;
+
+    }
+}
+
+@media (max-width: 992px) {
+    .login__left--moreInfo {
+        left: 86%;
+        bottom: 50px
+    }
 }
