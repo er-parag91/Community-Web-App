@@ -25,7 +25,7 @@ class Login extends Component {
       },
       width: null,
       loggingIn: false,
-      open: true,
+      open: false,
     };
   }
 
