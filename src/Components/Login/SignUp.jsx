@@ -1,8 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import '../../Typography-UI/Header.scss';
 import '../../Typography-UI/Button.scss';
 import PropTypes from 'prop-types';
@@ -15,6 +13,11 @@ const SignUp = (props) => {
 
   const checkBoxHandler = () => {
     props.onCheckboxChange();
+  };
+
+  const termsAndConditionHandler = () => {
+    console.log('clickeddd');
+    props.onTermsAndConditionClicked();
   };
 
   const { userData } = props;
@@ -144,21 +147,21 @@ const SignUp = (props) => {
             </TextField>
           </Grid>
           <Grid xs={12} sm={12}>
-            <FormControlLabel
-              control={(
-                <Checkbox
+            <div style={{ marginTop: '1rem' }}>
+              <label htmlFor="agree">
+                <input
+                  type="checkbox"
                   onChange={checkBoxHandler}
                   checked={!!agree}
                   id="agree"
                 />
-                  )}
-              label={(
-                <p className="terms__condition">
+                <span className="checkbox__mock"><i className="fa fa-check checkbox__mock--icon" aria-hidden="true" /></span>
+              </label>
+              <p className="terms__condition">
                       I have read and accepted
-                  <span>terms and conditions.</span>
-                </p>
-                )}
-            />
+                <span role="button" tabIndex={0} onKeyDown={termsAndConditionHandler} onClick={termsAndConditionHandler}>terms and conditions.</span>
+              </p>
+            </div>
           </Grid>
           <button type="submit" className="btn" style={{ margin: '2rem auto' }}>
             <span className="btn__visible">Free Sign Up</span>
@@ -173,7 +176,7 @@ SignUp.propTypes = {
   userData: PropTypes.shape(),
   onTextChange: PropTypes.func.isRequired,
   onCheckboxChange: PropTypes.func.isRequired,
-
+  onTermsAndConditionClicked: PropTypes.func.isRequired,
 };
 
 SignUp.defaultProps = {

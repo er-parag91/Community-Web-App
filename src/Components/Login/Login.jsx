@@ -5,6 +5,7 @@ import '../../Typography-UI/Header.scss';
 import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
 import BusinessDescription from './businessDescription';
+import SignUpTermsAndCondition from './SignUpTermsAndCondition';
 
 const Logo = require('../../assets/logo__big.png');
 
@@ -26,6 +27,8 @@ class Login extends Component {
       width: null,
       loggingIn: false,
       open: false,
+      termsAndConditionModal: false,
+      dialog: false,
     };
   }
 
@@ -66,6 +69,24 @@ class Login extends Component {
     this.setState({ open: false });
   };
 
+  termsAndConditionModal = () => {
+    this.setState({ dialog: true });
+  };
+
+  handleClose = () => {
+    this.setState({ dialog: false });
+  }
+
+  agreedHandler = () => {
+    this.setState((prevState) => {
+      const { signUp } = prevState;
+      let { dialog } = prevState;
+      signUp.agree = true;
+      dialog = false;
+      return { SignUp, dialog };
+    });
+  }
+
   updateDimensions() {
     this.setState({ width: window.innerWidth });
   }
@@ -74,7 +95,7 @@ class Login extends Component {
   render() {
     console.log(this.state);
     const {
-      width, loggingIn, signUp, open,
+      width, loggingIn, signUp, open, dialog,
     } = this.state;
     return (
       <Grid item container className="login">
@@ -113,13 +134,20 @@ class Login extends Component {
 
             {!loggingIn
             && (
-            <SignUp
-              userData={signUp}
-              onTextChange={this.textChangedHandler}
-              onCheckboxChange={this.checkboxChangedHandler}
-            />
+            <div>
+              <SignUp
+                userData={signUp}
+                onTextChange={this.textChangedHandler}
+                onCheckboxChange={this.checkboxChangedHandler}
+                onTermsAndConditionClicked={this.termsAndConditionModal}
+              />
+              <SignUpTermsAndCondition
+                open={dialog}
+                handleClose={this.handleClose}
+                onAgreeClick={this.agreedHandler}
+              />
+            </div>
             )}
-
             <div>
               <span role="button" tabIndex={0} className="heading-tertiary login-signup__toggle" onClick={this.loginTypeHandler} onKeyDown={this.loginTypeHandler}>
                 {loggingIn ? 'New User? Tap to Sign Up' : 'Registered User? Tap to Log in'}
