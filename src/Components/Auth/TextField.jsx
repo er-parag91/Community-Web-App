@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const InputField = (props) => {
   const {
-    value, id, label, autoComplete, placeholder, type, changeHandler,
+    value, id, label, autoComplete, placeholder, changeHandler,
   } = props;
   return (
     <TextField
@@ -18,7 +18,6 @@ const InputField = (props) => {
       placeholder={placeholder}
       required
       fullWidth
-      type={type}
       variant="filled"
       className="Form-Input"
       onChange={(e) => changeHandler(id, e.target)}
@@ -33,11 +32,7 @@ InputField.propTypes = {
   placeholder: PropTypes.string.isRequired,
   autoComplete: PropTypes.string.isRequired,
   changeHandler: PropTypes.func.isRequired,
-  type: PropTypes.string,
 };
 
-InputField.defaultProps = {
-  type: 'text',
-};
 
 export default InputField;

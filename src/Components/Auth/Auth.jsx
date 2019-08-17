@@ -79,6 +79,18 @@ class Auth extends Component {
     }));
   };
 
+  // Log in form submit handler
+  logInFormSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
+
+  // forgot password submit handler
+  onForgotPasswordSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+  }
+
   //
   // // sign up inputs change handler and changes the state value accordingly
   //
@@ -124,6 +136,12 @@ class Auth extends Component {
     });
   }
 
+  // Sign up form submit handler
+  signUpSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(e);
+  }
+
   // changes a width in state to current width, gets fired on resizing window
   updateDimensions() {
     this.setState({ width: window.innerWidth });
@@ -167,10 +185,12 @@ class Auth extends Component {
             {loggingIn && (
               <Login
                 loginData={login}
+                onLoginFormSubmit={this.logInFormSubmitHandler}
                 onLoginTextChange={this.loginTextChangeHandler}
                 onRememberMeClick={this.rememberMeClicked}
                 isForgotPassword={isForgotPassword}
                 onForgotPasswordClicked={this.forgotPasswordHandler}
+                forgotPasswordSubmitHandler={this.onForgotPasswordSubmit}
               />
             )}
 
@@ -179,6 +199,7 @@ class Auth extends Component {
             <div>
               <SignUp
                 userData={signUp}
+                onHandleSubmit={this.signUpSubmitHandler}
                 onTextChange={this.textChangedHandler}
                 onCheckboxChange={this.checkboxChangedHandler}
                 onTermsAndConditionClicked={this.toggleTermsAndConditionModal}

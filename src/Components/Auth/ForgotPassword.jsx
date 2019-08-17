@@ -11,44 +11,52 @@ const ForgotPassword = (props) => {
   const forgotPasswordToggle = () => {
     props.onForgotPasswordToggle();
   };
-  console.log(props);
+
+  const handleSubmit = (e) => {
+    props.onForgotPasswordSubmit(e);
+  };
+
   return (
     <div>
       <Dialog className="fogot__password" open={isForgotPassword} onClose={forgotPasswordToggle} aria-labelledby="form-dialog-title">
-        <span className="heading-tertiary">Forgot Password</span>
-        <DialogContent>
-          <p>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <span className="heading-tertiary">Forgot Password</span>
+          <DialogContent>
+            <p>
             Please enter your email address which is registered with us.
             If entered email is registered and correct, only then you will
             recieve password recovery email from us.
-          </p>
-          <br />
-          <p>
+            </p>
+            <br />
+            <p>
             Please allow it upto 10 minutes to send you recovery email.
             If you still not recieve email from us, Please contact Admin of site.
-          </p>
-          <br />
-          <br />
-          <TextField
-            margin="dense"
-            id="name"
-            placeholder="e.g. john@smith.com"
-            autoComplete="email"
-            label="Email Address"
-            type="email"
-            variant="filled"
-            fullWidth
-            required
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={forgotPasswordToggle} color="primary">
+            </p>
+            <br />
+            <br />
+            <TextField
+              margin="dense"
+              id="name"
+              placeholder="e.g. john@smith.com"
+              autoComplete="email"
+              label="Email Address"
+              type="email"
+              variant="filled"
+              fullWidth
+              required
+            />
+
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={forgotPasswordToggle} color="primary">
             Cancel
-          </Button>
-          <Button onClick={forgotPasswordToggle} color="primary">
+            </Button>
+            <Button type="submit" color="primary">
             Send
-          </Button>
-        </DialogActions>
+            </Button>
+          </DialogActions>
+
+        </form>
       </Dialog>
     </div>
   );
@@ -57,6 +65,7 @@ const ForgotPassword = (props) => {
 ForgotPassword.propTypes = {
   onForgotPasswordToggle: PropTypes.func.isRequired,
   isForgotPassword: PropTypes.bool.isRequired,
+  onForgotPasswordSubmit: PropTypes.func.isRequired,
 };
 
 export default ForgotPassword;
