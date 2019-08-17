@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import './Login.scss';
+import './Auth.scss';
 import '../../Typography-UI/Header.scss';
 import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
@@ -65,6 +65,7 @@ class Auth extends Component {
 
   // more info icon click opens up modal
   onMoreInfoModalToggle = () => {
+    console.log('more infor');
     this.setState((prevState) => ({
       open: !prevState.open,
     }));
@@ -157,7 +158,7 @@ class Auth extends Component {
             </div>
           </Grid>
           <i
-            onClick={this.onOpenModal}
+            onClick={this.onMoreInfoModalToggle}
             className="fa fa-info-circle login__right--moreInfo"
             aria-hidden="true"
           />
