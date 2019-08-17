@@ -32,20 +32,21 @@ class Login extends Component {
     };
   }
 
-
+  // on component mount, adds event handler for window dimensions chanage
   componentDidMount() {
     this.updateDimensions();
     window.addEventListener('resize', this.updateDimensions.bind(this));
   }
 
+  // toggle between sign and login mode
   loginTypeHandler = () => {
     this.setState((prevState) => ({
       loggingIn: !prevState.loggingIn,
     }));
   }
 
+  // sign up inputs change handler and changes the state value accordingly
   textChangedHandler = (key, value) => {
-    console.log(key, value);
     this.setState((prevState) => {
       const { signUp } = prevState;
       signUp[key] = value;
@@ -53,6 +54,7 @@ class Login extends Component {
     });
   }
 
+  // checkbox on sign-up page, for terms and conditions agree/not-agree handler
   checkboxChangedHandler = () => {
     this.setState((prevState) => {
       const { signUp } = prevState;
@@ -61,22 +63,21 @@ class Login extends Component {
     });
   }
 
-  onOpenModal = () => {
-    this.setState({ open: true });
+  // more info icon click opens up modal
+  onMoreInfoModalToggle = () => {
+    this.setState((prevState) => ({
+      open: !prevState.open,
+    }));
   };
 
-  onCloseModal = () => {
-    this.setState({ open: false });
+  // terms and condition modal toggler
+  toggleTermsAndConditionModal = () => {
+    this.setState((prevState) => ({
+      dialog: !prevState.dialog,
+    }));
   };
 
-  termsAndConditionModal = () => {
-    this.setState({ dialog: true });
-  };
-
-  handleClose = () => {
-    this.setState({ dialog: false });
-  }
-
+  // checkbox checked/not-checked changes the state value
   agreedHandler = () => {
     this.setState((prevState) => {
       const { signUp } = prevState;
@@ -87,6 +88,7 @@ class Login extends Component {
     });
   }
 
+  // changes a width in state to current width, gets fired on resizing window
   updateDimensions() {
     this.setState({ width: window.innerWidth });
   }
@@ -99,7 +101,7 @@ class Login extends Component {
     } = this.state;
     return (
       <Grid item container className="login">
-        <Modal open={open} onClose={this.onCloseModal} center>
+        <Modal open={open} onClose={this.onMoreInfoModalToggle} center>
           <BusinessDescription />
         </Modal>
         {width > 601 && (
@@ -107,7 +109,7 @@ class Login extends Component {
           <div className="login__left">
             <div className="login__left--image" />
             <i
-              onClick={this.onOpenModal}
+              onClick={this.onMoreInfoModalToggle}
               className="fa fa-info-circle login__left--moreInfo"
               aria-hidden="true"
             />
@@ -139,11 +141,11 @@ class Login extends Component {
                 userData={signUp}
                 onTextChange={this.textChangedHandler}
                 onCheckboxChange={this.checkboxChangedHandler}
-                onTermsAndConditionClicked={this.termsAndConditionModal}
+                onTermsAndConditionClicked={this.toggleTermsAndConditionModal}
               />
               <SignUpTermsAndCondition
                 open={dialog}
-                handleClose={this.handleClose}
+                handleClose={this.toggleTermsAndConditionModal}
                 onAgreeClick={this.agreedHandler}
               />
             </div>

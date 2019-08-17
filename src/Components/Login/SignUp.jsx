@@ -1,10 +1,10 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
 import '../../Typography-UI/Header.scss';
 import '../../Typography-UI/Button.scss';
 import PropTypes from 'prop-types';
 import { statesList } from './statesList';
+import InputField from './TextField';
 
 const SignUp = (props) => {
   const changeHandler = (key, target) => {
@@ -16,7 +16,6 @@ const SignUp = (props) => {
   };
 
   const termsAndConditionHandler = () => {
-    console.log('clickeddd');
     props.onTermsAndConditionClicked();
   };
 
@@ -36,96 +35,69 @@ const SignUp = (props) => {
         <span className="heading-secondary">sign-up</span>
         <Grid container spacing={1}>
           <Grid item xs={6} sm={6}>
-            <TextField
+            <InputField
               value={firstName}
               id="firstName"
               label="First Name"
               autoComplete="first-name"
               placeholder="e.g. John"
-              required
-              fullWidth
-              variant="filled"
-              className="Form-Input"
-              onChange={(e) => changeHandler('firstName', e.target)}
+              changeHandler={changeHandler}
             />
           </Grid>
           <Grid item xs={6} sm={6}>
-            <TextField
+            <InputField
               value={lastName}
               id="lastName"
               label="Last Name"
               placeholder="e.g. Smith"
               autoComplete="family-name"
-              required
-              fullWidth
-              variant="filled"
-              className="Form-Input"
-              onChange={(e) => changeHandler('lastName', e.target)}
+              changeHandler={changeHandler}
             />
           </Grid>
         </Grid>
-        <TextField
+        <InputField
           value={email}
           id="email"
           label="E-Mail Address"
           placeholder="e.g. john@smith.com"
           autoComplete="email"
-          required
-          fullWidth
-          type="email"
-          variant="filled"
-          className="Form-Input"
-          onChange={(e) => changeHandler('email', e.target)}
+          changeHandler={changeHandler}
         />
         <Grid container spacing={1}>
           <Grid item xs={6} sm={6}>
-            <TextField
+            <InputField
               value={password}
               id="password"
               label="Password"
               placeholder="e.g. Password123"
               autoComplete="new-password"
-              required
-              fullWidth
-              type="password"
-              variant="filled"
-              className="Form-Input"
-              onChange={(e) => changeHandler('password', e.target)}
+              changeHandler={changeHandler}
             />
           </Grid>
           <Grid item xs={6} sm={6}>
-            <TextField
+            <InputField
               value={confirmPassword}
               id="confirmPassword"
               label="Confirm Password"
               placeholder="e.g. Password123"
               autoComplete="new-password"
-              required
-              fullWidth
-              type="password"
-              variant="filled"
-              className="Form-Input"
-              onChange={(e) => changeHandler('confirmPassword', e.target)}
+              changeHandler={changeHandler}
             />
           </Grid>
         </Grid>
         <Grid container spacing={1}>
           <Grid item xs={8} sm={8}>
-            <TextField
+            <InputField
               value={phone}
               id="phone"
               label="Phone"
               placeholder="e.g. 888-888-8888"
               autoComplete="phone"
-              required
-              fullWidth
-              variant="filled"
-              className="Form-Input"
-              onChange={(e) => changeHandler('phone', e.target)}
+              changeHandler={changeHandler}
             />
           </Grid>
           <Grid item xs={4} sm={4}>
-            <TextField
+            <InputField
               value={state}
               id="state"
               select
@@ -137,14 +109,14 @@ const SignUp = (props) => {
               fullWidth
               variant="filled"
               InputLabelProps={{ shrink: true }}
-              onChange={(e) => changeHandler('state', e.target)}
+              changeHandler={changeHandler}
             >
               {statesList.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
               ))}
-            </TextField>
+            </InputField>
           </Grid>
           <Grid xs={12} sm={12}>
             <div style={{ marginTop: '1rem' }}>
