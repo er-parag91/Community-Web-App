@@ -91,6 +91,37 @@
 }
 
 //
+// // Auth page login right
+//
+.login__right--signin {
+    text-align: left;
+    width: 100%;
+    padding: 0 3rem;
+
+    span {
+        font-size: 1.6rem;
+    }
+
+    .rememberMe{
+        font-size: 1.6rem !important;
+        color: var(--color-Grey-dark-2);
+        font-weight: 200 !important;
+        display: inline;
+        padding-left: 2.5rem;
+        cursor: pointer;
+        &:hover{
+            font-weight: 400 !important;
+            color: var(--color-Primary-dark);
+        }
+    }
+}
+
+.login__right--signin-form>* {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+//
 //// Login/Sign up toggle span text style
 .login-signup__toggle {
     cursor: pointer;

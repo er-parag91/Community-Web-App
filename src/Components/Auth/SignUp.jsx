@@ -136,7 +136,7 @@ const SignUp = (props) => {
             </div>
           </Grid>
           <button type="submit" className="btn" style={{ margin: '2rem auto' }}>
-            <span className="btn__visible">Free Sign Up</span>
+            <span className="btn__text">Free Sign Up</span>
           </button>
         </Grid>
       </Grid>

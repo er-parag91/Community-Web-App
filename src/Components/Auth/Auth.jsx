@@ -6,6 +6,7 @@ import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
 import BusinessDescription from './Fixtures/businessDescription';
 import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
+import Login from './Login';
 
 const Logo = require('../../assets/logo__big.png');
 
@@ -13,7 +14,11 @@ class Auth extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: {},
+      login: {
+        currentEmail: '',
+        currentPassword: '',
+        rememberMe: false,
+      },
       signUp: {
         firstName: '',
         lastName: '',
@@ -25,9 +30,8 @@ class Auth extends Component {
         agree: false,
       },
       width: null,
-      loggingIn: false,
+      loggingIn: true,
       open: false,
-      termsAndConditionModal: false,
       dialog: false,
     };
   }
@@ -43,6 +47,28 @@ class Auth extends Component {
     this.setState((prevState) => ({
       loggingIn: !prevState.loggingIn,
     }));
+  }
+
+  //
+  // // Login
+  // // login text change handler
+  //
+  loginTextChangeHandler = (key, value) => {
+    console.log(key, value);
+    this.setState((prevState) => {
+      const { login } = prevState;
+      login[key] = value;
+      return { login };
+    });
+  }
+
+  // checkbox on login page, for rememer me checkbox check handler
+  rememberMeClicked = () => {
+    this.setState((prevState) => {
+      const { login } = prevState;
+      login.rememberMe = !login.rememberMe;
+      return { login };
+    });
   }
 
   // sign up inputs change handler and changes the state value accordingly
@@ -65,7 +91,6 @@ class Auth extends Component {
 
   // more info icon click opens up modal
   onMoreInfoModalToggle = () => {
-    console.log('more infor');
     this.setState((prevState) => ({
       open: !prevState.open,
     }));
@@ -98,7 +123,7 @@ class Auth extends Component {
   render() {
     console.log(this.state);
     const {
-      width, loggingIn, signUp, open, dialog,
+      width, loggingIn, signUp, login, open, dialog,
     } = this.state;
     return (
       <Grid item container className="login">
@@ -130,9 +155,11 @@ class Auth extends Component {
             </div>
 
             {loggingIn && (
-            <div className="login__right--signin">
-              <span>Login</span>
-            </div>
+              <Login
+                loginData={login}
+                onLoginTextChange={this.loginTextChangeHandler}
+                onRememberMeClick={this.rememberMeClicked}
+              />
             )}
 
             {!loggingIn
