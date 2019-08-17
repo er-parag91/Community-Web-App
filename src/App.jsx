@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.scss';
 import { Switch, Route } from 'react-router-dom';
-import Login from './Components/Login/Login';
+import Auth from './Components/Auth/Auth';
 
 const App = () => {
   // eslint-disable-next-line no-constant-condition
   if ('2' === 2) {
     return (
       <div>
-        <Route component={Login} />
+        <Route component={Auth} />
       </div>
     );
   }
@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={Auth} />
       </Switch>
     </div>
   );

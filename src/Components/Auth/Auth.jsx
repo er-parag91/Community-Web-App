@@ -9,7 +9,7 @@ import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
 
 const Logo = require('../../assets/logo__big.png');
 
-class Login extends Component {
+class Auth extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -167,4 +167,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Auth;
