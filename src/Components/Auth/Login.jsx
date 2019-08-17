@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import InputField from './TextField';
+import ForgotPassword from './ForgotPassword';
 
 
 const Login = (props) => {
@@ -14,7 +17,12 @@ const Login = (props) => {
   const checkBoxHandler = () => {
     props.onRememberMeClick();
   };
-  const { loginData } = props;
+
+  // forgotpassword click handler - passes the props from chile to parent
+  const forgotPasswordClick = () => {
+    props.onForgotPasswordClicked();
+  };
+  const { loginData, isForgotPassword } = props;
   const {
     currentEmail, currentPassword, rememberMe, onForgotPasswordClick,
   } = loginData;
@@ -67,15 +75,19 @@ const Login = (props) => {
             </label>
           </div>
           <div>
-            <p className="rememberMe">
+            <span className="rememberMe" onClick={forgotPasswordClick}>
                 Forgot Password ?
-            </p>
+            </span>
           </div>
         </Grid>
         <button type="submit" className="btn">
           <span className="btn__text">Login</span>
         </button>
       </Grid>
+      <ForgotPassword
+        isForgotPassword={isForgotPassword}
+        onForgotPasswordToggle={forgotPasswordClick}
+      />
     </div>
   );
 };
@@ -84,7 +96,8 @@ Login.propTypes = {
   loginData: PropTypes.shape(),
   onLoginTextChange: PropTypes.func.isRequired,
   onRememberMeClick: PropTypes.func.isRequired,
-  onForgotPasswordClick: PropTypes.func.isRequired,
+  onForgotPasswordClicked: PropTypes.func.isRequired,
+  isForgotPassword: PropTypes.bool.isRequired,
 };
 
 Login.defaultProps = {

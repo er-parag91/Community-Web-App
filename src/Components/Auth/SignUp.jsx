@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import '../../Typography-UI/Header.scss';
@@ -131,7 +133,7 @@ const SignUp = (props) => {
               </label>
               <p className="terms__condition">
                       I have read and accepted
-                <span role="button" tabIndex={0} onKeyDown={termsAndConditionHandler} onClick={termsAndConditionHandler}>terms and conditions.</span>
+                <span onClick={termsAndConditionHandler}>terms and conditions.</span>
               </p>
             </div>
           </Grid>

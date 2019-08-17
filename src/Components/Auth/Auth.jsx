@@ -33,6 +33,7 @@ class Auth extends Component {
       loggingIn: true,
       open: false,
       dialog: false,
+      isForgotPassword: true,
     };
   }
 
@@ -71,7 +72,16 @@ class Auth extends Component {
     });
   }
 
-  // sign up inputs change handler and changes the state value accordingly
+  // Forgot password dialog handler - toggle the dialog
+  forgotPasswordHandler = () => {
+    this.setState((prevState) => ({
+      isForgotPassword: !prevState.isForgotPassword,
+    }));
+  };
+
+  //
+  // // sign up inputs change handler and changes the state value accordingly
+  //
   textChangedHandler = (key, value) => {
     this.setState((prevState) => {
       const { signUp } = prevState;
@@ -123,7 +133,7 @@ class Auth extends Component {
   render() {
     console.log(this.state);
     const {
-      width, loggingIn, signUp, login, open, dialog,
+      width, loggingIn, signUp, login, open, dialog, isForgotPassword,
     } = this.state;
     return (
       <Grid item container className="login">
@@ -159,6 +169,8 @@ class Auth extends Component {
                 loginData={login}
                 onLoginTextChange={this.loginTextChangeHandler}
                 onRememberMeClick={this.rememberMeClicked}
+                isForgotPassword={isForgotPassword}
+                onForgotPasswordClicked={this.forgotPasswordHandler}
               />
             )}
 

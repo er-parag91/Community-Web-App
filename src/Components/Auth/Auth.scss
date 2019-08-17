@@ -72,6 +72,24 @@
     }
 }
 
+// 
+// // Forgot Password modal content styling
+//
+
+.fogot__password{
+    font-size: 1.2rem !important;
+    font-weight: 400 !important;
+    padding: 1rem;
+    .heading-tertiary {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    p {
+        color: var(--color-Grey-dark-2);
+    }
+}
+
 //
 //// sign-up form
 //
