@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import '../../Typography-UI/Header.scss';
 import '../../Typography-UI/Button.scss';
 import PropTypes from 'prop-types';
-import { statesList } from './statesList';
+import { statesList } from './Fixtures/statesList';
 import InputField from './TextField';
 
 const SignUp = (props) => {

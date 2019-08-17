@@ -4,8 +4,8 @@ import './Login.scss';
 import '../../Typography-UI/Header.scss';
 import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
-import BusinessDescription from './businessDescription';
-import SignUpTermsAndCondition from './SignUpTermsAndCondition';
+import BusinessDescription from './Fixtures/businessDescription';
+import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
 
 const Logo = require('../../assets/logo__big.png');
 
