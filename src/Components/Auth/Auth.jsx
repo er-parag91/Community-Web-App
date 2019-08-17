@@ -33,7 +33,7 @@ class Auth extends Component {
       loggingIn: true,
       open: false,
       dialog: false,
-      isForgotPassword: true,
+      isForgotPassword: false,
     };
   }
 

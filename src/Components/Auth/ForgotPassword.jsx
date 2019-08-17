@@ -27,13 +27,16 @@ const ForgotPassword = (props) => {
             Please allow it upto 10 minutes to send you recovery email.
             If you still not recieve email from us, Please contact Admin of site.
           </p>
+          <br />
+          <br />
           <TextField
-            autoFocus
             margin="dense"
             id="name"
             placeholder="e.g. john@smith.com"
+            autoComplete="email"
             label="Email Address"
             type="email"
+            variant="filled"
             fullWidth
             required
           />
