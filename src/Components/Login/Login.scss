@@ -42,7 +42,7 @@
 //
 .login__right {
     height: 100vh;
-    background-image: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, .9) 80%), url(../../assets/background-image.png);
+    background-image: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, .8) 80%), url(../../assets/background-image.png);
     background-size: cover;
 
     //
@@ -141,19 +141,14 @@
     margin-top: 0 !important;
 }
 
-.MuiSvgIcon-root {
-    font-size: 2.5rem !important;
-}
-
 .MuiInputBase-input {
     line-height: 1.4rem !important
 }
 
-.MuiCheckbox-colorSecondary.Mui-checked {
-    color: var(--color-Primary-dark) !important;
-    display: block !important;
+// Input underline transition
+.MuiFilledInput-underline:after {
+    transition: transform 800ms cubic-bezier(0.0, 0, 0.2, 1) 0ms !important;
 }
-
 
 //
 //// Media Queries
