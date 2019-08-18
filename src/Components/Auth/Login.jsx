@@ -58,6 +58,9 @@ const Login = (props) => {
           <InputField
             type="password"
             required
+            inputProps={{
+              minLength: 8,
+            }}
             value={currentPassword}
             id="currentPassword"
             label="Password"

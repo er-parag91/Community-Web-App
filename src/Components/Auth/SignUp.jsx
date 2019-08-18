@@ -79,6 +79,9 @@ const SignUp = (props) => {
                 value={password}
                 type="password"
                 id="password"
+                inputProps={{
+                  minLength: 8,
+                }}
                 label="Password"
                 placeholder="e.g. Password123"
                 autoComplete="new-password"
@@ -90,6 +93,9 @@ const SignUp = (props) => {
                 value={confirmPassword}
                 id="confirmPassword"
                 type="password"
+                inputProps={{
+                  minLength: 8,
+                }}
                 label="Confirm Password"
                 placeholder="e.g. Password123"
                 autoComplete="new-password"

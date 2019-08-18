@@ -149,7 +149,6 @@ class Auth extends Component {
 
 
   render() {
-    console.log(this.state);
     const {
       width, loggingIn, signUp, login, open, dialog, isForgotPassword,
     } = this.state;
@@ -159,7 +158,7 @@ class Auth extends Component {
           <BusinessDescription />
         </Modal>
         {width > 601 && (
-        <Grid item xs={1} sm={4} md={6} lg={8}>
+        <Grid item xs={1} sm={6} md={7} lg={8}>
           <div className="login__left">
             <div className="login__left--image" />
             <i
@@ -170,7 +169,7 @@ class Auth extends Component {
           </div>
         </Grid>
         )}
-        <Grid item xs={12} sm={8} md={6} lg={4}>
+        <Grid item xs={12} sm={6} md={5} lg={4}>
           <Grid
             className="login__right"
             container
