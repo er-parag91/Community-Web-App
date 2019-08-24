@@ -101,6 +101,7 @@ const SignUp = (props) => {
                 autoComplete="new-password"
                 changeHandler={changeHandler}
                 error={confirmPassword !== password}
+                helperText={confirmPassword !== password ? 'Password does not match' : ''}
               />
             </Grid>
           </Grid>
