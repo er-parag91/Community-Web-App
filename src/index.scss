@@ -1,4 +1,5 @@
 :root {
+  // Primary color for website buttons, background, text color etc.
   --color-primary: rgb(27, 247, 27);
   --color-Primary-light: rgb(101, 207, 14);
   --color-Primary-dark: rgb(1, 131, 22);
@@ -7,16 +8,27 @@
   --color-Grey-light-3: #f0eeee;
   --color-Grey-light-4: #ccc;
 
+  // text colors mostly
   --color-Grey-dark-1: #333;
   --color-Grey-dark-2: #777;
   --color-Grey-dark-3: #999;
 
+  // main colors
   --color-black: #000;
   --color-white: #fff;
 
+  // shadow and lines
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
   --line: 1px solid var(--color-Grey-light-2);
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, .06);
+
+  // white background color with transparency
+  --white-gradient-1: rgba(255, 255, 255, 0.95);
+  --white-gradient-2: rgba(255, 255, 255, .8);
+
+  // main theme color with transparency
+  --main-gradient-1: rgba(189, 249, 139, 0.6);
+  --main-gradient-2: rgba(131, 220, 57, 0.8);
 }
 
 

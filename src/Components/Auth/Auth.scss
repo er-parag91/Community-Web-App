@@ -17,7 +17,7 @@
     //// background Image
     //
     &--image {
-        background-image: linear-gradient(to right bottom, rgba(189, 249, 139, 0.5882352941176471), rgba(131, 220, 57, 0.8)), url(../../assets//login-background.jpg);
+        background-image: linear-gradient(to right bottom, var(--main-gradient-1), var(--main-gradient-2)), url(../../assets//login-background.jpg);
         height: 100vh;
         background-position: center;
         background-repeat: no-repeat;
@@ -42,7 +42,7 @@
 //
 .login__right {
     height: 100vh;
-    background-image: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, .8) 80%), url(../../assets/background-image.png);
+    background-image: linear-gradient(var(--white-gradient-1) 0, var(--white-gradient-2) 75%), url(../../assets/background-image.png);
     background-size: cover;
 
     //
@@ -163,7 +163,7 @@
 
         &:hover {
             transform: scale(1.2);
-            text-shadow: .5rem 1rem 2rem rgba(0, 0, 0, 0.315);
+            text-shadow: var(--shadow-dark);
         }
     }
 }
@@ -177,13 +177,13 @@
 }
 
 .MuiInputLabel-filled {
-    color: #3b3b3bc7 !important;
+    color: var(--color-Grey-dark-2) !important;
     font-size: 1.2rem !important;
     font-weight: 300 !important;
 }
 
 .MuiFilledInput-underline:after {
-    border-bottom: 3px solid #1c9e3c !important;
+    border-bottom: 3px solid var(--color-Primary-dark) !important;
 }
 
 .MuiFormControl-marginNormal {
