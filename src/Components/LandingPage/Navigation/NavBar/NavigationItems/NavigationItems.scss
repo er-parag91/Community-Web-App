@@ -5,12 +5,11 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  flex-grow: 1;
+  flex-grow: 5;
   justify-content: space-between;
-  min-height: 85vh;
 }
 
-.manuItems, .manu__sign {
+.manuItems {
   display: flex;
   flex-flow: column;
   align-items: center;

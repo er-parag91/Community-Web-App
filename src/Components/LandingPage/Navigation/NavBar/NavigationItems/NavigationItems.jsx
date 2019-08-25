@@ -28,19 +28,17 @@ const NavigationItems = (props) => {
           )
           : null}
       </div>
-      <div className="manu__sign">
-        {isAuthenticated
-          ? (
-            <NavigationItem clicked={clicked} link="/logout">
+      {isAuthenticated
+        ? (
+          <NavigationItem clicked={clicked} link="/logout">
           Sign Out
-            </NavigationItem>
-          )
-          : (
-            <NavigationItem clicked={clicked} link="/Auth">
+          </NavigationItem>
+        )
+        : (
+          <NavigationItem clicked={clicked} link="/Auth">
           Sign In
-            </NavigationItem>
-          )}
-      </div>
+          </NavigationItem>
+        )}
     </ul>
   );
 };
