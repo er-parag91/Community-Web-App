@@ -9,7 +9,7 @@ const NavBar = (props) => {
   const { isAuth, drawerToggleClicked } = props;
   return (
     <header className="NavBar">
-      <div className="Logo">
+      <div className="NavBar__Logo">
         <span>Hindustan</span>
       </div>
       <DrawerToggle clicked={drawerToggleClicked} />
