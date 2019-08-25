@@ -1,24 +1,32 @@
 .NavigationItem {
-  margin: 10px 30px;
+  margin: 10px 10px;
   box-sizing: border-box;
   display: block;
   width: 100%;
   align-items: center;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: 'Karla', sans-serif;
+  line-height: 1.8;
+  font-weight: 300;
+  font-size: 2rem;
 }
 
 .NavigationItem a {
   color: black;
-  margin-right: 6px;
   text-decoration: none;
-  width: 100%;
+  width: auto;
   box-sizing: border-box;
+  padding: 1rem 0;
   display: block;
+  text-align: left;
+  border-bottom: 2px solid transparent;
 }
 
 .NavigationItem a:hover,
 .NavigationItem a:active,
 .NavigationItem a.active {
-  color: #40A4c8;
+  border-bottom: 2px solid var(--color-primary);
 }
 
 @media (min-width: 992px) {
