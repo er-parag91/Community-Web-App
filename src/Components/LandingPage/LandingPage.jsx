@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import NavBar from './Navigation/NavBar/NavBar';
 import SideDrawer from './SideDrawer/SideDrawer';
 import './LandingPage.scss';
+import HomeSection from './HomeSection/HomeSection';
+import ServiceSection from './ServiceSection/ServiceSection';
+import TestimonialSection from './TestimonialSection/TestimonialSection';
+import ContactSection from './ContactSection/ContactSection';
 
 class LandingPage extends Component {
   state = {
@@ -37,16 +41,16 @@ class LandingPage extends Component {
           closed={this.sideDrawerClosedHandler}
         />
         <section id="home" className="section section__home">
-          Home Section
+          <HomeSection />
         </section>
         <section id="services" className="section section__services">
-          Service Section
+          <ServiceSection />
         </section>
         <section id="testimonials" className="section section__testimonial">
-          Testimonial Section
+          <TestimonialSection />
         </section>
         <section id="contact" className="section section__contact">
-          Contact Section
+          <ContactSection />
         </section>
       </div>
     );

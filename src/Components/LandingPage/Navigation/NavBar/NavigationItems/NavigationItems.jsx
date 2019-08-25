@@ -31,12 +31,12 @@ const NavigationItems = (props) => {
       </div>
       {isAuthenticated
         ? (
-          <NavigationItem isTop clicked={clicked} link="/logout">
+          <NavigationItem clicked={clicked} link="/logout">
           Sign Out
           </NavigationItem>
         )
         : (
-          <NavigationItem isTop clicked={clicked} link="/Auth">
+          <NavigationItem clicked={clicked} link="/Auth">
           Sign In
           </NavigationItem>
         )}
