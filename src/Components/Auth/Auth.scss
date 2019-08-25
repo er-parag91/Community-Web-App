@@ -218,7 +218,7 @@
 }
 
 
-@media (max-width: var(601px)) {
+@media (max-width: 601px) {
     .login {
         max-height: 100vh;
         max-width: 100vw;
@@ -231,9 +231,10 @@
     .login__right--moreInfo{
             visibility: visible;
     }
+    
 }
 
-@media (max-width: var(601px)), (orientation: landscape) {
+@media (max-width: 601px) and (orientation: landscape) {
     .login__right {
         width: 100vw;
         height: 100%;
@@ -241,7 +242,7 @@
     }
 }
 
-@media (max-width: var(992px)) {
+@media (max-width: 992px) {
     .login__left--moreInfo {
         left: 86%;
         bottom: 50px
