@@ -11,10 +11,16 @@
     padding: 0 2.5rem;
     box-sizing: border-box;
     z-index: 90;
-    color: var(--color-black);
-    background-color: var(--color-black);
+    background-color: transparent;
   }
-  
+  // class will be applied when scrolled a landing page
+  .notTop {
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-dark);
+    .NavBar__Logo{
+      color: var(--color-Primary-dark)
+    }
+  }
   .DeskTopOnly{
     display: flex;
     justify-content: space-around;

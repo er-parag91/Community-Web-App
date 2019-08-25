@@ -5,22 +5,22 @@ import './DrawerToggle.scss';
 import PropTypes from 'prop-types';
 
 const DrawerToggle = (props) => {
-  const { clicked } = props;
+  const { clicked, isTop } = props;
   return (
     <div
-      style={{ float: 'right' }}
       onClick={clicked}
       className="DrawerToggle"
     >
-      <div />
-      <div />
-      <div />
+      <div style={isTop ? {} : { backgroundColor: 'var(--color-Primary-dark)' }} />
+      <div style={isTop ? {} : { backgroundColor: 'var(--color-Primary-dark)' }} />
+      <div style={isTop ? {} : { backgroundColor: 'var(--color-Primary-dark)' }} />
     </div>
   );
 };
 
 DrawerToggle.propTypes = {
   clicked: PropTypes.func.isRequired,
+  isTop: PropTypes.bool.isRequired,
 };
 
 export default DrawerToggle;

@@ -1,22 +1,25 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import './NavigationItem.scss';
 import PropTypes from 'prop-types';
 
 const NavigationItem = (props) => {
   const {
-    exact, link, clicked, children,
+    exact, link, clicked, children, isTop,
   } = props;
+  const scrollClass = {
+    color: 'var(--color-Primary-dark)',
+  };
   return (
     <li className="NavigationItem">
-      <NavLink
+      <a
+        style={isTop ? {} : scrollClass}
         exact={exact}
-        to={link}
+        href={link}
         activeClassName="active"
         onClick={clicked}
       >
         {children}
-      </NavLink>
+      </a>
     </li>
   );
 };
@@ -26,10 +29,12 @@ NavigationItem.propTypes = {
   link: PropTypes.string.isRequired,
   clicked: PropTypes.func.isRequired,
   children: PropTypes.shape().isRequired,
+  isTop: PropTypes.bool,
 };
 
 NavigationItem.defaultProps = {
   exact: false,
+  isTop: false,
 };
 
 export default NavigationItem;

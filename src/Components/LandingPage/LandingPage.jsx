@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import NavBar from './Navigation/NavBar/NavBar';
 import SideDrawer from './SideDrawer/SideDrawer';
+import './LandingPage.scss';
 
 class LandingPage extends Component {
   state = {
     showSideDrawer: false,
+    isTop: true,
+  }
+
+  componentDidMount() {
+    document.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY < 50;
+      console.log(window.scrollY);
+      this.setState({ isTop: currentScroll });
+    });
   }
 
   sideDrawerClosedHandler = () => {
@@ -15,16 +25,29 @@ class LandingPage extends Component {
     this.setState((prevState) => ({ showSideDrawer: !prevState.showSideDrawer }));
   };
 
+
   render() {
-    const { showSideDrawer } = this.state;
+    const { showSideDrawer, isTop } = this.state;
     return (
       <div>
-        <NavBar drawerToggleClicked={this.sideDrawerOpenHandler} />
+        <NavBar isTop={isTop} drawerToggleClicked={this.sideDrawerOpenHandler} />
         <SideDrawer
           open={showSideDrawer}
           drawerToggleClicked={this.sideDrawerOpenHandler}
           closed={this.sideDrawerClosedHandler}
         />
+        <section id="home" className="section section__home">
+          Home Section
+        </section>
+        <section id="services" className="section section__services">
+          Service Section
+        </section>
+        <section id="testimonials" className="section section__testimonial">
+          Testimonial Section
+        </section>
+        <section id="contact" className="section section__contact">
+          Contact Section
+        </section>
       </div>
     );
   }

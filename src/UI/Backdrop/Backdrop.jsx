@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 const Backdrop = (props) => {
   const { show, clicked } = props;
-  console.log(show);
   return (show
     ? <div className="Backdrop" onClick={clicked} />
     : null);

@@ -13,7 +13,7 @@
 }
 
 .NavigationItem a {
-  color: var(--color-white);
+  color: var(--color-Primary-dark);
   text-decoration: none;
   box-sizing: border-box;
   padding: 1rem 0;
@@ -54,6 +54,6 @@
   .NavigationItem a:active,
   .NavigationItem a.active {
     border-bottom: 2px solid var(--color-primary);
-    color: white;
+    color: var(--color-white);
   }
 }

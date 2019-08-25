@@ -1,0 +1,11 @@
+.section {
+    margin-top: 177rem;
+    padding-top: 7rem;
+
+    &__home {
+        margin-top: 0rem;
+        padding-top: 7rem;
+        background: var(--color-Primary-dark);
+        height: 100vh;
+    }
+}
