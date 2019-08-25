@@ -8,7 +8,7 @@ const DrawerToggle = (props) => {
   const { clicked } = props;
   return (
     <div
-      style={{ float: 'left' }}
+      style={{ float: 'right' }}
       onClick={clicked}
       className="DrawerToggle"
     >

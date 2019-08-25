@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import './Auth.scss';
-import '../../Typography-UI/Header.scss';
+import '../../UI/Header.scss';
 import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
 import BusinessDescription from './Fixtures/businessDescription';
@@ -11,37 +11,34 @@ import Login from './Login';
 const Logo = require('../../assets/logo__big.png');
 
 class Auth extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      login: {
-        currentEmail: '',
-        currentPassword: '',
-        rememberMe: false,
-      },
-      signUp: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        phone: '',
-        state: 'AK',
-        agree: false,
-      },
-      width: null,
-      loggingIn: true,
-      open: false,
-      dialog: false,
-      isForgotPassword: false,
-    };
-  }
+state = {
+  login: {
+    currentEmail: '',
+    currentPassword: '',
+    rememberMe: false,
+  },
+  signUp: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    phone: '',
+    state: 'AK',
+    agree: false,
+  },
+  width: null,
+  loggingIn: true,
+  open: false,
+  dialog: false,
+  isForgotPassword: false,
+};
 
-  // on component mount, adds event handler for window dimensions chanage
-  componentDidMount() {
-    this.updateDimensions();
-    window.addEventListener('resize', this.updateDimensions.bind(this));
-  }
+// on component mount, adds event handler for window dimensions chanage
+componentDidMount() {
+  this.updateDimensions();
+  window.addEventListener('resize', this.updateDimensions.bind(this));
+}
 
   // toggle between sign and login mode
   loginTypeHandler = () => {

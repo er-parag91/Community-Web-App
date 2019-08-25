@@ -1,8 +1,8 @@
 import React from 'react';
 import './NavBar.scss';
 import PropTypes from 'prop-types';
-import NavigationItems from '../NavigationItems/NavigationItems';
-import DrawerToggle from '../DrawerToggle/DrawerToggle';
+import NavigationItems from './NavigationItems/NavigationItems';
+import DrawerToggle from '../../SideDrawer/DrawerToggle/DrawerToggle';
 
 
 const NavBar = (props) => {

@@ -1,3 +1,7 @@
+// Media queries
+$bp-medium: 992px;
+$bp-small: 601px;
+
 //
 ////Login - Container
 //
@@ -218,7 +222,7 @@
 }
 
 
-@media (max-width: 601px) {
+@media (max-width: var($bp-small)) {
     .login {
         max-height: 100vh;
         max-width: 100vw;
@@ -233,7 +237,7 @@
     }
 }
 
-@media (max-width: 601px), (orientation: landscape) {
+@media (max-width: var($bp-small)), (orientation: landscape) {
     .login__right {
         width: 100vw;
         height: 100%;
@@ -241,7 +245,7 @@
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: var($bp-medium)) {
     .login__left--moreInfo {
         left: 86%;
         bottom: 50px
