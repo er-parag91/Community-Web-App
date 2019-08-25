@@ -234,7 +234,7 @@
     
 }
 
-@media (max-width: 601px) and (orientation: landscape) {
+@media (max-width: 601px), (orientation: landscape) {
     .login__right {
         width: 100vw;
         height: 100%;
