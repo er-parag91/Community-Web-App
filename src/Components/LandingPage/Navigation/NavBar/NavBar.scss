@@ -11,8 +11,8 @@
     padding: 0 2.5rem;
     box-sizing: border-box;
     z-index: 90;
-    color: black;
-    background-color: rgb(0, 0, 0);
+    color: var(--color-black);
+    background-color: var(--color-black);
   }
   
   .DeskTopOnly{
@@ -23,11 +23,11 @@
 
   .Logo{
     text-transform: uppercase;
-    color: white;
+    color: var(--color-white);
     font-weight: 900;
     font-size: 1.7rem;
     font-family: 'Righteous';
-    letter-spacing: .2rem;
+    letter-spacing: 0.2rem;
     margin-right: 6rem;
   }
 
