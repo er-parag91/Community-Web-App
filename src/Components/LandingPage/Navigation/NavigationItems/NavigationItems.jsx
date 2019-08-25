@@ -7,19 +7,28 @@ const NavigationItems = (props) => {
   const { clicked, isAuthenticated } = props;
   return (
     <ul className="NavigationItems">
-      <NavigationItem clicked={clicked} link="/prices">
-      Prices
-      </NavigationItem>
-      <NavigationItem clicked={clicked} exact link="/">
-      Burger Builder
-      </NavigationItem>
-      {isAuthenticated
-        ? (
-          <NavigationItem clicked={clicked} link="/orders">
-          Your orders
-          </NavigationItem>
-        )
-        : null}
+      <div className="manuItems">
+        <NavigationItem clicked={clicked} link="#home">
+      Home
+        </NavigationItem>
+        <NavigationItem clicked={clicked} exact link="#services">
+      Services
+        </NavigationItem>
+        <NavigationItem clicked={clicked} exact link="#testimonials">
+      Testimonials
+        </NavigationItem>
+        <NavigationItem clicked={clicked} exact link="#contact">
+      Contact us
+        </NavigationItem>
+        {isAuthenticated
+          ? (
+            <NavigationItem clicked={clicked} link="/auth/dashboard">
+          Dashboard
+            </NavigationItem>
+          )
+          : null}
+      </div>
+
       {isAuthenticated
         ? (
           <NavigationItem clicked={clicked} link="/logout">

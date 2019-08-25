@@ -8,7 +8,7 @@ const NavigationItem = (props) => {
     exact, link, clicked, children,
   } = props;
   return (
-    <li className="navigationItem">
+    <li className="NavigationItem">
       <NavLink
         exact={exact}
         to={link}
@@ -22,9 +22,14 @@ const NavigationItem = (props) => {
 };
 
 NavigationItem.propTypes = {
-  exact: PropTypes.bool.isRequired,
+  exact: PropTypes.bool,
   link: PropTypes.string.isRequired,
   clicked: PropTypes.func.isRequired,
   children: PropTypes.shape().isRequired,
 };
+
+NavigationItem.defaultProps = {
+  exact: false,
+};
+
 export default NavigationItem;
