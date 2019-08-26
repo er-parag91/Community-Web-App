@@ -28,7 +28,7 @@ NavBar.propTypes = {
 };
 
 NavBar.defaultProps = {
-  isAuth: false,
+  isAuth: true,
 };
 
 export default NavBar;

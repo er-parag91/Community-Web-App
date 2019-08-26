@@ -9,6 +9,13 @@ const NavigationItems = (props) => {
   return (
     <ul className="NavigationItems">
       <div className="manuItems">
+        {isAuthenticated
+          ? (
+            <NavigationItem clicked={clicked} link="/auth/dashboard" isTop={isTop}>
+          Dashboard
+            </NavigationItem>
+          )
+          : null}
         <NavigationItem clicked={clicked} link="#home" isTop={isTop}>
       Home
         </NavigationItem>
@@ -21,13 +28,6 @@ const NavigationItems = (props) => {
         <NavigationItem clicked={clicked} exact link="#contact" isTop={isTop}>
       Contact us
         </NavigationItem>
-        {isAuthenticated
-          ? (
-            <NavigationItem clicked={clicked} link="/auth/dashboard" isTop={isTop}>
-          Dashboard
-            </NavigationItem>
-          )
-          : null}
       </div>
       {isAuthenticated
         ? (
