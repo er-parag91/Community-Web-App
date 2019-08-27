@@ -23,7 +23,7 @@ class LandingPage extends Component {
         this.setState({ isTop: currentScroll });
       });
       this.setState({ loadingLandingPage: false });
-    }, 3000);
+    }, 2000);
   }
 
   sideDrawerClosedHandler = () => {
@@ -44,6 +44,7 @@ class LandingPage extends Component {
       <div>
         <NavBar isTop={isTop} drawerToggleClicked={this.sideDrawerOpenHandler} />
         <SideDrawer
+          isAuth
           open={showSideDrawer}
           drawerToggleClicked={this.sideDrawerOpenHandler}
           closed={this.sideDrawerClosedHandler}

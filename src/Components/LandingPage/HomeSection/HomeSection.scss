@@ -50,24 +50,38 @@
 }
 
 // media queries
+// media queries
 @media (max-width: 991px) {
     .Home {
-        width: 100vw;
+        width: 100%;
+        border-bottom-right-radius: 40%;
+    }
+
+    .Home__Content{
+        top: 50%;
+        left: 45%;
+    }
+}
+@media (max-width: 601px) {
+    .Home {
+        width: 100%;
+        border-bottom-right-radius: 40%;
     }
 
     .Home__Content {
-        width: 90rem;
+        width: 100%;
         flex-direction: column;
         position: relative;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: flex-start;
         align-content: center;
 
         &--text {
             width: 40rem;
+            margin-left: 2rem;
 
             h1 {
                 color: var(--color-white);
@@ -85,13 +99,60 @@
                 font-weight: 100;
             }
         }
+
         &--picture {
-            position: none;
             margin-top: 10rem;
-            height: 60%;
+            height: 80%;
             width: 50%;
-            border-top-left-radius: 50%;
-            box-shadow: var(--shadow-dark)
+            margin-left: 40%;
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-width: 900px) {
+    .Home {
+        width: 100%;
+        border-bottom-right-radius: 40%;
+    }
+
+    .Home__Content {
+        width: 80%;
+        flex-direction: row;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        &--text {
+            width: 40rem;
+            margin-left: 2rem;
+
+            h1 {
+                color: var(--color-white);
+                font-size: 5rem;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-family: 'passion one', cursive;
+            }
+
+            p {
+                color: var(--color-Grey-light-1);
+                font-family: 'Noto Sans TC', sans-serif;
+                padding-top: 1.5rem;
+                font-size: 1.8rem;
+                font-weight: 100;
+            }
+        }
+
+        &--picture {
+            margin-top: 10rem;
+            height: 50%;
+            width: 50%;
+            margin-left: 10%;
+            overflow: hidden;
         }
     }
 }
