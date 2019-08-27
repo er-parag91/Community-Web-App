@@ -2,10 +2,17 @@ import React from 'react';
 import './NavigationItems.scss';
 import PropTypes from 'prop-types';
 import NavigationItem from './NavigationItem/NavigationItem';
+import OutlinedButton from '../../../../../UI/OutlinedButton/OutlinedButton';
 
 const NavigationItems = (props) => {
   const { clicked, isAuthenticated, isTop } = props;
-  console.log(isTop);
+  const signInButtonHandler = () => {
+    console.log('button clicked');
+  };
+
+  const signOutButtonHandler = () => {
+    console.log('button clicked');
+  };
   return (
     <ul className="NavigationItems">
       <div className="manuItems">
@@ -31,14 +38,10 @@ const NavigationItems = (props) => {
       </div>
       {isAuthenticated
         ? (
-          <NavigationItem clicked={clicked} link="/logout">
-          Sign Out
-          </NavigationItem>
+          <OutlinedButton OutlinedButtonClicked={signOutButtonHandler} link="/logout" text="Sign out" />
         )
         : (
-          <NavigationItem clicked={clicked} link="/Auth">
-          Sign In
-          </NavigationItem>
+          <OutlinedButton OutlinedButtonClicked={signInButtonHandler} link="/Auth" text="sign in" />
         )}
     </ul>
   );
