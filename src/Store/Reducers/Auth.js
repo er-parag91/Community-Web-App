@@ -4,6 +4,7 @@ const initialState = {
   name: null,
   error: null,
   loading: false,
+  isLoggedIn: false,
 };
 
 
