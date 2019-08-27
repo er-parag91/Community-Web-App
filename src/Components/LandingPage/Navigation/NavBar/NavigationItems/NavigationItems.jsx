@@ -38,10 +38,10 @@ const NavigationItems = (props) => {
       </div>
       {isAuthenticated
         ? (
-          <OutlinedButton OutlinedButtonClicked={signOutButtonHandler} link="/logout" text="Sign out" />
+          <OutlinedButton OutlinedButtonClicked={signOutButtonHandler} link="/logout" text="Sign Out" />
         )
         : (
-          <OutlinedButton OutlinedButtonClicked={signInButtonHandler} link="/Auth" text="sign in" />
+          <OutlinedButton OutlinedButtonClicked={signInButtonHandler} link="/Auth" text="Sign In" />
         )}
     </ul>
   );

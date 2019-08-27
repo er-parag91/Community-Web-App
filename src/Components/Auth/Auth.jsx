@@ -1,6 +1,9 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import './Auth.scss';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import '../../UI/Header.scss';
 import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
@@ -20,7 +23,7 @@ state = {
   signUp: {
     firstName: '',
     lastName: '',
-    email: '',
+    email: this.props.generalState.signUpEmail,
     password: '',
     confirmPassword: '',
     phone: '',
@@ -28,7 +31,7 @@ state = {
     agree: false,
   },
   width: null,
-  loggingIn: true,
+  isLoggingIn: this.props.generalState.signUp,
   open: false,
   dialog: false,
   isForgotPassword: false,
@@ -43,7 +46,7 @@ componentDidMount() {
   // toggle between sign and login mode
   loginTypeHandler = () => {
     this.setState((prevState) => ({
-      loggingIn: !prevState.loggingIn,
+      isLoggingIn: !prevState.isLoggingIn,
     }));
   }
 
@@ -147,8 +150,9 @@ componentDidMount() {
 
   render() {
     const {
-      width, loggingIn, signUp, login, open, dialog, isForgotPassword,
+      width, isLoggingIn, signUp, login, open, dialog, isForgotPassword,
     } = this.state;
+    console.log(this.state);
     return (
       <Grid item container className="login">
         <Modal open={open} onClose={this.onMoreInfoModalToggle} center>
@@ -178,7 +182,7 @@ componentDidMount() {
               <img className="Logo" src={Logo} alt="Logo" />
             </div>
 
-            {loggingIn && (
+            {isLoggingIn && (
               <Login
                 loginData={login}
                 onLoginFormSubmit={this.logInFormSubmitHandler}
@@ -190,7 +194,7 @@ componentDidMount() {
               />
             )}
 
-            {!loggingIn
+            {!isLoggingIn
             && (
             <div>
               <SignUp
@@ -209,7 +213,7 @@ componentDidMount() {
             )}
             <div>
               <span role="button" tabIndex={0} className="heading-tertiary login-signup__toggle" onClick={this.loginTypeHandler} onKeyDown={this.loginTypeHandler}>
-                {loggingIn ? 'New User? Tap to Sign Up' : 'Registered User? Tap to Log in'}
+                {isLoggingIn ? 'New User? Tap to Sign Up' : 'Registered User? Tap to Log in'}
               </span>
             </div>
           </Grid>
@@ -224,4 +228,12 @@ componentDidMount() {
   }
 }
 
-export default Auth;
+const mapStateToProps = (state) => ({
+  generalState: state.generalState,
+});
+
+Auth.propTypes = {
+  generalState: PropTypes.shape().isRequired,
+};
+
+export default connect(mapStateToProps)(Auth);
