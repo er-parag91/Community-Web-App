@@ -6,19 +6,24 @@ import HomeSection from './HomeSection/HomeSection';
 import ServiceSection from './ServiceSection/ServiceSection';
 import TestimonialSection from './TestimonialSection/TestimonialSection';
 import ContactSection from './ContactSection/ContactSection';
+import Spinner from '../../UI/Spinner/Spinner';
 
 class LandingPage extends Component {
   state = {
     showSideDrawer: false,
     isTop: true,
+    loadingLandingPage: true,
   }
 
   componentDidMount() {
-    document.addEventListener('scroll', () => {
-      const currentScroll = window.scrollY < 50;
-      console.log(window.scrollY);
-      this.setState({ isTop: currentScroll });
-    });
+    setTimeout(() => {
+      console.log('Hello, World!');
+      document.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY < 50;
+        this.setState({ isTop: currentScroll });
+      });
+      this.setState({ loadingLandingPage: false });
+    }, 3000);
   }
 
   sideDrawerClosedHandler = () => {
@@ -31,7 +36,10 @@ class LandingPage extends Component {
 
 
   render() {
-    const { showSideDrawer, isTop } = this.state;
+    const { showSideDrawer, isTop, loadingLandingPage } = this.state;
+    if (loadingLandingPage) {
+      return <Spinner />;
+    }
     return (
       <div>
         <NavBar isTop={isTop} drawerToggleClicked={this.sideDrawerOpenHandler} />
