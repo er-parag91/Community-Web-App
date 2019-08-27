@@ -44,6 +44,7 @@ const SignUp = (props) => {
             <Grid item xs={6} sm={6}>
               <InputField
                 value={firstName}
+                autoFocus
                 type="text"
                 id="firstName"
                 label="First Name"

@@ -48,6 +48,7 @@ const Login = (props) => {
           <span className="heading-secondary">Sign-in</span>
           <InputField
             type="email"
+            autoFocus
             required
             value={currentEmail}
             id="currentEmail"

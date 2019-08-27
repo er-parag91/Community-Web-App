@@ -31,7 +31,7 @@ state = {
     agree: false,
   },
   width: null,
-  isLoggingIn: this.props.generalState.signUp,
+  isLoggingIn: this.props.generalState.isLoggingIn,
   open: false,
   dialog: false,
   isForgotPassword: false,
