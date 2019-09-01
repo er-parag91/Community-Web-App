@@ -1,45 +1,56 @@
-.NavBar{
+.NavBar {
+  height: 10rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5rem;
+  box-sizing: border-box;
+  z-index: 90;
+  background-color: transparent;
+  transition: background-color 0.6s;
+}
+
+// class will be applied when scrolled a landing page
+.notTop {
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-dark);
+  height: 7rem;
+  transition: height 1s;
+
+  .NavBar__Logo {
+    color: var(--color-Primary-dark);
+  }
+}
+
+.DeskTopOnly {
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+
+.NavBar__Logo {
+  text-transform: uppercase;
+  color: var(--color-white);
+  font-weight: 900;
+  font-size: 1.7rem;
+  font-family: 'Righteous';
+  letter-spacing: 0.5rem;
+  margin-right: 6rem;
+}
+
+@media (max-width: 991px) {
+  .DeskTopOnly {
+    display: none;
+  }
+
+  .NavBar {
     height: 6rem;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 0 2.5rem;
-    box-sizing: border-box;
-    z-index: 90;
-    background-color: transparent;
-  }
-  // class will be applied when scrolled a landing page
-  .notTop {
-    background-color: var(--color-white);
-    box-shadow: var(--shadow-dark);
-    .NavBar__Logo{
-      color: var(--color-Primary-dark)
-    }
-  }
-  .DeskTopOnly{
-    display: flex;
-    justify-content: space-around;
-    flex-grow: 1;
-  }
 
-  .NavBar__Logo{
-    text-transform: uppercase;
-    color: var(--color-white);
-    font-weight: 900;
-    font-size: 1.7rem;
-    font-family: 'Righteous';
-    letter-spacing: 0.5rem;
-    margin-right: 6rem;
   }
-
-  @media (max-width: 991px){
-    .DeskTopOnly{
-      display: none;
-    }
-  }
-  
+}
