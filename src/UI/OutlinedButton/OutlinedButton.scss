@@ -7,17 +7,17 @@
     font-weight: 300;
     color: var(--color-white);
     cursor: pointer;
-    border: 2px solid var(--color-Primary-dark);
+    border: 2px solid var(--color-Primary-red);
     padding: 0.7rem 2.5rem;
-    background: var(--color-Primary-dark);
+    background: var(--color-Primary-red);
     transition: all 0.3s;
 }
 
 .OutlinedButton:hover {
     background: transparent;
     box-shadow: var(--shadow-light);
-    color: var(--color-Primary-dark);
-    border: 2px solid var(--color-Primary-dark);
+    color: var(--color-Primary-red);
+    border: 2px solid var(--color-Primary-red);
 }
 
 .OutlinedButton:focus{
