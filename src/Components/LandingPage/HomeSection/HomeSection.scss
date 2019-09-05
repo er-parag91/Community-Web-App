@@ -91,9 +91,9 @@
 
         &--picture {
             margin-top: 5rem;
+            margin-left: 20%;
             height: 80%;
-            width: 50%;
-            margin-left: 40%;
+            width: 70%;
         }
     }
 }
@@ -135,12 +135,6 @@
             }
         }
 
-        &--picture {
-            margin-top: 10rem;
-            height: 80%;
-            width: 55%;
-            margin-left: 35%;
-        }
     }
 }
 
@@ -185,7 +179,6 @@
 
         &--picture {
             margin-top: 10rem;
-            height: 70%;
             width: 50%;
             margin-left: 10%;
             overflow: hidden;
@@ -212,8 +205,8 @@
 }
 
 .arrow {
-  height: 50px;
-  width: 50px;
+  height: 5rem;
+  width: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -224,16 +217,16 @@
 
 .nextArrow {
   position: absolute;
-  top: 90%;
-  right: 35%;
+  top: 85%;
+  right: 30%;
   z-index: 999;
   color: #fff;
 }
 
 .backArrow {
   position: absolute;
-  top: 90%;
-  left: 35%;
+  top: 85%;
+  left: 30%;
   z-index: 999;
   color: #fff;
 }
