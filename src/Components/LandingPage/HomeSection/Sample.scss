@@ -1,0 +1,32 @@
+.Sample {}
+
+
+.animate {
+    animation-name: fadeRightIn;
+    animation-duration: 1000ms;
+}
+
+@keyframes fadeRightIn {
+    0% {
+        transform: translateX(70%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.animateBack{
+    animation-name: fadeLeftIn;
+    animation-duration: 1000ms;
+}
+
+@keyframes fadeLeftIn {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
