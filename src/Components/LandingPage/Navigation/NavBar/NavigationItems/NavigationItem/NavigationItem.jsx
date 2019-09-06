@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const NavigationItem = (props) => {
   const {
-    exact, link, clicked, children, isTop,
+    link, children, isTop,
   } = props;
   const scrollClass = {
     color: 'var(--color-Primary-dark)',
@@ -13,10 +13,7 @@ const NavigationItem = (props) => {
     <li className="NavigationItem">
       <a
         style={isTop ? {} : scrollClass}
-        exact={exact}
         href={link}
-        activeClassName="active"
-        onClick={clicked}
       >
         {children}
       </a>
@@ -25,15 +22,12 @@ const NavigationItem = (props) => {
 };
 
 NavigationItem.propTypes = {
-  exact: PropTypes.bool,
   link: PropTypes.string.isRequired,
-  clicked: PropTypes.func.isRequired,
-  children: PropTypes.shape().isRequired,
+  children: PropTypes.string.isRequired,
   isTop: PropTypes.bool,
 };
 
 NavigationItem.defaultProps = {
-  exact: false,
   isTop: false,
 };
 
