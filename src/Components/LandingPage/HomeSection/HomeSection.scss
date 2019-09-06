@@ -19,7 +19,6 @@
     justify-content: flex-end;
     align-items: center;
     margin: auto;
-    overflow: hidden;
 
     &--text {
         width: 50rem;
@@ -85,16 +84,16 @@
 
 .nextArrow {
     position: absolute;
-    top: 85%;
-    right: 30%;
+    bottom: -2.5rem;
+    left: 50%;
     z-index: 999;
     color: var(--color-white);
 }
 
 .backArrow {
     position: absolute;
-    top: 85%;
-    left: 30%;
+    bottom: -2.5rem;
+    left: 50%;
     z-index: 999;
     color: var(--color-white);
 }
@@ -242,7 +241,6 @@
             margin-top: 10rem;
             width: 50%;
             margin-left: 10%;
-            overflow: hidden;
         }
     }
 }
