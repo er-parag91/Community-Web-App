@@ -1,11 +1,8 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable max-len */
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React, { Component } from 'react';
 import './HomeSection.scss';
+import PropTypes from 'prop-types';
 import TextContent from './TextContent';
 
 const homeOne = require('../../../assets/main-1.jpg');
@@ -26,22 +23,27 @@ class HomeSection extends Component {
     translateValue: 0,
   };
 
+  // auto slide show for images
   componentDidMount() {
     setInterval(() => {
       this.goToNextSlide();
     }, 5000);
   }
 
+  // slide to prev image
   goToPrevSlide = () => {
     const { currentIndex } = this.state;
+    // Exiting the method early if we are at the start of the images array.
     if (currentIndex === 0) { return; }
 
+    // This will not run if we met the if condition above
     this.setState((prevState) => ({
       currentIndex: prevState.currentIndex - 1,
       translateValue: prevState.translateValue + this.slideWidth(),
     }));
   }
 
+  // slide to next image
   goToNextSlide = () => {
     const { currentIndex, images } = this.state;
     // Exiting the method early if we are at the end of the images array.
@@ -61,10 +63,11 @@ class HomeSection extends Component {
     }));
   }
 
+  // takes image width from the DOM and this width is useful
+  // to slide the component by specific pixel
   slideWidth = () => document.querySelector('.slide').clientWidth
 
   render() {
-    // eslint-disable-next-line no-unused-vars
     const {
       images, translateValue, currentIndex,
     } = this.state;
@@ -83,8 +86,8 @@ class HomeSection extends Component {
               }}
             >
               {
-              images.map((image, i) => (
-                <Slide key={i} image={image} />
+              images.map((image) => (
+                <Slide key={image} image={image} />
               ))
             }
             </div>
@@ -103,6 +106,7 @@ class HomeSection extends Component {
 
 export default HomeSection;
 
+// Image slider helper functional component
 const Slide = ({ image }) => {
   const styles = {
     backgroundImage: `url(${image})`,
@@ -113,16 +117,31 @@ const Slide = ({ image }) => {
   return <div className="slide" style={styles} />;
 };
 
+Slide.propTypes = {
+  image: PropTypes.string.isRequired,
+};
 
-const LeftArrow = (props) => (
-  <div className="backArrow arrow" onClick={props.goToPrevSlide}>
-    <i className="fa fa-arrow-left" aria-hidden="true" />
-  </div>
-);
+const LeftArrow = (props) => {
+  const { goToPrevSlide } = props;
+  return (
+    <div className="backArrow arrow" role="button" onClick={goToPrevSlide}>
+      <i className="fa fa-arrow-left" aria-hidden="true" />
+    </div>
+  );
+};
+LeftArrow.propTypes = {
+  goToPrevSlide: PropTypes.func.isRequired,
+};
 
+const RightArrow = (props) => {
+  const { goToNextSlide } = props;
+  return (
+    <div className="nextArrow arrow" role="button" onClick={goToNextSlide}>
+      <i className="fa fa-arrow-right" aria-hidden="true" />
+    </div>
+  );
+};
 
-const RightArrow = (props) => (
-  <div className="nextArrow arrow" onClick={props.goToNextSlide}>
-    <i className="fa fa-arrow-right" aria-hidden="true" />
-  </div>
-);
+RightArrow.propTypes = {
+  goToNextSlide: PropTypes.func.isRequired,
+};
