@@ -1,0 +1,41 @@
+.OutlinedButton {
+    display: inline-block;
+    border: none;
+    text-decoration: none;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 300;
+    color: var(--color-white);
+    cursor: pointer;
+    border: 2px solid var(--color-Primary-red);
+    padding: 0.7rem 2.5rem;
+    background: var(--color-Primary-red);
+    transition: all 0.3s;
+}
+
+.OutlinedButton:hover {
+    background: transparent;
+    box-shadow: var(--shadow-light);
+    color: var(--color-Primary-red);
+    border: 2px solid var(--color-Primary-red);
+}
+
+.OutlinedButton:focus{
+    outline: none;
+    -webkit-animation-name: clicked; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 0.4s; /* Safari 4.0 - 8.0 */
+    animation-name: clicked;
+    animation-duration: 0.4s;
+}
+
+@keyframes clicked {
+    0% {
+        transform: scale(0.9);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1.0)
+    }
+}

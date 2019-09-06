@@ -12,18 +12,18 @@ class LandingPage extends Component {
   state = {
     showSideDrawer: false,
     isTop: true,
-    loadingLandingPage: true,
+    loadingLandingPage: sessionStorage.getItem('firstLoading') !== 'false',
   }
 
   componentDidMount() {
     setTimeout(() => {
-      console.log('Hello, World!');
       document.addEventListener('scroll', () => {
         const currentScroll = window.scrollY < 50;
         this.setState({ isTop: currentScroll });
       });
       this.setState({ loadingLandingPage: false });
-    }, 3000);
+      sessionStorage.setItem('firstLoading', false);
+    }, 2000);
   }
 
   sideDrawerClosedHandler = () => {
@@ -44,6 +44,7 @@ class LandingPage extends Component {
       <div>
         <NavBar isTop={isTop} drawerToggleClicked={this.sideDrawerOpenHandler} />
         <SideDrawer
+          isAuth
           open={showSideDrawer}
           drawerToggleClicked={this.sideDrawerOpenHandler}
           closed={this.sideDrawerClosedHandler}

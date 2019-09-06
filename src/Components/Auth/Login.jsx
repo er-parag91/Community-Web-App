@@ -10,7 +10,7 @@ import ForgotPassword from './ForgotPassword';
 
 const Login = (props) => {
   // Login text fields change fires this handler
-  const changeHandler = (key, target) => {
+  const onChangeHandler = (key, target) => {
     props.onLoginTextChange(key, target.value);
   };
   // remember me checkbox handler
@@ -48,12 +48,13 @@ const Login = (props) => {
           <span className="heading-secondary">Sign-in</span>
           <InputField
             type="email"
+            autoFocus
             required
             value={currentEmail}
             id="currentEmail"
             label="E-Mail Address"
             placeholder="e.g. john@smith.com"
-            changeHandler={changeHandler}
+            changeHandler={onChangeHandler}
           />
           <InputField
             type="password"
@@ -65,7 +66,7 @@ const Login = (props) => {
             id="currentPassword"
             label="Password"
             placeholder="e.g. Password123"
-            changeHandler={changeHandler}
+            changeHandler={onChangeHandler}
           />
           <Grid
             xs={12}
