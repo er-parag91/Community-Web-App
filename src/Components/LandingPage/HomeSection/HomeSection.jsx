@@ -6,7 +6,7 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
 import './HomeSection.scss';
-import Sample from './sample';
+import TextContent from './TextContent';
 
 const homeOne = require('../../../assets/main-1.jpg');
 const homeTwo = require('../../../assets/main-2.jpg');
@@ -72,7 +72,7 @@ class HomeSection extends Component {
       <div className="Home">
         <div className="Home__Content">
           <div className="Home__Content--text">
-            <Sample currentIndex={currentIndex} />
+            <TextContent currentIndex={currentIndex} />
           </div>
           <div className="slider Home__Content--picture">
             <div

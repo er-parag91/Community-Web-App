@@ -1,11 +1,8 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-return-assign */
-/* eslint-disable react/prop-types */
 /* eslint-disable max-len */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './Sample.scss';
+import './TextContent.scss';
 import PropTypes from 'prop-types';
 import InputAndButton from '../../../UI/InputAndButton/InputAndButton';
 
@@ -32,14 +29,16 @@ const textContent = [
   },
 ];
 
-class Sample extends Component {
+class TextContent extends Component {
   state = {
     isMouseFocused: false,
   };
 
   componentWillReceiveProps(nextProps) {
-    if (!this.state.isMouseFocused) {
-      if (nextProps.currentIndex !== this.props.currentIndex && nextProps.currentIndex !== 0) {
+    const { isMouseFocused } = this.state;
+    const { currentIndex } = this.props;
+    if (!isMouseFocused) {
+      if (nextProps.currentIndex !== currentIndex && nextProps.currentIndex !== 0) {
         this.myEl.className = 'animate';
       }
       if (nextProps.currentIndex === 0) {
@@ -71,7 +70,7 @@ class Sample extends Component {
   render() {
     const { currentIndex } = this.props;
     return (
-      <div ref={(ref) => this.myEl = ref}>
+      <div ref={(ref) => { this.myEl = ref; }}>
         <h1>{textContent[currentIndex].title1}</h1>
         <h1>{textContent[currentIndex].title2}</h1>
         <p>{textContent[currentIndex].text}</p>
@@ -81,10 +80,11 @@ class Sample extends Component {
   }
 }
 
-Sample.propTypes = {
+TextContent.propTypes = {
   loggingIn: PropTypes.func.isRequired,
   signUpEmail: PropTypes.func.isRequired,
   history: PropTypes.shape().isRequired,
+  currentIndex: PropTypes.number.isRequired,
 };
 
 const mapDispatchToProps = (dispatchEvent) => ({
@@ -92,4 +92,4 @@ const mapDispatchToProps = (dispatchEvent) => ({
   signUpEmail: (value) => dispatchEvent({ type: 'SIGNUP_EMAIL', value }),
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(Sample));
+export default connect(null, mapDispatchToProps)(withRouter(TextContent));
