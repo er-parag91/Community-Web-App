@@ -1,3 +1,14 @@
+.Spinner{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgb(197, 197, 197);
+  z-index: 1000;
+  overflow-y: hidden;
+}
+
 .lds-hourglass {
     position: relative;
     left: 50%;

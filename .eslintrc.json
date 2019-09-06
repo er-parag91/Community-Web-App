@@ -19,5 +19,8 @@
     },
     "plugins": [
         "react"
-    ]
+    ],
+    "rules": {
+        "react/state-in-constructor": [0, "always"]
+    }
 }
