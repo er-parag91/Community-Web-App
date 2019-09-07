@@ -1,7 +1,10 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import './Auth.scss';
-import '../../Typography-UI/Header.scss';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import '../../UI/Header.scss';
 import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
 import BusinessDescription from './Fixtures/businessDescription';
@@ -11,42 +14,39 @@ import Login from './Login';
 const Logo = require('../../assets/logo__big.png');
 
 class Auth extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      login: {
-        currentEmail: '',
-        currentPassword: '',
-        rememberMe: false,
-      },
-      signUp: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        phone: '',
-        state: 'AK',
-        agree: false,
-      },
-      width: null,
-      loggingIn: true,
-      open: false,
-      dialog: false,
-      isForgotPassword: false,
-    };
-  }
+state = {
+  login: {
+    currentEmail: '',
+    currentPassword: '',
+    rememberMe: false,
+  },
+  signUp: {
+    firstName: '',
+    lastName: '',
+    email: this.props.generalState.signUpEmail,
+    password: '',
+    confirmPassword: '',
+    phone: '',
+    state: 'AK',
+    agree: false,
+  },
+  width: null,
+  isLoggingIn: this.props.generalState.isLoggingIn,
+  open: false,
+  dialog: false,
+  isForgotPassword: false,
+};
 
-  // on component mount, adds event handler for window dimensions chanage
-  componentDidMount() {
-    this.updateDimensions();
-    window.addEventListener('resize', this.updateDimensions.bind(this));
-  }
+// on component mount, adds event handler for window dimensions chanage
+componentDidMount() {
+  this.updateDimensions();
+  window.addEventListener('resize', this.updateDimensions.bind(this));
+}
 
   // toggle between sign and login mode
   loginTypeHandler = () => {
     this.setState((prevState) => ({
-      loggingIn: !prevState.loggingIn,
+      isLoggingIn: !prevState.isLoggingIn,
     }));
   }
 
@@ -150,8 +150,9 @@ class Auth extends Component {
 
   render() {
     const {
-      width, loggingIn, signUp, login, open, dialog, isForgotPassword,
+      width, isLoggingIn, signUp, login, open, dialog, isForgotPassword,
     } = this.state;
+    console.log(this.state);
     return (
       <Grid item container className="login">
         <Modal open={open} onClose={this.onMoreInfoModalToggle} center>
@@ -181,7 +182,7 @@ class Auth extends Component {
               <img className="Logo" src={Logo} alt="Logo" />
             </div>
 
-            {loggingIn && (
+            {isLoggingIn && (
               <Login
                 loginData={login}
                 onLoginFormSubmit={this.logInFormSubmitHandler}
@@ -193,7 +194,7 @@ class Auth extends Component {
               />
             )}
 
-            {!loggingIn
+            {!isLoggingIn
             && (
             <div>
               <SignUp
@@ -212,7 +213,7 @@ class Auth extends Component {
             )}
             <div>
               <span role="button" tabIndex={0} className="heading-tertiary login-signup__toggle" onClick={this.loginTypeHandler} onKeyDown={this.loginTypeHandler}>
-                {loggingIn ? 'New User? Tap to Sign Up' : 'Registered User? Tap to Log in'}
+                {isLoggingIn ? 'New User? Tap to Sign Up' : 'Registered User? Tap to Log in'}
               </span>
             </div>
           </Grid>
@@ -227,4 +228,12 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+const mapStateToProps = (state) => ({
+  generalState: state.generalState,
+});
+
+Auth.propTypes = {
+  generalState: PropTypes.shape().isRequired,
+};
+
+export default connect(mapStateToProps)(Auth);

@@ -21,6 +21,6 @@
         "react"
     ],
     "rules": {
-        "react/state-in-constructor": [2, "always"]
+        "react/state-in-constructor": [0, "always"]
     }
 }

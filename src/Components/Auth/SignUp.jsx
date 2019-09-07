@@ -2,8 +2,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import '../../Typography-UI/Header.scss';
-import '../../Typography-UI/Button.scss';
+import '../../UI/Header.scss';
+import '../../UI/Button.scss';
 import PropTypes from 'prop-types';
 import { statesList } from './Fixtures/statesList';
 import InputField from './TextField';
@@ -44,6 +44,7 @@ const SignUp = (props) => {
             <Grid item xs={6} sm={6}>
               <InputField
                 value={firstName}
+                autoFocus
                 type="text"
                 id="firstName"
                 label="First Name"

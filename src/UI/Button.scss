@@ -1,0 +1,31 @@
+.btn{
+    all: unset;
+    font-size: 1.5rem;
+    font-weight: 300;
+    border-radius: 100px;
+    border: none;
+    background-image: linear-gradient(to right, var(--color-Primary-light), var(--color-Primary-dark));
+    color: #fff !important;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    
+    &>* {
+      display: block;
+      height: 100%;
+      width: 50%;
+      transition: all .2s;
+    }
+    
+    &__text{
+      padding: 2rem 7.5rem;
+    }
+    &:hover{
+      background-image: linear-gradient(to left, var(--color-Primary-light), var(--color-Primary-dark));
+    }
+    &:focus{
+      outline: none;
+      background-image: linear-gradient(to bottom, var(--color-Primary-light), var(--color-Primary-dark));
+    }
+  }
+  

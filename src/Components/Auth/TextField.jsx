@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 
 const InputField = (props) => {
   const {
-    value, id, label, autoComplete, placeholder, changeHandler,
+    value, id, label, autoComplete, placeholder, changeHandler, ...rest
   } = props;
   return (
     <TextField
-      {...props}
+      {...rest}
       value={value}
       id={id}
       label={label}
@@ -29,9 +29,14 @@ InputField.propTypes = {
   value: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  autoComplete: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  autoComplete: PropTypes.string,
   changeHandler: PropTypes.func.isRequired,
+};
+
+InputField.defaultProps = {
+  autoComplete: '',
+  placeholder: '',
 };
 
 

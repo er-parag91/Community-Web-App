@@ -1,0 +1,27 @@
+.NavigationItems {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+}
+
+.manuItems {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .NavigationItems {
+    flex-flow: row;
+    align-content: space-between;
+  justify-content: space-between;
+
+  }
+
+  .manuItems {
+    flex-flow: row;
+  }
+}

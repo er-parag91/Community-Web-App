@@ -1,13 +1,15 @@
 :root {
   // Primary color for website buttons, background, text color etc.
-  --color-primary: rgb(27, 247, 27);
-  --color-Primary-light: rgb(101, 207, 14);
-  --color-Primary-dark: rgb(1, 131, 22);
+  --color-primary: #6444e4;
+  --color-Primary-light: #4a35a0;
+  --color-Primary-dark: #342961;
+  --color-light-font: #9791AE;
   --color-Grey-light-1: #f7f7f7;
   --color-Grey-light-2: #f4f2f2;
   --color-Grey-light-3: #f0eeee;
   --color-Grey-light-4: #ccc;
-
+  --color-greenish: rgb(99, 136, 99);
+  --color-Primary-red: #DC3545;
   // text colors mostly
   --color-Grey-dark-1: #333;
   --color-Grey-dark-2: #777;
@@ -18,9 +20,9 @@
   --color-white: #fff;
 
   // shadow and lines
-  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.301);
   --line: 1px solid var(--color-Grey-light-2);
-  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, .06);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.144);
 
   // white background color with transparency
   --white-gradient-1: rgba(255, 255, 255, 0.95);
@@ -75,11 +77,5 @@ only screen and (-webkit-min-device-pixel-ratio: 1.5),
 only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min--moz-device-pixel-ratio: 1.5),
 only screen and (min-device-pixel-ratio: 1.5){
-
-  html,
-  body{
-    width:100%;
-    overflow-x:hidden;
-  }
 
 }
