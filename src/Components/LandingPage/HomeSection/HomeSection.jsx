@@ -77,19 +77,21 @@ class HomeSection extends Component {
           <div className="Home__Content--text">
             <TextContent currentIndex={currentIndex} />
           </div>
-          <div className="slider Home__Content--picture">
-            <div
-              className="slider-wrapper"
-              style={{
-                transform: `translateX(${translateValue}px)`,
-                transition: 'transform ease-out 1000ms',
-              }}
-            >
-              {
+          <div className="Home__Content--picture">
+            <div className="slider">
+              <div
+                className="slider-wrapper"
+                style={{
+                  transform: `translateX(${translateValue}px)`,
+                  transition: 'transform ease-out 1000ms',
+                }}
+              >
+                {
               images.map((image) => (
                 <Slide key={image} image={image} />
               ))
             }
+              </div>
             </div>
             <LeftArrow
               goToPrevSlide={this.goToPrevSlide}

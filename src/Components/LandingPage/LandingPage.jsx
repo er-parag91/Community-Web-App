@@ -37,11 +37,9 @@ class LandingPage extends Component {
 
   render() {
     const { showSideDrawer, isTop, loadingLandingPage } = this.state;
-    if (loadingLandingPage) {
-      return <Spinner />;
-    }
     return (
       <div>
+        { loadingLandingPage && <Spinner />}
         <NavBar isTop={isTop} drawerToggleClicked={this.sideDrawerOpenHandler} />
         <SideDrawer
           isAuth

@@ -15,12 +15,12 @@ const textContent = [
   {
     title1: 'We organize',
     title2: 'Events party',
-    text: 'The printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took  book.',
+    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took  book.',
   },
   {
     title1: 'Lorem Ipsum',
     title2: 'might right',
-    text: 'Typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took  book.',
+    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took  book.',
   },
   {
     title1: 'Do We',
