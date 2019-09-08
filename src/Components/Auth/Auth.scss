@@ -17,7 +17,7 @@
     //// background Image
     //
     &--image {
-        background-image: linear-gradient(to right bottom, var(--main-gradient-1), var(--main-gradient-2)), url(../../assets//login-background.jpg);
+        background-image: linear-gradient(to right bottom, var(--main-gradient-1), var(--main-gradient-2)), url(../../assets/images/login-background.jpg);
         height: 100vh;
         background-position: center;
         background-repeat: no-repeat;
@@ -42,7 +42,7 @@
 //
 .login__right {
     height: 100vh;
-    background-image: linear-gradient(var(--white-gradient-1) 0, var(--white-gradient-2) 75%), url(../../assets/background-image.png);
+    background-image: linear-gradient(var(--white-gradient-1) 0, var(--white-gradient-2) 75%), url(../../assets/images/background-image.png);
     background-size: cover;
 
     //

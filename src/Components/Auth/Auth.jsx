@@ -11,7 +11,7 @@ import BusinessDescription from './Fixtures/businessDescription';
 import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
 import Login from './Login';
 
-const Logo = require('../../assets/logo__big.png');
+const Logo = require('../../assets/images/logo__big.png');
 
 class Auth extends Component {
 state = {
