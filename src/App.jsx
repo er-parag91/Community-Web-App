@@ -4,9 +4,10 @@ import './App.scss';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Auth from './Components/Auth/Auth';
+// import Auth from './Components/Auth/Auth';
 import Dashboard from './Layout/Dashboard/Dashboard';
 import LandingPage from './Components/LandingPage/LandingPage';
+import Auth2 from './Components/Auth2/Auth2';
 
 class App extends Component {
   render() {
@@ -17,7 +18,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route path="/auth" component={Auth} />
+            <Route path="/auth" component={Auth2} />
           </Switch>
         </div>
       );
