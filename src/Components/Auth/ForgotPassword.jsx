@@ -18,7 +18,7 @@ const ForgotPassword = (props) => {
 
   return (
     <div>
-      <Dialog className="fogot__password" open={isForgotPassword} onClose={forgotPasswordToggle} aria-labelledby="form-dialog-title">
+      <Dialog className="forgot__password" open={isForgotPassword} onClose={forgotPasswordToggle} aria-labelledby="form-dialog-title">
         <form onSubmit={(e) => handleSubmit(e)}>
           <span className="heading-tertiary">Forgot Password</span>
           <DialogContent>

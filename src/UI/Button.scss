@@ -5,7 +5,7 @@
   border-radius: 100px;
   border: none;
   background-image: linear-gradient(to right, var(--color-Primary-light), var(--color-Primary-dark));
-  color: #fff !important;
+  color: var(--color-white) !important;
   cursor: pointer;
   display: block;
   margin: auto;
@@ -18,7 +18,7 @@
   }
 
   &__text {
-    color: #fff !important;
+    color: var(--color-white) !important;
     padding: 2rem 7.5rem;
   }
 
