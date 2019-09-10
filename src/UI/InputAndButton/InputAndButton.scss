@@ -15,9 +15,9 @@
         background: rgba(97, 97, 97, 0.295);
         border: 1px solid var(--color-light-font);
         color: var(--color-Grey-light-4);
-        -webkit-appearance: none;
-        -webkit-border-radius: 0;
-        border-radius: 0;
+        -webkit-appearance: none !important;
+        -webkit-border-radius: 0 !important;
+        border-radius: 0 !important;
 
         &::placeholder {
             color: var(--color-light-font);

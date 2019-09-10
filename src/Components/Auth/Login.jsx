@@ -45,7 +45,7 @@ const Login = (props) => {
           alignItems="center"
           className="login__right--signup-form"
         >
-          <span className="heading-secondary">Sign-in</span>
+          <span className="heading-secondary">Welcome back!</span>
           <InputField
             type="email"
             autoFocus
