@@ -80,6 +80,7 @@
         font-size: 1.5rem;
         transition: 300ms;
         margin: 1.5rem 0;
+        cursor: pointer;
 
         &:hover {
             color: var(--color-Primary-light)
@@ -129,4 +130,21 @@
 .Login__Input.focus h5 {
     transform: translateY(-185%);
     font-size: 1.2rem;
+}
+
+
+//Forgot password modal styling
+.forgot__password {
+    font-size: 1.2rem !important;
+    font-weight: 400 !important;
+    padding: 1rem;
+
+    .heading-tertiary {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    p {
+        color: var(--color-Grey-dark-2);
+    }
 }

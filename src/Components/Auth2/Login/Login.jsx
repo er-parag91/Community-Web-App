@@ -5,10 +5,11 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import ForgotPassword from '../../Auth/ForgotPassword';
+import ForgotPassword from '../helpers/ForgotPassword';
 import '../../../UI/Button.scss';
 import './Login.scss';
 import '../../../UI/Header.scss';
+import Input from '../helpers/Input';
 
 const Avatar = require('../../../assets/SVGs/Avatar.svg');
 
@@ -31,7 +32,7 @@ class Login extends Component {
     });
   }
 
-  // Login text fields change fires this handler
+// Login text fields change fires this handler
 onChangeHandler = (key, target) => {
   this.props.onLoginTextChange(key, target.value);
 };
@@ -51,26 +52,33 @@ forgotPasswordClick = () => {
   this.props.onForgotPasswordClicked();
 };
 
-forgotPasswordSubmit = (e) => {
-  this.props.forgotPasswordSubmitHandler(e);
+forgotPasswordSubmit = (email) => {
+  console.log(email);
+  this.props.forgotPasswordSubmitHandler(email);
 };
 
 render() {
   const { loginData, isForgotPassword } = this.props;
   const {
-    currentEmail, currentPassword, rememberMe, onForgotPasswordClick,
+    currentEmail, currentPassword, rememberMe,
   } = loginData;
   return (
     <form className="Login" onSubmit={this.handleSubmit}>
       <img className="Login__Avatar" src={Avatar} alt="" />
-      <h2 className="heading-secondary" style={{ marginBottom: '3rem' }}>Welcome</h2>
+      <h2 className="heading-tertiary" style={{ marginBottom: '3rem', fontSize: '2.5rem' }}>Welcome back!</h2>
       <div className="Login__Input One">
         <div className="Login__Input--Icon">
           <i className="fa fa-user" />
         </div>
         <div className="Login__Input--Input">
           <h5>Email Address</h5>
-          <input type="text" />
+          <Input
+            type="email"
+            value={currentEmail}
+            id="currentEmail"
+            changeHandler={this.onChangeHandler}
+            isRequired
+          />
         </div>
       </div>
       <div className="Login__Input Two">
@@ -79,11 +87,22 @@ render() {
         </div>
         <div className="Login__Input--Input">
           <h5>Password</h5>
-          <input type="password" />
+          <Input
+            type="password"
+            id="currentPassword"
+            value={currentPassword}
+            changeHandler={this.onChangeHandler}
+            isRequired
+          />
         </div>
       </div>
-      <a href="#" type="button">Forgot Password?</a>
-      <input type="submit" className="Login__Button" value="Login" />
+      <a type="button" onClick={this.forgotPasswordClick}>Forgot Password?</a>
+      <button type="submit" className="Login__Button">Login</button>
+      <ForgotPassword
+        isForgotPassword={isForgotPassword}
+        onForgotPasswordToggle={this.forgotPasswordClick}
+        onForgotPasswordSubmit={this.forgotPasswordSubmit}
+      />
     </form>
   );
 }

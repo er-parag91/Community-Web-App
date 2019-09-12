@@ -33,7 +33,7 @@ const Login = (props) => {
   };
   const { loginData, isForgotPassword } = props;
   const {
-    currentEmail, currentPassword, rememberMe, onForgotPasswordClick,
+    currentEmail, currentPassword, rememberMe,
   } = loginData;
   return (
     <div className="login__right--signin">
