@@ -5,12 +5,12 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import ForgotPassword from '../Auth/ForgotPassword';
-import '../../UI/Button.scss';
+import ForgotPassword from '../../Auth/ForgotPassword';
+import '../../../UI/Button.scss';
 import './Login.scss';
-import '../../UI/Header.scss';
+import '../../../UI/Header.scss';
 
-const Avatar = require('../../assets/SVGs/Avatar.svg');
+const Avatar = require('../../../assets/SVGs/Avatar.svg');
 
 class Login extends Component {
   componentDidMount() {

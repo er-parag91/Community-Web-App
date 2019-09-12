@@ -1,5 +1,6 @@
 .Login {
     width: 40rem;
+    padding: 0 3rem;
     display: flex;
     flex-direction: column;
     font-family: 'Open Sans', sans-serif;
@@ -18,6 +19,10 @@
         padding: .5rem 0;
         border-bottom: 2px solid #a0a0a0;
         position: relative;
+
+        &.focus{
+            border-bottom: 2px solid var(--color-Primary-light);
+        }
 
         &.focus {
             i {
@@ -105,7 +110,7 @@
 
 .Login__Input>div {
     position: relative;
-    height: 5rem;
+    height: 4rem;
 }
 
 .Login__Input>div h5 {
@@ -116,6 +121,7 @@
     transform: translateY(-50%);
     color: var(--color-Grey-dark-3);
     font-size: 1.8rem;
+    font-weight: 300;
     transition: 300ms;
 }
 
@@ -123,22 +129,4 @@
 .Login__Input.focus h5 {
     transform: translateY(-185%);
     font-size: 1.2rem;
-}
-
-.Login__Input::after,
-.Login__Input::before {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-Primary-light);
-}
-
-.Login__Input::after {
-    right: 50%;
-}
-
-.Login__Input::before {
-    left: 50%;
 }

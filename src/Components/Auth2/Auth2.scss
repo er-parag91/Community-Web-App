@@ -1,14 +1,14 @@
 .Auth {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(45deg, var(--color-Primary-light) 20%, var(--color-Primary-dark) 35%, var(--color-white)35%);
+    background: linear-gradient(50deg, var(--color-Primary-light) 20%, var(--color-Primary-dark) 35%, var(--color-white)35%);
 }
 
 .Auth__Container {
     // background: white;
     display: flex;
     flex-direction: row;
-    // box-shadow: 0 20px 20px rgba(0, 0, 0, 0.349);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.349);
     width: 75vw;
     height: 70vh;
     margin: auto;
@@ -17,7 +17,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     align-content: center;
     padding: 3rem;
@@ -28,5 +28,26 @@
 
     &--Login {
 
+    }
+}
+
+@media (max-width: 772px) {
+    .Auth__Container{
+        width: 70vw;
+        height: 70vh;
+        
+        &--SVG{
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .Auth__Container{
+        width: 80vw;
+        height: 75vh;
+        
+        &--SVG{
+        }
     }
 }

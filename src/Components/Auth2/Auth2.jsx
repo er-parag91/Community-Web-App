@@ -8,7 +8,8 @@ import './Auth2.scss';
 import '../../UI/Header.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Login from './Login';
+import Login from './Login/Login';
+import LoginHeader from './LoginHeader/LoginHeader';
 
 const SVG = require('../../assets/SVGs/SVG.svg');
 
@@ -141,6 +142,7 @@ class Auth2 extends Component {
     const isLoggingIn = true;
     return (
       <div className="Auth">
+        <LoginHeader />
         <div className="Auth__Container">
           <div className="Auth__Container--SVG">
             <img src={SVG} alt="" />
