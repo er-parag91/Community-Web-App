@@ -107,7 +107,7 @@ componentDidMount() {
     this.setState((prevState) => {
       const { signUp } = prevState;
       signUp.agree = !signUp.agree;
-      return { SignUp };
+      return { signUp };
     });
   }
 
@@ -132,7 +132,7 @@ componentDidMount() {
       let { dialog } = prevState;
       signUp.agree = true;
       dialog = false;
-      return { SignUp, dialog };
+      return { signUp, dialog };
     });
   }
 
