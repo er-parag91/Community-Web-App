@@ -37,7 +37,7 @@ class Auth2 extends Component {
   };
 
     // toggle between sign and login mode
-    loginTypeHandler = () => {
+    signInModeHandler = () => {
       this.setState((prevState) => ({
         isLoggingIn: !prevState.isLoggingIn,
       }));
@@ -132,10 +132,9 @@ class Auth2 extends Component {
       const {
         isLoggingIn, signUp, login, open, dialog, isForgotPassword,
       } = this.state;
-      console.log(login);
       return (
         <div className="Auth">
-          <LoginHeader />
+          <LoginHeader isSigningIn={isLoggingIn} onSignInModeToggle={this.signInModeHandler} />
           <div className="Auth__Container">
             <div className="Auth__Container--SVG">
               <img src={SVG} alt="" />
