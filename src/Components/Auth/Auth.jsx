@@ -212,7 +212,7 @@ componentDidMount() {
             </div>
             )}
             <div>
-              <span role="button" tabIndex={0} className="heading-tertiary login-signup__toggle" onClick={this.loginTypeHandler} onKeyDown={this.loginTypeHandler}>
+              <span role="button" tabIndex={0} className="heading-tertiary login-signup__toggle" style={{ marginBottom: '3rem', fontSize: '1.5rem' }} onClick={this.loginTypeHandler} onKeyDown={this.loginTypeHandler}>
                 {isLoggingIn ? 'New User? Tap to Sign Up' : 'Registered User? Tap to Log in'}
               </span>
             </div>

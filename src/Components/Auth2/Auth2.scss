@@ -1,7 +1,8 @@
 .Auth {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(50deg, var(--color-Primary-light) 20%, var(--color-Primary-dark) 35%, var(--color-white)35%);
+    background-image: url('../../assets/images/purple-back.png');
+    background-size: cover;
 }
 
 .Auth__Container {
