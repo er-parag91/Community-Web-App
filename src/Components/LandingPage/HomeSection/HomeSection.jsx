@@ -5,10 +5,10 @@ import './HomeSection.scss';
 import PropTypes from 'prop-types';
 import TextContent from './TextContent';
 
-const homeOne = require('../../../assets/main-1.jpg');
-const homeTwo = require('../../../assets/main-2.jpg');
-const homeThree = require('../../../assets/main-3.jpg');
-const homeFour = require('../../../assets/main-4.jpg');
+const homeOne = require('../../../assets/images/main-1.jpg');
+const homeTwo = require('../../../assets/images/main-2.jpg');
+const homeThree = require('../../../assets/images/main-3.jpg');
+const homeFour = require('../../../assets/images/main-4.jpg');
 
 
 class HomeSection extends Component {

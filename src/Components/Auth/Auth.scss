@@ -11,13 +11,13 @@
 //// Login page left side
 //
 .login__left {
-    background-color: var(--color-Grey-dark-1);
+    background-color: var(--color-Grey-light-4);
 
     //
     //// background Image
     //
     &--image {
-        background-image: linear-gradient(to right bottom, var(--main-gradient-1), var(--main-gradient-2)), url(../../assets//login-background.jpg);
+        background-image: linear-gradient(to right bottom, var(--main-gradient-1), var(--main-gradient-2)), url(../../assets/images/login-background.jpg);
         height: 100vh;
         background-position: center;
         background-repeat: no-repeat;
@@ -42,7 +42,7 @@
 //
 .login__right {
     height: 100vh;
-    background-image: linear-gradient(var(--white-gradient-1) 0, var(--white-gradient-2) 75%), url(../../assets/background-image.png);
+    background-image: linear-gradient(var(--white-gradient-1) 0, var(--white-gradient-2) 75%), url(../../assets/images/background-image.png);
     background-size: cover;
 
     //
@@ -76,10 +76,11 @@
 // // Forgot Password modal content styling
 //
 
-.fogot__password{
+.forgot__password {
     font-size: 1.2rem !important;
     font-weight: 400 !important;
     padding: 1rem;
+
     .heading-tertiary {
         text-align: center;
         padding: 1rem;
@@ -120,14 +121,15 @@
         font-size: 1.6rem;
     }
 
-    .rememberMe{
+    .rememberMe {
         font-size: 1.6rem !important;
         color: var(--color-Grey-dark-2);
         font-weight: 200 !important;
         display: inline;
         padding-left: 2.5rem;
         cursor: pointer;
-        &:hover{
+
+        &:hover {
             font-weight: 400 !important;
             color: var(--color-Primary-dark);
         }
@@ -155,6 +157,7 @@
     display: inline;
     padding-left: 2.5rem;
     cursor: pointer;
+
     span {
         text-decoration: underline;
         color: var(--color-Primary-dark);
@@ -228,13 +231,14 @@
         margin: 1rem auto !important;
     }
 
-    .login__right--moreInfo{
-            visibility: visible;
+    .login__right--moreInfo {
+        visibility: visible;
     }
-    
+
 }
 
-@media (max-width: 601px), (orientation: landscape) {
+@media (max-width: 601px),
+(orientation: landscape) {
     .login__right {
         width: 100vw;
         height: 100%;
@@ -256,7 +260,7 @@ input[type="checkbox"] {
     opacity: 0;
 }
 
-.checkbox__mock{
+.checkbox__mock {
     position: absolute;
     width: 2rem;
     height: 2rem;
@@ -264,15 +268,14 @@ input[type="checkbox"] {
     border-radius: 5px;
     border: 1.5px solid var(--color-Primary-dark);
     text-align: center;
-    &--icon{
+
+    &--icon {
         color: var(--color-white);
     }
 }
 
-input[type="checkbox"]:checked ~ .checkbox__mock {
+input[type="checkbox"]:checked~.checkbox__mock {
     background-color: var(--color-Primary-dark);
     border-radius: 5px;
-    opacity:1;
+    opacity: 1;
 }
-
-

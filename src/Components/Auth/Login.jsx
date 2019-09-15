@@ -33,7 +33,7 @@ const Login = (props) => {
   };
   const { loginData, isForgotPassword } = props;
   const {
-    currentEmail, currentPassword, rememberMe, onForgotPasswordClick,
+    currentEmail, currentPassword, rememberMe,
   } = loginData;
   return (
     <div className="login__right--signin">
@@ -45,7 +45,7 @@ const Login = (props) => {
           alignItems="center"
           className="login__right--signup-form"
         >
-          <span className="heading-secondary">Sign-in</span>
+          <span className="heading-tertiary" style={{ marginBottom: '3rem', fontSize: '2.5rem' }}>Welcome back!</span>
           <InputField
             type="email"
             autoFocus

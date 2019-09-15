@@ -13,7 +13,9 @@ const ForgotPassword = (props) => {
   };
 
   const handleSubmit = (e) => {
-    props.onForgotPasswordSubmit(e);
+    e.preventDefault();
+    const { value } = e.target[0];
+    props.onForgotPasswordSubmit(value);
   };
 
   return (

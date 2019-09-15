@@ -1,0 +1,150 @@
+.Login {
+    width: 40rem;
+    padding: 0 3rem;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+
+    &__Avatar {
+        width: 10rem;
+        margin: 5rem auto;
+    }
+
+    &__Input {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 2.5rem 0;
+        padding: .5rem 0;
+        border-bottom: 2px solid #a0a0a0;
+        position: relative;
+
+        &.focus{
+            border-bottom: 2px solid var(--color-Primary-light);
+        }
+
+        &.focus {
+            i {
+                color: var(--color-primary);
+            }
+        }
+
+        &--Icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                font-size: 1.7rem;
+                color: #a0a0a0;
+            }
+        }
+
+        &.One {
+            margin: 0;
+            margin-bottom: 2rem;
+        }
+
+        &.Two {
+            margin: 0;
+        }
+
+        &--Input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            input {
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                border: none;
+                outline: none;
+                background: none;
+                padding: 0.5rem 0.7rem;
+                font-size: 1.7rem;
+                font-weight: 200;
+                color: var(--color-Primary-dark);
+                font-family: Open Sans,sans-serif;
+            }
+        }
+    }
+
+    a {
+        display: block;
+        text-align: right;
+        text-decoration: none;
+        color: #999;
+        font-size: 1.5rem;
+        transition: 300ms;
+        margin: 1.5rem 0;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--color-Primary-light)
+        }
+    }
+
+    &__Button {
+        display: block;
+        width: 100%;
+        height: 5rem;
+        border-radius: 2.5rem;
+        margin: 1rem 0;
+        font-size: 1.7rem;
+        outline: none;
+        border: none;
+        background-image: linear-gradient(to right, var(--color-primary), var(--color-Primary-light), var(--color-Primary-dark));
+        cursor: pointer;
+        color: var(--color-white);
+        font-family: 'Karla', sans-serif;
+        font-weight: 200;
+        transition: 500ms;
+
+        &:hover {
+            background-image: linear-gradient(to left, var(--color-primary), var(--color-Primary-light), var(--color-Primary-dark));
+        }
+    }
+}
+
+.Login__Input>div {
+    position: relative;
+    height: 4rem;
+}
+
+.Login__Input>div h5 {
+    position: absolute;
+    z-index: -10;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-Grey-dark-3);
+    font-size: 1.8rem;
+    font-weight: 300;
+    transition: 300ms;
+}
+
+// when input is focused
+.Login__Input.focus h5 {
+    transform: translateY(-185%);
+    font-size: 1.2rem;
+}
+
+
+//Forgot password modal styling
+.forgot__password {
+    font-size: 1.2rem !important;
+    font-weight: 400 !important;
+    padding: 1rem;
+
+    .heading-tertiary {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    p {
+        color: var(--color-Grey-dark-2);
+    }
+}

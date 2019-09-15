@@ -39,7 +39,7 @@ const SignUp = (props) => {
           alignItems="center"
           className="login__right--signup-form"
         >
-          <span className="heading-secondary">sign-up</span>
+          <span className="heading-tertiary" style={{ marginBottom: '3rem', fontSize: '2.5rem' }}>Sign-up</span>
           <Grid container spacing={1}>
             <Grid item xs={6} sm={6}>
               <InputField

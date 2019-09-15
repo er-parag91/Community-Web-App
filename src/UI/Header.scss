@@ -8,7 +8,6 @@
     -webkit-background-clip: text;
     color: transparent;
     transition: all 0.2s;
-    letter-spacing: 2.5px;
 
     &:hover {
         transform: skewY(2deg) skewX(15deg) scale(1.1);
@@ -17,7 +16,6 @@
 }
 
 .heading-tertiary {
-    font-size: 1.5rem !important;
     font-weight: 400;
     background-image: linear-gradient(to right, var(--color-Primary-dark), var(--color-Primary-dark));
     display: inline-block;

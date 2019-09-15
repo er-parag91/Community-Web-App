@@ -11,7 +11,7 @@ import BusinessDescription from './Fixtures/businessDescription';
 import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
 import Login from './Login';
 
-const Logo = require('../../assets/logo__big.png');
+const Logo = require('../../assets/images/logo__big.png');
 
 class Auth extends Component {
 state = {
@@ -98,7 +98,7 @@ componentDidMount() {
     this.setState((prevState) => {
       const { signUp } = prevState;
       signUp[key] = value;
-      return { SignUp };
+      return { signUp };
     });
   }
 
@@ -107,7 +107,7 @@ componentDidMount() {
     this.setState((prevState) => {
       const { signUp } = prevState;
       signUp.agree = !signUp.agree;
-      return { SignUp };
+      return { signUp };
     });
   }
 
@@ -212,7 +212,7 @@ componentDidMount() {
             </div>
             )}
             <div>
-              <span role="button" tabIndex={0} className="heading-tertiary login-signup__toggle" onClick={this.loginTypeHandler} onKeyDown={this.loginTypeHandler}>
+              <span role="button" tabIndex={0} className="heading-tertiary login-signup__toggle" style={{ marginBottom: '3rem', fontSize: '1.5rem' }} onClick={this.loginTypeHandler} onKeyDown={this.loginTypeHandler}>
                 {isLoggingIn ? 'New User? Tap to Sign Up' : 'Registered User? Tap to Log in'}
               </span>
             </div>
