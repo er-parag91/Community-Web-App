@@ -11,6 +11,7 @@ import Login from './Login';
 // eslint-disable-next-line no-unused-vars
 import OutlinedButton from '../../UI/OutlinedButton/OutlinedButton';
 import LoginHeader from './LoginHeader/LoginHeader';
+import Spinner from '../../UI/Spinner/Spinner';
 
 // const Logo = require('../../assets/images/logo__big.png');
 const Avatar = require('../../assets/SVGs/Avatar.svg');
@@ -37,12 +38,17 @@ state = {
   open: false,
   dialog: false,
   isForgotPassword: false,
+  loadingLoginPage: sessionStorage.getItem('firstLoading') !== 'false',
 };
 
 // on component mount, adds event handler for window dimensions chanage
 componentDidMount() {
   this.updateDimensions();
   window.addEventListener('resize', this.updateDimensions.bind(this));
+  setTimeout(() => {
+    this.setState({ loadingLoginPage: false });
+    sessionStorage.setItem('firstLoading', false);
+  }, 500);
 }
 
 onLoginPageClose = () => {
@@ -157,11 +163,12 @@ onLoginPageClose = () => {
 
   render() {
     const {
-      width, isLoggingIn, signUp, login, dialog, isForgotPassword,
+      width, isLoggingIn, signUp, login, dialog, isForgotPassword, loadingLoginPage,
     } = this.state;
     console.log(this.state);
     return (
       <Grid item container className="login">
+        { loadingLoginPage && <Spinner />}
         <LoginHeader onSignInModeToggle={this.loginTypeHandler} isSigningIn={isLoggingIn} />
         <span className="login__close"><i className="fa fa-times login__close--icon" onClick={this.onLoginPageClose} aria-hidden="true" /></span>
         {width > 601 && (
