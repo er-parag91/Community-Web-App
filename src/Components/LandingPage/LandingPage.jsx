@@ -12,7 +12,7 @@ class LandingPage extends Component {
   state = {
     showSideDrawer: false,
     isTop: true,
-    loadingLandingPage: sessionStorage.getItem('firstLoading') !== 'false',
+    loadingLandingPage: true,
   }
 
   componentDidMount() {
@@ -22,7 +22,6 @@ class LandingPage extends Component {
         this.setState({ isTop: currentScroll });
       });
       this.setState({ loadingLandingPage: false });
-      sessionStorage.setItem('firstLoading', false);
     }, 2000);
   }
 
