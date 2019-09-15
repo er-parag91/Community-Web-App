@@ -5,9 +5,7 @@ import './Auth.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import '../../UI/Header.scss';
-import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
-import BusinessDescription from './Fixtures/businessDescription';
 import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
 import Login from './Login';
 // eslint-disable-next-line no-unused-vars
@@ -152,14 +150,11 @@ componentDidMount() {
 
   render() {
     const {
-      width, isLoggingIn, signUp, login, open, dialog, isForgotPassword,
+      width, isLoggingIn, signUp, login, dialog, isForgotPassword,
     } = this.state;
     console.log(this.state);
     return (
       <Grid item container className="login">
-        <Modal open={open} onClose={this.onMoreInfoModalToggle} center>
-          <BusinessDescription />
-        </Modal>
         <div className="login__toggle">
           <OutlinedButton text={isLoggingIn ? 'Sign Up' : 'Log in'} OutlinedButtonClicked={this.loginTypeHandler} />
         </div>
@@ -167,11 +162,6 @@ componentDidMount() {
         <Grid item xs={1} sm={6} md={7} lg={8}>
           <div className="login__left">
             <div className="login__left--image" />
-            <i
-              onClick={this.onMoreInfoModalToggle}
-              className="fa fa-info-circle login__left--moreInfo"
-              aria-hidden="true"
-            />
           </div>
         </Grid>
         )}
