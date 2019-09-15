@@ -5,10 +5,33 @@
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    &__toggle{
+
+    &__close {
         position: fixed;
-        right: 1.5rem;
-        top: 1.5rem;
+        top: 10%;
+        right: 0%;
+        background: rgba(0, 0, 0, 0.411);
+        width: 8rem;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+        padding: 2rem;
+
+        &--icon {
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            animation: rotating infinite 3000ms linear;
+        }
+    }
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
 

@@ -45,6 +45,11 @@ componentDidMount() {
   window.addEventListener('resize', this.updateDimensions.bind(this));
 }
 
+onLoginPageClose = () => {
+  const { history } = this.props;
+  history.push('/');
+};
+
   // toggle between sign and login mode
   loginTypeHandler = () => {
     this.setState((prevState) => ({
@@ -158,6 +163,7 @@ componentDidMount() {
     return (
       <Grid item container className="login">
         <LoginHeader onSignInModeToggle={this.loginTypeHandler} isSigningIn={isLoggingIn} />
+        <span className="login__close"><i className="fa fa-times login__close--icon" onClick={this.onLoginPageClose} aria-hidden="true" /></span>
         {width > 601 && (
         <Grid item xs={1} sm={6} md={7} lg={8}>
           <div className="login__left">
@@ -228,6 +234,7 @@ const mapStateToProps = (state) => ({
 
 Auth.propTypes = {
   generalState: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired,
 };
 
 export default connect(mapStateToProps)(Auth);
