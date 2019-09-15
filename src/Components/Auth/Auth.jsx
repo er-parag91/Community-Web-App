@@ -10,6 +10,8 @@ import SignUp from './SignUp';
 import BusinessDescription from './Fixtures/businessDescription';
 import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
 import Login from './Login';
+// eslint-disable-next-line no-unused-vars
+import OutlinedButton from '../../UI/OutlinedButton/OutlinedButton';
 
 const Logo = require('../../assets/images/logo__big.png');
 
@@ -158,6 +160,9 @@ componentDidMount() {
         <Modal open={open} onClose={this.onMoreInfoModalToggle} center>
           <BusinessDescription />
         </Modal>
+        <div className="login__toggle">
+          <OutlinedButton text={isLoggingIn ? 'Sign Up' : 'Log in'} OutlinedButtonClicked={this.loginTypeHandler} />
+        </div>
         {width > 601 && (
         <Grid item xs={1} sm={6} md={7} lg={8}>
           <div className="login__left">
@@ -175,7 +180,7 @@ componentDidMount() {
             className="login__right"
             container
             direction="column"
-            justify="space-around"
+            justify="center"
             alignItems="center"
           >
             <div className="login__right--logo">
@@ -191,6 +196,8 @@ componentDidMount() {
                 isForgotPassword={isForgotPassword}
                 onForgotPasswordClicked={this.forgotPasswordHandler}
                 forgotPasswordSubmitHandler={this.onForgotPasswordSubmit}
+                isLoggingIn={isLoggingIn}
+                loginTypeHandler={this.loginTypeHandler}
               />
             )}
 
@@ -203,6 +210,8 @@ componentDidMount() {
                 onTextChange={this.textChangedHandler}
                 onCheckboxChange={this.checkboxChangedHandler}
                 onTermsAndConditionClicked={this.toggleTermsAndConditionModal}
+                isLoggingIn={isLoggingIn}
+                loginTypeHandler={this.loginTypeHandler}
               />
               <SignUpTermsAndCondition
                 open={dialog}
@@ -211,11 +220,6 @@ componentDidMount() {
               />
             </div>
             )}
-            <div>
-              <span role="button" tabIndex={0} className="heading-tertiary login-signup__toggle" style={{ marginBottom: '3rem', fontSize: '1.5rem' }} onClick={this.loginTypeHandler} onKeyDown={this.loginTypeHandler}>
-                {isLoggingIn ? 'New User? Tap to Sign Up' : 'Registered User? Tap to Log in'}
-              </span>
-            </div>
           </Grid>
           <i
             onClick={this.onMoreInfoModalToggle}
