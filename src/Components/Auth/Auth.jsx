@@ -10,8 +10,10 @@ import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
 import Login from './Login';
 // eslint-disable-next-line no-unused-vars
 import OutlinedButton from '../../UI/OutlinedButton/OutlinedButton';
+import LoginHeader from './LoginHeader/LoginHeader';
 
-const Logo = require('../../assets/images/logo__big.png');
+// const Logo = require('../../assets/images/logo__big.png');
+const Avatar = require('../../assets/SVGs/Avatar.svg');
 
 class Auth extends Component {
 state = {
@@ -155,9 +157,7 @@ componentDidMount() {
     console.log(this.state);
     return (
       <Grid item container className="login">
-        <div className="login__toggle">
-          <OutlinedButton text={isLoggingIn ? 'Sign Up' : 'Log in'} OutlinedButtonClicked={this.loginTypeHandler} />
-        </div>
+        <LoginHeader onSignInModeToggle={this.loginTypeHandler} isSigningIn={isLoggingIn} />
         {width > 601 && (
         <Grid item xs={1} sm={6} md={7} lg={8}>
           <div className="login__left">
@@ -174,7 +174,7 @@ componentDidMount() {
             alignItems="center"
           >
             <div className="login__right--logo">
-              <img className="Logo" src={Logo} alt="Logo" />
+              <img className="Logo" src={Avatar} alt="Logo" />
             </div>
 
             {isLoggingIn && (
