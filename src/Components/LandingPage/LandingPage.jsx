@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import jump from 'jump.js';
 import NavBar from './Navigation/NavBar/NavBar';
 import SideDrawer from './SideDrawer/SideDrawer';
 import './LandingPage.scss';
@@ -33,15 +34,24 @@ class LandingPage extends Component {
     this.setState((prevState) => ({ showSideDrawer: !prevState.showSideDrawer }));
   };
 
+  jumpToHandler = (className) => {
+    console.log(className);
+    jump(className);
+  };
+
 
   render() {
     const { showSideDrawer, isTop, loadingLandingPage } = this.state;
-    console.log(window.pageYOffset < 50);
     return (
       <div>
         { loadingLandingPage && <Spinner />}
-        <NavBar isTop={isTop} drawerToggleClicked={this.sideDrawerOpenHandler} />
+        <NavBar
+          navLinkClicked={this.jumpToHandler}
+          isTop={isTop}
+          drawerToggleClicked={this.sideDrawerOpenHandler}
+        />
         <SideDrawer
+          navLinkClicked={this.jumpToHandler}
           isAuth
           open={showSideDrawer}
           drawerToggleClicked={this.sideDrawerOpenHandler}
