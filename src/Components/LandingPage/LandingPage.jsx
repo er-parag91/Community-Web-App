@@ -41,6 +41,7 @@ class LandingPage extends Component {
 
 
   render() {
+    console.log(document.location.hash);
     const { showSideDrawer, isTop, loadingLandingPage } = this.state;
     return (
       <div>

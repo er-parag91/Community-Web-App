@@ -25,7 +25,7 @@
 .NavigationItem a:hover,
 .NavigationItem a:active,
 .NavigationItem a.active {
-  border-bottom: 2px solid var(--color-primary);
+  border-bottom: 2px solid var(--color-white);
 }
 
 @media (min-width: 992px) {
@@ -53,7 +53,7 @@
   .NavigationItem a:hover,
   .NavigationItem a:active,
   .NavigationItem a.active {
-    border-bottom: 2px solid var(--color-primary);
+    border-bottom: 2px solid var(--color-white);
     color: var(--color-white);
   }
 }

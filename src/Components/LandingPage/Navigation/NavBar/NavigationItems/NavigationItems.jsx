@@ -31,16 +31,16 @@ const NavigationItems = (props) => {
             </NavigationItem>
           )
           : null}
-        <NavigationItem link="#home" linkClicked={() => onAnchorClick('.section__home')} isTop={isTop}>
+        <NavigationItem link="#home" isActive={document.location.hash === '#home' || document.location.hash === ''} linkClicked={() => onAnchorClick('.section__home')} isTop={isTop}>
       Home
         </NavigationItem>
-        <NavigationItem exact link="#services" linkClicked={() => onAnchorClick('.section__services')} isTop={isTop}>
+        <NavigationItem exact link="#services" isActive={document.location.hash === '#services'} linkClicked={() => onAnchorClick('.section__services')} isTop={isTop}>
       Services
         </NavigationItem>
-        <NavigationItem exact link="#testimonials" linkClicked={() => onAnchorClick('.section__testimonial')} isTop={isTop}>
+        <NavigationItem exact link="#testimonials" isActive={document.location.hash === '#testimonials'} linkClicked={() => onAnchorClick('.section__testimonial')} isTop={isTop}>
       Testimonials
         </NavigationItem>
-        <NavigationItem exact link="#contact" linkClicked={() => onAnchorClick('.section__contact')} isTop={isTop}>
+        <NavigationItem exact link="#contact" isActive={document.location.hash === '#contact'} linkClicked={() => onAnchorClick('.section__contact')} isTop={isTop}>
       Contact us
         </NavigationItem>
       </div>
