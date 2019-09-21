@@ -74,10 +74,20 @@ class HomeSection extends Component {
     return (
       <div className="Home">
         <div className="Home__Content">
-          <div className="Home__Content--text">
+          <div
+            className="Home__Content--text"
+            data-sal-duration="1200"
+            data-sal="slide-up"
+            data-sal-easing="ease-out-bounce"
+          >
             <TextContent currentIndex={currentIndex} />
           </div>
-          <div className="Home__Content--picture">
+          <div
+            className="Home__Content--picture"
+            data-sal-duration="1200"
+            data-sal="slide-up"
+            data-sal-easing="ease-out-bounce"
+          >
             <div className="slider">
               <div
                 className="slider-wrapper"

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import jump from 'jump.js';
+import sal from 'sal.js';
 import NavBar from './Navigation/NavBar/NavBar';
 import SideDrawer from './SideDrawer/SideDrawer';
 import './LandingPage.scss';
@@ -8,6 +9,7 @@ import ServiceSection from './ServiceSection/ServiceSection';
 import TestimonialSection from './TestimonialSection/TestimonialSection';
 import ContactSection from './ContactSection/ContactSection';
 import Spinner from '../../UI/Spinner/Spinner';
+import './sal.css';
 
 class LandingPage extends Component {
   state = {
@@ -18,6 +20,7 @@ class LandingPage extends Component {
 
   componentDidMount() {
     setTimeout(() => {
+      sal();
       document.addEventListener('scroll', () => {
         const currentScroll = window.scrollY < 50;
         this.setState({ isTop: currentScroll });
@@ -58,7 +61,10 @@ class LandingPage extends Component {
           drawerToggleClicked={this.sideDrawerOpenHandler}
           closed={this.sideDrawerClosedHandler}
         />
-        <section id="home" className="section section__home">
+        <section
+          id="home"
+          className="section section__home"
+        >
           <HomeSection />
         </section>
         <section id="services" className="section section__services">
