@@ -19,7 +19,7 @@ const SideDrawer = (props) => {
         </div>
         <NavigationItems
           isAuthenticated={isAuth}
-          clicked={closed}
+          closeSideDrawer={closed}
           isTop={false}
         />
       </div>

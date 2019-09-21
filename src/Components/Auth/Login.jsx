@@ -48,7 +48,6 @@ const Login = (props) => {
           <span className="heading-tertiary" style={{ marginBottom: '3rem', fontSize: '2.5rem' }}>Welcome back!</span>
           <InputField
             type="email"
-            autoFocus
             required
             value={currentEmail}
             id="currentEmail"

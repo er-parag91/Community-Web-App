@@ -5,7 +5,7 @@ import NavigationItem from './NavigationItem/NavigationItem';
 import OutlinedButton from '../../../../../UI/OutlinedButton/OutlinedButton';
 
 const NavigationItems = (props) => {
-  const { isAuthenticated, isTop } = props;
+  const { isAuthenticated, isTop, closeSideDrawer } = props;
   const signInButtonHandler = () => {
     console.log('button clicked');
   };
@@ -23,25 +23,25 @@ const NavigationItems = (props) => {
             </NavigationItem>
           )
           : null}
-        <NavigationItem link="#home" isTop={isTop}>
+        <NavigationItem link="#home" linkClicked={closeSideDrawer} isTop={isTop}>
       Home
         </NavigationItem>
-        <NavigationItem exact link="#services" isTop={isTop}>
+        <NavigationItem exact link="#services" linkClicked={closeSideDrawer} isTop={isTop}>
       Services
         </NavigationItem>
-        <NavigationItem exact link="#testimonials" isTop={isTop}>
+        <NavigationItem exact link="#testimonials" linkClicked={closeSideDrawer} isTop={isTop}>
       Testimonials
         </NavigationItem>
-        <NavigationItem exact link="#contact" isTop={isTop}>
+        <NavigationItem exact link="#contact" linkClicked={closeSideDrawer} isTop={isTop}>
       Contact us
         </NavigationItem>
       </div>
       {isAuthenticated
         ? (
-          <OutlinedButton OutlinedButtonClicked={signOutButtonHandler} link="/logout" text="Sign Out" />
+          <OutlinedButton OutlinedButtonClicked={signOutButtonHandler} linkClicked={closeSideDrawer} link="/logout" text="Sign Out" />
         )
         : (
-          <OutlinedButton OutlinedButtonClicked={signInButtonHandler} link="/Auth" text="Sign In" />
+          <OutlinedButton OutlinedButtonClicked={signInButtonHandler} linkClicked={closeSideDrawer} link="/Auth" text="Sign In" />
         )}
     </ul>
   );
@@ -50,9 +50,11 @@ const NavigationItems = (props) => {
 NavigationItems.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   isTop: PropTypes.bool,
+  closeSideDrawer: PropTypes.func,
 };
 
 NavigationItems.defaultProps = {
   isTop: false,
+  closeSideDrawer: () => {},
 };
 export default NavigationItems;

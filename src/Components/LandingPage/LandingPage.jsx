@@ -12,7 +12,7 @@ class LandingPage extends Component {
   state = {
     showSideDrawer: false,
     isTop: true,
-    loadingLandingPage: sessionStorage.getItem('firstLoading') !== 'false',
+    loadingLandingPage: true,
   }
 
   componentDidMount() {
@@ -21,8 +21,7 @@ class LandingPage extends Component {
         const currentScroll = window.scrollY < 50;
         this.setState({ isTop: currentScroll });
       });
-      this.setState({ loadingLandingPage: false });
-      sessionStorage.setItem('firstLoading', false);
+      this.setState({ loadingLandingPage: false, isTop: window.pageYOffset < 50 });
     }, 2000);
   }
 
@@ -37,6 +36,7 @@ class LandingPage extends Component {
 
   render() {
     const { showSideDrawer, isTop, loadingLandingPage } = this.state;
+    console.log(window.pageYOffset < 50);
     return (
       <div>
         { loadingLandingPage && <Spinner />}

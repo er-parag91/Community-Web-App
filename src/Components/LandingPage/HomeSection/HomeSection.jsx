@@ -115,6 +115,8 @@ const Slide = ({ image }) => {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '50% 60%',
+    borderTopLeftRadius: '50%',
+
   };
   return <div className="slide" style={styles} />;
 };

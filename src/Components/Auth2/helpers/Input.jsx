@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Input = (props) => {
   const {
-    value, id, changeHandler, shouldDisable, isRequired,
+    value, id, changeHandler, shouldDisable, isRequired, type,
   } = props;
   return (
     <input
@@ -12,6 +12,7 @@ const Input = (props) => {
       onChange={(e) => changeHandler(id, e.target)}
       disabled={shouldDisable}
       required={isRequired}
+      type={type}
     />
   );
 };
@@ -22,6 +23,7 @@ Input.propTypes = {
   changeHandler: PropTypes.func,
   shouldDisable: PropTypes.bool,
   isRequired: PropTypes.bool,
+  type: PropTypes.string.isRequired,
 };
 
 Input.defaultProps = {

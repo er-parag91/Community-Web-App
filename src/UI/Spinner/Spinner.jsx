@@ -9,7 +9,12 @@ const Spinner = () => {
   console.log(SpinnerContainer);
   return (
     <div className="Spinner">
-      <div className="lds-hourglass" />
+      <div className="lds-ring">
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
     </div>
   );
 };

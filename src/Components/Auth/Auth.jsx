@@ -5,13 +5,16 @@ import './Auth.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import '../../UI/Header.scss';
-import Modal from 'react-responsive-modal';
 import SignUp from './SignUp';
-import BusinessDescription from './Fixtures/businessDescription';
 import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
 import Login from './Login';
+// eslint-disable-next-line no-unused-vars
+import OutlinedButton from '../../UI/OutlinedButton/OutlinedButton';
+import LoginHeader from './LoginHeader/LoginHeader';
+import Spinner from '../../UI/Spinner/Spinner';
 
-const Logo = require('../../assets/images/logo__big.png');
+// const Logo = require('../../assets/images/logo__big.png');
+const Avatar = require('../../assets/SVGs/Avatar.svg');
 
 class Auth extends Component {
 state = {
@@ -35,13 +38,23 @@ state = {
   open: false,
   dialog: false,
   isForgotPassword: false,
+  loadingLoginPage: sessionStorage.getItem('firstLoading') !== 'false',
 };
 
 // on component mount, adds event handler for window dimensions chanage
 componentDidMount() {
   this.updateDimensions();
   window.addEventListener('resize', this.updateDimensions.bind(this));
+  setTimeout(() => {
+    this.setState({ loadingLoginPage: false });
+    sessionStorage.setItem('firstLoading', false);
+  }, 500);
 }
+
+onLoginPageClose = () => {
+  const { history } = this.props;
+  history.push('/');
+};
 
   // toggle between sign and login mode
   loginTypeHandler = () => {
@@ -150,23 +163,18 @@ componentDidMount() {
 
   render() {
     const {
-      width, isLoggingIn, signUp, login, open, dialog, isForgotPassword,
+      width, isLoggingIn, signUp, login, dialog, isForgotPassword, loadingLoginPage,
     } = this.state;
     console.log(this.state);
     return (
       <Grid item container className="login">
-        <Modal open={open} onClose={this.onMoreInfoModalToggle} center>
-          <BusinessDescription />
-        </Modal>
+        { loadingLoginPage && <Spinner />}
+        <LoginHeader onSignInModeToggle={this.loginTypeHandler} isSigningIn={isLoggingIn} />
+        <span className="login__close"><i className="fa fa-times login__close--icon" onClick={this.onLoginPageClose} aria-hidden="true" /></span>
         {width > 601 && (
         <Grid item xs={1} sm={6} md={7} lg={8}>
           <div className="login__left">
             <div className="login__left--image" />
-            <i
-              onClick={this.onMoreInfoModalToggle}
-              className="fa fa-info-circle login__left--moreInfo"
-              aria-hidden="true"
-            />
           </div>
         </Grid>
         )}
@@ -175,11 +183,11 @@ componentDidMount() {
             className="login__right"
             container
             direction="column"
-            justify="space-around"
+            justify="center"
             alignItems="center"
           >
             <div className="login__right--logo">
-              <img className="Logo" src={Logo} alt="Logo" />
+              <img className="Logo" src={Avatar} alt="Logo" />
             </div>
 
             {isLoggingIn && (
@@ -191,6 +199,8 @@ componentDidMount() {
                 isForgotPassword={isForgotPassword}
                 onForgotPasswordClicked={this.forgotPasswordHandler}
                 forgotPasswordSubmitHandler={this.onForgotPasswordSubmit}
+                isLoggingIn={isLoggingIn}
+                loginTypeHandler={this.loginTypeHandler}
               />
             )}
 
@@ -203,6 +213,8 @@ componentDidMount() {
                 onTextChange={this.textChangedHandler}
                 onCheckboxChange={this.checkboxChangedHandler}
                 onTermsAndConditionClicked={this.toggleTermsAndConditionModal}
+                isLoggingIn={isLoggingIn}
+                loginTypeHandler={this.loginTypeHandler}
               />
               <SignUpTermsAndCondition
                 open={dialog}
@@ -211,11 +223,6 @@ componentDidMount() {
               />
             </div>
             )}
-            <div>
-              <span role="button" tabIndex={0} className="heading-tertiary login-signup__toggle" style={{ marginBottom: '3rem', fontSize: '1.5rem' }} onClick={this.loginTypeHandler} onKeyDown={this.loginTypeHandler}>
-                {isLoggingIn ? 'New User? Tap to Sign Up' : 'Registered User? Tap to Log in'}
-              </span>
-            </div>
           </Grid>
           <i
             onClick={this.onMoreInfoModalToggle}
@@ -234,6 +241,7 @@ const mapStateToProps = (state) => ({
 
 Auth.propTypes = {
   generalState: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired,
 };
 
 export default connect(mapStateToProps)(Auth);
