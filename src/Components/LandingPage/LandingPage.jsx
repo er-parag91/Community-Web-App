@@ -21,7 +21,7 @@ class LandingPage extends Component {
         const currentScroll = window.scrollY < 50;
         this.setState({ isTop: currentScroll });
       });
-      this.setState({ loadingLandingPage: false });
+      this.setState({ loadingLandingPage: false, isTop: window.pageYOffset < 50 });
     }, 2000);
   }
 
@@ -36,6 +36,7 @@ class LandingPage extends Component {
 
   render() {
     const { showSideDrawer, isTop, loadingLandingPage } = this.state;
+    console.log(window.pageYOffset < 50);
     return (
       <div>
         { loadingLandingPage && <Spinner />}
