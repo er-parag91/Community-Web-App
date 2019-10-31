@@ -28,8 +28,8 @@
             color: var(--color-white);
             font-size: 5rem;
             text-transform: uppercase;
-            font-weight: 700;
-            font-family: 'passion one', cursive;
+            font-weight: 900;
+            font-family: 'Oswald', sans-serif;
         }
 
         p {
@@ -94,7 +94,8 @@
     left: 50%;
     z-index: 999;
     color: var(--color-white);
-    &:hover{
+
+    &:hover {
         z-index: 2000;
         -webkit-box-shadow: 0 5px 20px -5px rgba(0, 0, 0, 0.4);
         -moz-box-shadow: 0 5px 20px -5px rgba(0, 0, 0, 0.4);
@@ -108,7 +109,8 @@
     right: 50%;
     z-index: 999;
     color: var(--color-white);
-    &:hover{
+
+    &:hover {
         z-index: 2000;
         -webkit-box-shadow: 0 5px 20px -5px rgba(0, 0, 0, 0.4);
         -moz-box-shadow: 0 5px 20px -5px rgba(0, 0, 0, 0.4);
@@ -143,14 +145,6 @@
         &--text {
             width: 40rem;
             margin-left: 2rem;
-
-            h1 {
-                color: var(--color-white);
-                font-size: 5rem;
-                text-transform: uppercase;
-                font-weight: 700;
-                font-family: 'passion one', cursive;
-            }
 
             p {
                 font-family: 'Noto Sans TC', sans-serif;
@@ -190,14 +184,6 @@
             width: 40rem;
             margin-left: 2rem;
 
-            h1 {
-                color: var(--color-white);
-                font-size: 5rem;
-                text-transform: uppercase;
-                font-weight: 700;
-                font-family: 'passion one', cursive;
-            }
-
             p {
                 font-family: 'Noto Sans TC', sans-serif;
                 padding-top: 1.5rem;
@@ -230,14 +216,6 @@
         &--text {
             width: 40rem;
             margin-left: 2rem;
-
-            h1 {
-                color: var(--color-white);
-                font-size: 5rem;
-                text-transform: uppercase;
-                font-weight: 700;
-                font-family: 'passion one', cursive;
-            }
 
             p {
                 font-family: 'Noto Sans TC', sans-serif;
