@@ -7,19 +7,25 @@ const NavigationItem = (props) => {
   const {
     link, children, isTop, linkClicked, isActive,
   } = props;
-  const scrollClass = {
-    color: 'var(--color-Primary-dark)',
-  };
 
-  const borderClass = {
-    ...scrollClass,
-    borderBottom: '2px solid var(--color-primary)',
-  };
+  let styles;
+  if (!isActive && !isTop) {
+    styles = {
+      color: 'var(--color-Primary-dark)',
+    };
+  }
+
+  if (isActive && !isTop) {
+    styles = {
+      color: 'var(--color-Primary-dark)',
+      borderBottom: '2px solid var(--color-primary)',
+    };
+  }
 
   return (
     <li className="NavigationItem">
       <a
-        style={isActive ? {} : borderClass, isTop ? {} : scrollClass}
+        style={styles}
         href={link}
         className={isActive ? 'active' : ''}
         onClick={linkClicked}

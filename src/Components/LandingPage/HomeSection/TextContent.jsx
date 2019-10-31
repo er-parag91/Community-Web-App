@@ -71,8 +71,8 @@ class TextContent extends Component {
     const { currentIndex } = this.props;
     return (
       <div ref={(ref) => { this.myEl = ref; }}>
-        <h1>{textContent[currentIndex].title1}</h1>
-        <h1>{textContent[currentIndex].title2}</h1>
+        <h1 className="header-primary">{textContent[currentIndex].title1}</h1>
+        <h1 className="header-primary">{textContent[currentIndex].title2}</h1>
         <p>{textContent[currentIndex].text}</p>
         <InputAndButton text="Sign-up Free!" placeholder="Email Address" InputAndButtonSubmit={this.onSignUpClicked} mouseEntered={this.stopAnimation} mouseLeft={this.startAnimation} />
       </div>

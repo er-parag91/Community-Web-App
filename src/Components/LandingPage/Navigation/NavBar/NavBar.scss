@@ -37,10 +37,13 @@
   text-transform: uppercase;
   color: var(--color-white);
   font-weight: 900;
-  font-size: 1.7rem;
-  font-family: 'Righteous';
-  letter-spacing: 0.5rem;
+  font-size: 2rem;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.4rem;
   margin-right: 6rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-bottom: 2px solid transparent;
 }
 
 @media (max-width: 991px) {

@@ -38,13 +38,11 @@ class LandingPage extends Component {
   };
 
   jumpToHandler = (className) => {
-    console.log(className);
     jump(className);
   };
 
 
   render() {
-    console.log(document.location.hash);
     const { showSideDrawer, isTop, loadingLandingPage } = this.state;
     return (
       <div>
