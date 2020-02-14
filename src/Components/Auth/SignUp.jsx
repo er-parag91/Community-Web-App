@@ -6,7 +6,7 @@ import '../../UI/Header.scss';
 import '../../UI/Button.scss';
 import PropTypes from 'prop-types';
 import { statesList } from './Fixtures/statesList';
-import InputField from './TextField';
+import InputField from '../../UI/Input/TextField';
 
 const SignUp = (props) => {
   const changeHandler = (key, target) => {

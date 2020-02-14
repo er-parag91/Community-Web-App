@@ -8,24 +8,29 @@ import InputAndButton from '../../../UI/InputAndButton/InputAndButton';
 
 const textContent = [
   {
-    title1: 'We Do',
-    title2: 'things right',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took  book.',
+    title1: 'One stop',
+    title2: 'For best collections',
+    text: 'We sell best goods designed by hand picked vendors, feel yourself home and discover products for a life well lived. Do not miss to check us out! ',
   },
   {
-    title1: 'We organize',
-    title2: 'Events party',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took  book.',
+    title1: 'Know about',
+    title2: 'Upcoming event',
+    text: 'We gather information about events happening around you and share here, so you can find all kind of events information at one place!',
   },
   {
-    title1: 'Lorem Ipsum',
-    title2: 'might right',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took  book.',
+    title1: 'Give identity',
+    title2: 'To your business',
+    text: 'Want to be on top of everything, Want to let people know about your business/service, simply post it here without any fees and spread the words!',
   },
   {
-    title1: 'Do We',
-    title2: 'things right',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took  book.',
+    title1: 'Want to',
+    title2: 'Be online seller',
+    text: 'Use our online e-commerce platform to start selling at no upfront cost. Your next big success is waiting to happen. We make selling online as easy as shopping online!',
+  },
+  {
+    title1: 'Need freelancer',
+    title2: 'For IT work',
+    text: 'We can build and maintain Websites, Mobile Applications, Online Invitations, etc.!',
   },
 ];
 

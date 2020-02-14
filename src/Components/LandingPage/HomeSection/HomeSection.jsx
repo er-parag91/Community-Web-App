@@ -18,6 +18,7 @@ class HomeSection extends Component {
       homeTwo,
       homeThree,
       homeFour,
+      homeFour,
     ],
     currentIndex: 0,
     translateValue: 0,

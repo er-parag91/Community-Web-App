@@ -4,7 +4,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import InputField from './TextField';
+import InputField from '../../UI/Input/TextField';
 import ForgotPassword from './ForgotPassword';
 
 
