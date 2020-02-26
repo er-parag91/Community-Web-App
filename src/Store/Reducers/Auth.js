@@ -1,3 +1,5 @@
+import * as actionTypes from '../Actions/actionTypes';
+
 const initialState = {
   token: null,
   email: null,
@@ -8,6 +10,16 @@ const initialState = {
 };
 
 
-const authReducer = (state = initialState) => state;
+const authReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case actionTypes.AUTH_START:
+      return {
+        ...state,
+        loading: true,
+      };
+    default:
+      return state;
+  }
+};
 
 export default authReducer;
