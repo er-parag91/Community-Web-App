@@ -24,7 +24,7 @@ class App extends Component {
       return (
         <div>
           {alert.message && (
-          <Snackbar open autoHideDuration={6000} onClose={onCloseAlert}>
+          <Snackbar open autoHideDuration={12000} onClose={onCloseAlert}>
             <Alert
               onCloseAlert={onCloseAlert}
               AlertTitle={alert.severity}
@@ -34,10 +34,10 @@ class App extends Component {
             </Alert>
           </Snackbar>
           )}
-          {loading && <Spinner />}
+          {loading && <Spinner backgroundOpacity="0.85" />}
           <Switch>
             <Route path="/auth" component={Auth} />
-            <Route exact path="/" component={LandingPage} />
+            <Route path="/" component={LandingPage} />
           </Switch>
         </div>
       );
@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <div>
         {alert.message && (
-          <Snackbar open autoHideDuration={6000} onClose={onCloseAlert}>
+          <Snackbar open autoHideDuration={12000} onClose={onCloseAlert}>
             <Alert
               onCloseAlert={onCloseAlert}
               AlertTitle={alert.severity}
@@ -55,7 +55,7 @@ class App extends Component {
             </Alert>
           </Snackbar>
         )}
-        {loading && <Spinner />}
+        {loading && <Spinner backgroundOpacity="0.85" />}
         <Redirect exact from="/auth" to="/auth/dashboard" />
         <Switch>
           <Route path="/auth/dashboard" component={Dashboard} />

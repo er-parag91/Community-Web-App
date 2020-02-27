@@ -10,13 +10,13 @@
   height: 6rem;
   padding: 2rem;
   background: var(--color-Primary-transparent);
-  ;
-  span {
+  .logo {
+    text-decoration: none;
     text-transform: uppercase;
     color: var(--color-white);
     font-weight: 900;
     font-size: 2rem;
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.3rem;
     margin-right: 6rem;
   }
 }

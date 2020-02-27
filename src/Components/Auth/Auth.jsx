@@ -97,6 +97,7 @@ onLoginPageClose = () => {
     const { resetPasswordEmail } = this.state;
     this.props.onForgotPassword(resetPasswordEmail);
     this.setState({ resetPasswordEmail: '', isForgotPassword: false });
+    // To DO: reset password route goes here
   }
 
   //
@@ -147,6 +148,10 @@ onLoginPageClose = () => {
   // Sign up form submit handler
   signUpSubmitHandler = (e) => {
     e.preventDefault();
+    const { signUp } = this.state;
+    if (signUp.password === signUp.confirmPassword) {
+      this.props.onUserSignUp(signUp);
+    }
   }
 
   // changes a width in state to current width, gets fired on resizing window
@@ -236,6 +241,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onAuth: (email, password) => dispatch(actions.auth(email, password)),
   onForgotPassword: (email) => dispatch(actions.forgotPassword(email)),
+  onUserSignUp: (signUpData) => dispatch(actions.signUpUser(signUpData)),
 });
 
 Auth.propTypes = {
@@ -243,6 +249,7 @@ Auth.propTypes = {
   history: PropTypes.shape().isRequired,
   onAuth: PropTypes.func.isRequired,
   onForgotPassword: PropTypes.func.isRequired,
+  onUserSignUp: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);
