@@ -24,7 +24,7 @@ class App extends Component {
       return (
         <div>
           {alert.message && (
-          <Snackbar open autoHideDuration={6000}>
+          <Snackbar open autoHideDuration={6000} onClose={onCloseAlert}>
             <Alert
               onCloseAlert={onCloseAlert}
               AlertTitle={alert.severity}
@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <div>
         {alert.message && (
-          <Snackbar open autoHideDuration={6000}>
+          <Snackbar open autoHideDuration={6000} onClose={onCloseAlert}>
             <Alert
               onCloseAlert={onCloseAlert}
               AlertTitle={alert.severity}

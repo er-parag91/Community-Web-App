@@ -10,10 +10,8 @@ export const authSuccess = (email, name, token) => ({
   token,
 });
 
-
 export const auth = (email, password) => (dispatch) => {
   dispatch(startLoading());
-
   const authData = {
     email,
     password,
@@ -27,6 +25,20 @@ export const auth = (email, password) => (dispatch) => {
       dispatch(authSuccess(response.data.user.email, response.data.user.name, response.data.token));
       dispatch(userMessage('Successfully Logged in!', 'success'));
       dispatch(stopLoading());
+    })
+    .catch((error) => {
+      dispatch(stopLoading());
+      dispatch(userMessage(error.response.data, 'error'));
+    });
+};
+
+export const forgotPassword = (email) => (dispatch) => {
+  dispatch(startLoading());
+
+  axios.post(`${coreEndPoint}/users/forgotPassword`, { email })
+    .then(() => {
+      dispatch(stopLoading());
+      dispatch(userMessage('Password reset email sent!', 'success'));
     })
     .catch((error) => {
       dispatch(stopLoading());

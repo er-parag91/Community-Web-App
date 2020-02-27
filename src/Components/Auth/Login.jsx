@@ -31,7 +31,9 @@ const Login = (props) => {
   const forgotPasswordSubmit = (e) => {
     props.forgotPasswordSubmitHandler(e);
   };
-  const { loginData, isForgotPassword } = props;
+  const {
+    loginData, isForgotPassword, resetPasswordEmail, onResetEmailInput,
+  } = props;
   const {
     currentEmail, currentPassword, rememberMe,
   } = loginData;
@@ -100,9 +102,11 @@ const Login = (props) => {
           </button>
         </Grid>
         <ForgotPassword
+          resetPasswordEmail={resetPasswordEmail}
           isForgotPassword={isForgotPassword}
           onForgotPasswordToggle={forgotPasswordClick}
           onForgotPasswordSubmit={forgotPasswordSubmit}
+          onResetEmailInput={onResetEmailInput}
         />
       </form>
     </div>
@@ -117,6 +121,8 @@ Login.propTypes = {
   isForgotPassword: PropTypes.bool.isRequired,
   onLoginFormSubmit: PropTypes.func.isRequired,
   forgotPasswordSubmitHandler: PropTypes.func.isRequired,
+  resetPasswordEmail: PropTypes.string.isRequired,
+  onResetEmailInput: PropTypes.func.isRequired,
 };
 
 Login.defaultProps = {

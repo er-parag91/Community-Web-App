@@ -7,7 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import PropTypes from 'prop-types';
 
 const ForgotPassword = (props) => {
-  const { isForgotPassword } = props;
+  const { isForgotPassword, resetPasswordEmail, onResetEmailInput } = props;
   const forgotPasswordToggle = () => {
     props.onForgotPasswordToggle();
   };
@@ -19,7 +19,7 @@ const ForgotPassword = (props) => {
   return (
     <div>
       <Dialog className="forgot__password" open={isForgotPassword} onClose={forgotPasswordToggle} aria-labelledby="form-dialog-title">
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form>
           <span className="heading-tertiary">Forgot Password</span>
           <DialogContent>
             <p>
@@ -36,22 +36,23 @@ const ForgotPassword = (props) => {
             <br />
             <TextField
               margin="dense"
-              id="name"
+              id="email"
+              name="email"
               placeholder="e.g. john@smith.com"
               autoComplete="email"
               label="Email Address"
               type="email"
               variant="filled"
               fullWidth
-              required
+              value={resetPasswordEmail}
+              onChange={onResetEmailInput}
             />
-
           </DialogContent>
           <DialogActions>
             <Button onClick={forgotPasswordToggle} color="primary">
             Cancel
             </Button>
-            <Button type="submit" color="primary">
+            <Button onClick={(e) => handleSubmit(e)} color="primary">
             Send
             </Button>
           </DialogActions>
@@ -66,6 +67,8 @@ ForgotPassword.propTypes = {
   onForgotPasswordToggle: PropTypes.func.isRequired,
   isForgotPassword: PropTypes.bool.isRequired,
   onForgotPasswordSubmit: PropTypes.func.isRequired,
+  resetPasswordEmail: PropTypes.string.isRequired,
+  onResetEmailInput: PropTypes.func.isRequired,
 };
 
 export default ForgotPassword;

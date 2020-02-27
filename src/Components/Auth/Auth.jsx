@@ -37,6 +37,7 @@ state = {
   open: false,
   dialog: false,
   isForgotPassword: false,
+  resetPasswordEmail: '',
 };
 
 // on component mount, adds event handler for window dimensions chanage
@@ -92,9 +93,10 @@ onLoginPageClose = () => {
   };
 
   // forgot password submit handler
-  onForgotPasswordSubmit = (e) => {
-    e.preventDefault();
-    console.log(e);
+  onForgotPasswordSubmit = () => {
+    const { resetPasswordEmail } = this.state;
+    this.props.onForgotPassword(resetPasswordEmail);
+    this.setState({ resetPasswordEmail: '', isForgotPassword: false });
   }
 
   //
@@ -155,7 +157,7 @@ onLoginPageClose = () => {
 
   render() {
     const {
-      width, isLoggingIn, signUp, login, dialog, isForgotPassword,
+      width, isLoggingIn, signUp, login, dialog, isForgotPassword, resetPasswordEmail,
     } = this.state;
     return (
       <Grid item container className="login">
@@ -191,6 +193,8 @@ onLoginPageClose = () => {
                 forgotPasswordSubmitHandler={this.onForgotPasswordSubmit}
                 isLoggingIn={isLoggingIn}
                 loginTypeHandler={this.loginTypeHandler}
+                resetPasswordEmail={resetPasswordEmail}
+                onResetEmailInput={(e) => this.setState({ resetPasswordEmail: e.target.value })}
               />
             )}
 
@@ -231,12 +235,14 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onAuth: (email, password) => dispatch(actions.auth(email, password)),
+  onForgotPassword: (email) => dispatch(actions.forgotPassword(email)),
 });
 
 Auth.propTypes = {
   generalState: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired,
   onAuth: PropTypes.func.isRequired,
+  onForgotPassword: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);
