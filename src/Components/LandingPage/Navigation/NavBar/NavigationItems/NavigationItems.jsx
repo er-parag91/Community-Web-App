@@ -6,10 +6,10 @@ import OutlinedButton from '../../../../../UI/OutlinedButton/OutlinedButton';
 
 const NavigationItems = (props) => {
   const {
-    isAuthenticated, isTop, closeSideDrawer, onNavLinkClick,
+    isAuthenticated, isTop, closeSideDrawer, onNavLinkClick, history,
   } = props;
   const signInButtonHandler = () => {
-    console.log('button clicked');
+    history.push('/auth');
   };
 
   const signOutButtonHandler = () => {
@@ -26,7 +26,7 @@ const NavigationItems = (props) => {
       <div className="manuItems">
         {isAuthenticated
           ? (
-            <NavigationItem link="/auth/dashboard" isTop={isTop}>
+            <NavigationItem link="/auth/dashboard" isAnchor isTop={isTop}>
           Dashboard
             </NavigationItem>
           )
@@ -60,10 +60,12 @@ NavigationItems.propTypes = {
   isTop: PropTypes.bool,
   closeSideDrawer: PropTypes.func,
   onNavLinkClick: PropTypes.func.isRequired,
+  history: PropTypes.shape(),
 };
 
 NavigationItems.defaultProps = {
   isTop: false,
   closeSideDrawer: () => {},
+  history: {},
 };
 export default NavigationItems;

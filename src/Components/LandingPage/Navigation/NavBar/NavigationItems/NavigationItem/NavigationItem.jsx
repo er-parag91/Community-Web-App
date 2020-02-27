@@ -2,10 +2,11 @@
 import React from 'react';
 import './NavigationItem.scss';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 const NavigationItem = (props) => {
   const {
-    link, children, isTop, linkClicked, isActive,
+    link, children, isTop, linkClicked, isActive, isAnchor,
   } = props;
 
   let styles;
@@ -21,7 +22,19 @@ const NavigationItem = (props) => {
       borderBottom: '2px solid var(--color-primary)',
     };
   }
-
+  if (isAnchor) {
+    return (
+      <li className="NavigationItem">
+        <NavLink
+          style={styles}
+          to={link}
+          className={isActive ? 'active anchor' : 'anchor'}
+        >
+          {children}
+        </NavLink>
+      </li>
+    );
+  }
   return (
     <li className="NavigationItem">
       <a
@@ -41,12 +54,15 @@ NavigationItem.propTypes = {
   children: PropTypes.string.isRequired,
   isTop: PropTypes.bool,
   linkClicked: PropTypes.func,
-  isActive: PropTypes.bool.isRequired,
+  isActive: PropTypes.bool,
+  isAnchor: PropTypes.bool,
 };
 
 NavigationItem.defaultProps = {
   isTop: false,
+  isActive: false,
   linkClicked: () => {},
+  isAnchor: false,
 };
 
 export default NavigationItem;

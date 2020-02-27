@@ -12,7 +12,8 @@
   font-size: 2.5rem;
 }
 
-.NavigationItem a {
+.NavigationItem a,
+.anchor {
   color: var(--color-white);
   text-decoration: none;
   box-sizing: border-box;
@@ -24,7 +25,8 @@
 
 .NavigationItem a:hover,
 .NavigationItem a:active,
-.NavigationItem a.active {
+.NavigationItem a.active,
+.anchor {
   border-bottom: 2px solid var(--color-white);
 }
 
@@ -42,7 +44,8 @@
     font-size: 1.7rem;
   }
 
-  .NavigationItem a {
+  .NavigationItem a,
+  .anchor {
     color: var(--color-white);
     height: 100%;
     padding: 0.5rem 0.5rem;
@@ -52,7 +55,8 @@
 
   .NavigationItem a:hover,
   .NavigationItem a:active,
-  .NavigationItem a.active {
+  .NavigationItem a.active,
+  .anchor {
     border-bottom: 2px solid var(--color-white);
     color: var(--color-white);
   }

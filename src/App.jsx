@@ -1,7 +1,9 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import './App.scss';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import {
+  Switch, Route, withRouter, Redirect,
+} from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Auth from './Components/Auth/Auth';
@@ -13,20 +15,23 @@ class App extends Component {
   render() {
     const { auth } = this.props;
     const { isLoggedIn } = auth;
+    console.log(isLoggedIn);
     if (!isLoggedIn) {
       return (
         <div>
           <Switch>
-            <Route exact path="/" component={LandingPage} />
             <Route path="/auth" component={Auth} />
+            <Route exact path="/" component={LandingPage} />
           </Switch>
         </div>
       );
     }
     return (
       <div>
+        <Redirect exact from="/auth" to="/auth/dashboard" />
         <Switch>
-          <Route exact path="/auth/dashboard" component={Dashboard} />
+          <Route path="/auth/dashboard" component={Dashboard} />
+          <Route path="/" render={() => <LandingPage isLoggedIn={isLoggedIn} />} />
           <Route component={LandingPage} />
         </Switch>
       </div>

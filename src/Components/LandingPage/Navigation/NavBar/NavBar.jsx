@@ -7,7 +7,7 @@ import DrawerToggle from '../../SideDrawer/DrawerToggle/DrawerToggle';
 
 const NavBar = (props) => {
   const {
-    isAuth, drawerToggleClicked, isTop, navLinkClicked,
+    isAuth, drawerToggleClicked, isTop, navLinkClicked, history,
   } = props;
   const style = isTop ? ['NavBar'].join(' ') : ['NavBar', 'notTop'].join(' ');
   return (
@@ -21,6 +21,7 @@ const NavBar = (props) => {
           isTop={isTop}
           isAuthenticated={isAuth}
           onNavLinkClick={navLinkClicked}
+          history={history}
         />
       </nav>
     </header>
@@ -32,10 +33,11 @@ NavBar.propTypes = {
   drawerToggleClicked: PropTypes.func.isRequired,
   isTop: PropTypes.bool.isRequired,
   navLinkClicked: PropTypes.func.isRequired,
+  history: PropTypes.shape().isRequired,
 };
 
 NavBar.defaultProps = {
-  isAuth: true,
+  isAuth: false,
 };
 
 export default NavBar;

@@ -12,7 +12,7 @@ import Login from './Login';
 import OutlinedButton from '../../UI/OutlinedButton/OutlinedButton';
 import LoginHeader from './LoginHeader/LoginHeader';
 import Spinner from '../../UI/Spinner/Spinner';
-
+import * as actions from '../../Store/Actions';
 // const Logo = require('../../assets/images/logo__big.png');
 const Avatar = require('../../assets/SVGs/Avatar.svg');
 
@@ -38,17 +38,12 @@ state = {
   open: false,
   dialog: false,
   isForgotPassword: false,
-  loadingLoginPage: sessionStorage.getItem('firstLoading') !== 'false',
 };
 
 // on component mount, adds event handler for window dimensions chanage
 componentDidMount() {
   this.updateDimensions();
   window.addEventListener('resize', this.updateDimensions.bind(this));
-  setTimeout(() => {
-    this.setState({ loadingLoginPage: false });
-    sessionStorage.setItem('firstLoading', false);
-  }, 500);
 }
 
 onLoginPageClose = () => {
@@ -68,7 +63,6 @@ onLoginPageClose = () => {
   // // login text change handler
   //
   loginTextChangeHandler = (key, value) => {
-    console.log(key, value);
     this.setState((prevState) => {
       const { login } = prevState;
       login[key] = value;
@@ -95,7 +89,7 @@ onLoginPageClose = () => {
   // Log in form submit handler
   logInFormSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(e);
+    this.props.onAuth(this.state.login.currentEmail, this.state.login.currentPassword);
   };
 
   // forgot password submit handler
@@ -152,7 +146,6 @@ onLoginPageClose = () => {
   // Sign up form submit handler
   signUpSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(e);
   }
 
   // changes a width in state to current width, gets fired on resizing window
@@ -163,12 +156,12 @@ onLoginPageClose = () => {
 
   render() {
     const {
-      width, isLoggingIn, signUp, login, dialog, isForgotPassword, loadingLoginPage,
+      width, isLoggingIn, signUp, login, dialog, isForgotPassword,
     } = this.state;
-    console.log(this.state);
+    const { loading } = this.props.auth;
     return (
       <Grid item container className="login">
-        { loadingLoginPage && <Spinner />}
+        { loading && <Spinner />}
         <LoginHeader onSignInModeToggle={this.loginTypeHandler} isSigningIn={isLoggingIn} />
         <span className="login__close"><i className="fa fa-times login__close--icon" onClick={this.onLoginPageClose} aria-hidden="true" /></span>
         {width > 601 && (
@@ -237,11 +230,18 @@ onLoginPageClose = () => {
 
 const mapStateToProps = (state) => ({
   generalState: state.generalState,
+  auth: state.user,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onAuth: (email, password) => dispatch(actions.auth(email, password)),
 });
 
 Auth.propTypes = {
   generalState: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired,
+  onAuth: PropTypes.func.isRequired,
+  auth: PropTypes.shape().isRequired,
 };
 
-export default connect(mapStateToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

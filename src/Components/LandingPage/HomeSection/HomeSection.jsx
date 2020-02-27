@@ -9,7 +9,7 @@ const homeOne = require('../../../assets/images/main-1.jpg');
 const homeTwo = require('../../../assets/images/main-2.jpg');
 const homeThree = require('../../../assets/images/main-3.jpg');
 const homeFour = require('../../../assets/images/main-4.jpg');
-
+const homeFive = require('../../../assets/images/main-5.jpg');
 
 class HomeSection extends Component {
   state = {
@@ -18,7 +18,7 @@ class HomeSection extends Component {
       homeTwo,
       homeThree,
       homeFour,
-      homeFour,
+      homeFive,
     ],
     currentIndex: 0,
     translateValue: 0,

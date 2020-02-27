@@ -49,11 +49,21 @@ class TextContent extends Component {
       if (nextProps.currentIndex === 0) {
         this.myEl.className = 'animateBack';
       }
-      setTimeout(() => {
-        this.myEl.className = '';
-      }, 1000);
+      this.carouselTimer();
     }
   }
+
+  componentWillUnmount() {
+    clearTimeout(this.carouselTimer);
+  }
+
+  carouselTimer = () => {
+    setTimeout(() => {
+      if (this.myEl) {
+        this.myEl.className = '';
+      }
+    }, 1000);
+  };
 
   onSignUpClicked = (e) => {
     const { loggingIn, signUpEmail, history } = this.props;

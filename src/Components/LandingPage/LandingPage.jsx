@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import jump from 'jump.js';
 import sal from 'sal.js';
+import PropTypes from 'prop-types';
 import NavBar from './Navigation/NavBar/NavBar';
 import SideDrawer from './SideDrawer/SideDrawer';
 import './LandingPage.scss';
@@ -44,6 +45,8 @@ class LandingPage extends Component {
 
   render() {
     const { showSideDrawer, isTop, loadingLandingPage } = this.state;
+    const { isLoggedIn, history } = this.props;
+    console.log(isLoggedIn);
     return (
       <div>
         { loadingLandingPage && <Spinner />}
@@ -51,6 +54,8 @@ class LandingPage extends Component {
           navLinkClicked={this.jumpToHandler}
           isTop={isTop}
           drawerToggleClicked={this.sideDrawerOpenHandler}
+          isAuth={isLoggedIn}
+          history={history}
         />
         <SideDrawer
           navLinkClicked={this.jumpToHandler}
@@ -78,5 +83,14 @@ class LandingPage extends Component {
     );
   }
 }
+
+LandingPage.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  history: PropTypes.shape().isRequired,
+};
+
+LandingPage.defaultProps = {
+  isLoggedIn: false,
+};
 
 export default LandingPage;
