@@ -27,7 +27,7 @@ class LandingPage extends Component {
         this.setState({ isTop: currentScroll });
       });
       this.setState({ loadingLandingPage: false, isTop: window.pageYOffset < 50 });
-    }, 2000);
+    }, 1000);
   }
 
   sideDrawerClosedHandler = () => {

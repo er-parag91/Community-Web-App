@@ -1,10 +1,7 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import { coreEndPoint } from '../../path/dev';
-
-export const authStart = () => ({
-  type: actionTypes.AUTH_START,
-});
+import { startLoading, stopLoading, userMessage } from './general';
 
 export const authSuccess = (email, name, token) => ({
   type: actionTypes.AUTH_SUCCESS,
@@ -13,13 +10,9 @@ export const authSuccess = (email, name, token) => ({
   token,
 });
 
-export const authFail = (error) => ({
-  type: actionTypes.AUTH_FAIL,
-  error,
-});
 
 export const auth = (email, password) => (dispatch) => {
-  dispatch(authStart());
+  dispatch(startLoading());
 
   const authData = {
     email,
@@ -32,8 +25,11 @@ export const auth = (email, password) => (dispatch) => {
       localStorage.setItem('name', response.data.user.name);
       localStorage.setItem('token', response.data.token);
       dispatch(authSuccess(response.data.user.email, response.data.user.name, response.data.token));
+      dispatch(userMessage('Successfully Logged in!', 'success'));
+      dispatch(stopLoading());
     })
     .catch((error) => {
-      dispatch(authFail(error.response.data));
+      dispatch(stopLoading());
+      dispatch(userMessage(error.response.data, 'error'));
     });
 };

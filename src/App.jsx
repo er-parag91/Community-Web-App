@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import './App.scss';
@@ -6,19 +7,34 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Snackbar from '@material-ui/core/Snackbar';
+import * as actions from './Store/Actions';
 import Auth from './Components/Auth/Auth';
 import Dashboard from './Layout/Dashboard/Dashboard';
 import LandingPage from './Components/LandingPage/LandingPage';
-// import Auth2 from './Components/Auth2/Auth2';
+import Alert from './UI/Alert/Alert';
+import Spinner from './UI/Spinner/Spinner';
 
 class App extends Component {
   render() {
-    const { auth } = this.props;
+    const { auth, generalState, onCloseAlert } = this.props;
     const { isLoggedIn } = auth;
-    console.log(isLoggedIn);
+    const { alert, loading } = generalState;
     if (!isLoggedIn) {
       return (
         <div>
+          {alert.message && (
+          <Snackbar open autoHideDuration={6000}>
+            <Alert
+              onCloseAlert={onCloseAlert}
+              AlertTitle={alert.severity}
+              severity={alert.severity}
+            >
+              {alert.message}
+            </Alert>
+          </Snackbar>
+          )}
+          {loading && <Spinner />}
           <Switch>
             <Route path="/auth" component={Auth} />
             <Route exact path="/" component={LandingPage} />
@@ -28,6 +44,18 @@ class App extends Component {
     }
     return (
       <div>
+        {alert.message && (
+          <Snackbar open autoHideDuration={6000}>
+            <Alert
+              onCloseAlert={onCloseAlert}
+              AlertTitle={alert.severity}
+              severity={alert.severity}
+            >
+              {alert.message}
+            </Alert>
+          </Snackbar>
+        )}
+        {loading && <Spinner />}
         <Redirect exact from="/auth" to="/auth/dashboard" />
         <Switch>
           <Route path="/auth/dashboard" component={Dashboard} />
@@ -41,9 +69,21 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   auth: state.user,
+  generalState: state.generalState,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCloseAlert: () => dispatch(actions.dismissErrorMessage()),
 });
 
 App.propTypes = {
+  generalState: PropTypes.shape().isRequired,
   auth: PropTypes.shape().isRequired,
+  onCloseAlert: PropTypes.func,
 };
-export default withRouter(connect(mapStateToProps)(App));
+
+App.defaultProps = {
+  onCloseAlert: () => {},
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

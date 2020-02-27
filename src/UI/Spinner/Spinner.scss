@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.582);
+  background: rgba(223, 223, 223, 0.137);
   z-index: 1000;
   overflow-y: hidden;
 }
@@ -14,8 +14,8 @@
   position: relative;
   top: 50%;
   left: 50%;
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   transform: translate(-50%, -50%);
 
   img {
@@ -25,10 +25,10 @@
     height: 100%;
   }
   p{
-    padding: 1rem 0;
-    font-size: 1.5rem;
+    padding: 1.5rem 0;
+    font-size: 2rem;
     text-align: center;
-    color: var(--color-Grey-dark-3);
+    color: rgba(0, 0, 0, 0.712);
   }
 }
 

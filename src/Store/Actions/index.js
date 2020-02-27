@@ -1,1 +1,2 @@
-export { auth, authFail } from './Auth';
+export { auth } from './Auth';
+export { dismissErrorMessage } from './general';

@@ -11,7 +11,6 @@ import Login from './Login';
 // eslint-disable-next-line no-unused-vars
 import OutlinedButton from '../../UI/OutlinedButton/OutlinedButton';
 import LoginHeader from './LoginHeader/LoginHeader';
-import Spinner from '../../UI/Spinner/Spinner';
 import * as actions from '../../Store/Actions';
 // const Logo = require('../../assets/images/logo__big.png');
 const Avatar = require('../../assets/SVGs/Avatar.svg');
@@ -158,10 +157,8 @@ onLoginPageClose = () => {
     const {
       width, isLoggingIn, signUp, login, dialog, isForgotPassword,
     } = this.state;
-    const { loading } = this.props.auth;
     return (
       <Grid item container className="login">
-        { loading && <Spinner />}
         <LoginHeader onSignInModeToggle={this.loginTypeHandler} isSigningIn={isLoggingIn} />
         <span className="login__close"><i className="fa fa-times login__close--icon" onClick={this.onLoginPageClose} aria-hidden="true" /></span>
         {width > 601 && (
@@ -230,7 +227,6 @@ onLoginPageClose = () => {
 
 const mapStateToProps = (state) => ({
   generalState: state.generalState,
-  auth: state.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -241,7 +237,6 @@ Auth.propTypes = {
   generalState: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired,
   onAuth: PropTypes.func.isRequired,
-  auth: PropTypes.shape().isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);
