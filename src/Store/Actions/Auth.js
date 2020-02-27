@@ -44,7 +44,7 @@ export const forgotPassword = (email) => (dispatch) => {
     })
     .catch((error) => {
       dispatch(stopLoading());
-      dispatch(userMessage(error.response.data, 'error'));
+      dispatch(userMessage(error.response.data || '', 'error'));
     });
 };
 
@@ -64,6 +64,6 @@ export const signUpUser = (signUpData) => (dispatch) => {
     .catch((error) => {
       console.log(error.response.data);
       dispatch(stopLoading());
-      dispatch(userMessage(error.response.data, 'error'));
+      dispatch(userMessage(error.response.data || '', 'error'));
     });
 };

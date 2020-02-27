@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import {
@@ -11,6 +11,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import authReducer from './Store/Reducers/Auth';
 import generalReducer from './Store/Reducers/General';
+
 
 const rootReducer = combineReducers({
   user: authReducer,
@@ -24,11 +25,13 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunk)),
 );
 const app = (
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
+  <HashRouter basename="/">
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </HashRouter>
 );
 ReactDOM.render(app, document.getElementById('root'));
 

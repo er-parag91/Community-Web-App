@@ -1,4 +1,4 @@
-const coreEndPoint = 'http://localhost:4000';
+const coreEndPoint = 'https://parag-node-server.herokuapp.com/';
 
 module.exports = {
   coreEndPoint,
