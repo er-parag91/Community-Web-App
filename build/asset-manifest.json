@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.993b0661.chunk.css",
+    "main.js": "/static/js/main.b5870912.chunk.js",
+    "main.js.map": "/static/js/main.b5870912.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.b439515d.js",
+    "runtime~main.js.map": "/static/js/runtime~main.b439515d.js.map",
+    "static/js/2.ad774e55.chunk.js": "/static/js/2.ad774e55.chunk.js",
+    "static/js/2.ad774e55.chunk.js.map": "/static/js/2.ad774e55.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.cf804822b7997d56ccfcc58180d1ff3c.js": "/precache-manifest.cf804822b7997d56ccfcc58180d1ff3c.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.993b0661.chunk.css.map": "/static/css/main.993b0661.chunk.css.map",
+    "static/media/Avatar.svg": "/static/media/Avatar.fb540aff.svg",
+    "static/media/Auth.scss": "/static/media/login-background.1ef6d764.jpg",
+    "static/media/main-1.jpg": "/static/media/main-1.ce27080b.jpg",
+    "static/media/main-2.jpg": "/static/media/main-2.a1eb80e1.jpg",
+    "static/media/main-3.jpg": "/static/media/main-3.8202fbdd.jpg",
+    "static/media/main-4.jpg": "/static/media/main-4.df351c62.jpg"
+  }
+}
