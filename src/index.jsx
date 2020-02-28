@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import {
@@ -25,13 +25,11 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunk)),
 );
 const app = (
-  <HashRouter basename="/">
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </HashRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>
 );
 ReactDOM.render(app, document.getElementById('root'));
 

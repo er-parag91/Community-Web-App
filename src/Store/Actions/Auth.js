@@ -62,8 +62,7 @@ export const signUpUser = (signUpData) => (dispatch) => {
       dispatch(userMessage('Welcome! You have signed up successfully!', 'success'));
     })
     .catch((error) => {
-      console.log(error.response.data);
       dispatch(stopLoading());
-      dispatch(userMessage(error.response.data || '', 'error'));
+      dispatch(userMessage(error.response ? error.response.data : 'Something went wrong!', 'error'));
     });
 };
