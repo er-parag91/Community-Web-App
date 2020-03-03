@@ -30,7 +30,7 @@ export const auth = (email, password) => (dispatch) => {
     })
     .catch((error) => {
       dispatch(stopLoading());
-      dispatch(userMessage(error.response.data, 'error'));
+      dispatch(userMessage(error.response ? error.response.data : 'Something went wrong on our end. Please try again!', 'error'));
     });
 };
 
