@@ -1,0 +1,41 @@
+.Header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6rem;
+  background-color: var(--color-Grey-light-4);
+  overflow: hidden;
+
+  &__Texts {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Logo {
+    text-transform: uppercase;
+    color: var(--color-Primary-dark);
+    font-weight: 900;
+    font-size: 2rem;
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 0.4rem;
+    margin-left: 3rem;
+  }
+
+  .Header__User-Container {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+    div {
+      margin: 0 0.5rem;
+    }
+  }
+
+  &__Icon{
+    font-size: 2.25rem;
+    color: var(--color-Primary-dark);
+  }
+}

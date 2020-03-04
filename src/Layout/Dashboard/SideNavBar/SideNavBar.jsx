@@ -1,13 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SideNavigationItems from './SideNavigationItems/SideNavigationItems';
 
 const SideNavBar = (props) => {
-  console.log(props);
+  const { history } = props;
   return (
     <div className="SideNavBar">
-      <SideNavigationItems rootPath="/auth/dashboard" />
+      <SideNavigationItems history={history} rootPath="/auth/dashboard" />
     </div>
   );
+};
+
+SideNavBar.propTypes = {
+  history: PropTypes.shape().isRequired,
 };
 
 export default SideNavBar;
