@@ -17,7 +17,9 @@ import Spinner from './UI/Spinner/Spinner';
 
 class App extends Component {
   render() {
-    const { auth, generalState, onCloseAlert } = this.props;
+    const {
+      auth, generalState, onCloseAlert, history,
+    } = this.props;
     const { isLoggedIn } = auth;
     const { alert, loading } = generalState;
     if (!isLoggedIn) {
@@ -56,10 +58,13 @@ class App extends Component {
           </Snackbar>
         )}
         {loading && <Spinner backgroundOpacity="0.85" />}
-        <Redirect exact from="/auth" to="/auth/dashboard" />
+        {
+          history.location.pathname === '/auth'
+          && <Redirect exact from="/auth" to="/auth/dashboard" />
+        }
         <Switch>
+          <Route path="/" exact render={() => <LandingPage isLoggedIn={isLoggedIn} />} />
           <Route path="/auth/dashboard" component={Dashboard} />
-          <Route path="/" render={() => <LandingPage isLoggedIn={isLoggedIn} />} />
           <Route component={LandingPage} />
         </Switch>
       </div>
@@ -80,6 +85,7 @@ App.propTypes = {
   generalState: PropTypes.shape().isRequired,
   auth: PropTypes.shape().isRequired,
   onCloseAlert: PropTypes.func,
+  history: PropTypes.shape().isRequired,
 };
 
 App.defaultProps = {

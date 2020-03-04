@@ -9,7 +9,7 @@ import SignUp from './SignUp';
 import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
 import Login from './Login';
 // eslint-disable-next-line no-unused-vars
-import OutlinedButton from '../../UI/OutlinedButton/OutlinedButton';
+import OutlinedButton from '../../UI/InputAndButton/OutlinedButton/OutlinedButton';
 import LoginHeader from './LoginHeader/LoginHeader';
 import * as actions from '../../Store/Actions';
 // const Logo = require('../../assets/images/logo__big.png');
@@ -245,8 +245,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Auth.propTypes = {
-  generalState: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired,
+  generalState: PropTypes.shape.isRequired,
+  history: PropTypes.shape.isRequired,
   onAuth: PropTypes.func.isRequired,
   onForgotPassword: PropTypes.func.isRequired,
   onUserSignUp: PropTypes.func.isRequired,

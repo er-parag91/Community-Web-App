@@ -3,6 +3,7 @@ export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAIL = 'AUTH_FAIL';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
 export const IS_LOGGIN_IN = 'IS_LOGGIN_IN';
 export const SIGNUP_EMAIL = 'SIGNUP_EMAIL';

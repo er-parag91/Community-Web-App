@@ -2,7 +2,7 @@ import React from 'react';
 import './NavigationItems.scss';
 import PropTypes from 'prop-types';
 import NavigationItem from './NavigationItem/NavigationItem';
-import OutlinedButton from '../../../../../UI/OutlinedButton/OutlinedButton';
+import OutlinedButton from '../../../../../UI/InputAndButton/OutlinedButton/OutlinedButton';
 
 const NavigationItems = (props) => {
   const {
@@ -60,7 +60,7 @@ NavigationItems.propTypes = {
   isTop: PropTypes.bool,
   closeSideDrawer: PropTypes.func,
   onNavLinkClick: PropTypes.func.isRequired,
-  history: PropTypes.shape(),
+  history: PropTypes.shape,
 };
 
 NavigationItems.defaultProps = {

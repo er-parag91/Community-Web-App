@@ -98,7 +98,7 @@ class TextContent extends Component {
 TextContent.propTypes = {
   loggingIn: PropTypes.func.isRequired,
   signUpEmail: PropTypes.func.isRequired,
-  history: PropTypes.shape().isRequired,
+  history: PropTypes.shape.isRequired,
   currentIndex: PropTypes.number.isRequired,
 };
 

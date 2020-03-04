@@ -167,7 +167,7 @@ const SignUp = (props) => {
 };
 
 SignUp.propTypes = {
-  userData: PropTypes.shape(),
+  userData: PropTypes.shape,
   onTextChange: PropTypes.func.isRequired,
   onCheckboxChange: PropTypes.func.isRequired,
   onTermsAndConditionClicked: PropTypes.func.isRequired,
