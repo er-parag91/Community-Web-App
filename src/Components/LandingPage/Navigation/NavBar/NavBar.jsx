@@ -33,7 +33,7 @@ NavBar.propTypes = {
   drawerToggleClicked: PropTypes.func.isRequired,
   isTop: PropTypes.bool.isRequired,
   navLinkClicked: PropTypes.func.isRequired,
-  history: PropTypes.shape().isRequired,
+  history: PropTypes.shape.isRequired,
 };
 
 NavBar.defaultProps = {

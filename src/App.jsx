@@ -58,8 +58,8 @@ class App extends Component {
         {loading && <Spinner backgroundOpacity="0.85" />}
         <Redirect exact from="/auth" to="/auth/dashboard" />
         <Switch>
+          <Route path="/" exact render={() => <LandingPage isLoggedIn={isLoggedIn} />} />
           <Route path="/auth/dashboard" component={Dashboard} />
-          <Route path="/" render={() => <LandingPage isLoggedIn={isLoggedIn} />} />
           <Route component={LandingPage} />
         </Switch>
       </div>
@@ -77,8 +77,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 App.propTypes = {
-  generalState: PropTypes.shape().isRequired,
-  auth: PropTypes.shape().isRequired,
+  generalState: PropTypes.shape.isRequired,
+  auth: PropTypes.shape.isRequired,
   onCloseAlert: PropTypes.func,
 };
 

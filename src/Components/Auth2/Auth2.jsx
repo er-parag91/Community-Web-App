@@ -162,7 +162,7 @@ const mapStateToProps = (state) => ({
 });
 
 Auth2.propTypes = {
-  generalState: PropTypes.shape().isRequired,
+  generalState: PropTypes.shape.isRequired,
 };
 
 export default connect(mapStateToProps)(Auth2);

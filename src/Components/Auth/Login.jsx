@@ -114,7 +114,7 @@ const Login = (props) => {
 };
 
 Login.propTypes = {
-  loginData: PropTypes.shape(),
+  loginData: PropTypes.shape,
   onLoginTextChange: PropTypes.func.isRequired,
   onRememberMeClick: PropTypes.func.isRequired,
   onForgotPasswordClicked: PropTypes.func.isRequired,

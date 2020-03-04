@@ -1,0 +1,18 @@
+.SideNavigationItems {
+  list-style-type: none;
+
+  &__Manu {
+    padding: 1rem;
+    background-color: var(--color-Grey-light-4);
+    font-weight: 500;
+    font-size: 1.75rem;
+    color: var(--color-Primary-light);
+    margin: 1rem 0;
+  }
+}
+
+// Devider or horizontal line
+.MuiDivider-root {
+  background-color: var(--color-Grey-dark-2) !important;
+  margin-bottom: 0.5rem !important;
+}
