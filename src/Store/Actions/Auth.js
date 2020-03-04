@@ -87,6 +87,7 @@ export const logoutUser = (user) => (dispatch) => {
       dispatch(userMessage('You are now logged out successfully! Come back soon!', 'success'));
     })
     .catch((error) => {
+      console.log(error.response);
       dispatch(stopLoading());
       dispatch(userMessage(error.response ? error.response.data : 'Something went wrong!', 'error'));
     });

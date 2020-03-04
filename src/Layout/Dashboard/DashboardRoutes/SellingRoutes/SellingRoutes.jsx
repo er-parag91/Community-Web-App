@@ -1,12 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import UnderConstruction from '../../../../UI/UnderConstruction/UnderConstruction';
 
 const SellingRoutes = (props) => {
-  console.log(props);
+  const { requestedRoute } = props;
   return (
     <div>
-      this is Selling routes
+      <UnderConstruction requestedRoute={requestedRoute} />
     </div>
   );
+};
+
+SellingRoutes.propTypes = {
+  requestedRoute: PropTypes.string.isRequired,
 };
 
 export default SellingRoutes;

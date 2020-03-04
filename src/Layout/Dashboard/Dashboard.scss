@@ -1,5 +1,7 @@
 .Dashboard{
   &__Body{
-    margin-left: 25rem;
+    padding-left: 25rem;
+    width: 100%;
+    max-width: 100vw;
   }
 }
