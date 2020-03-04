@@ -1,0 +1,14 @@
+.UnderConstruction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  img{
+    width: 50%;
+  }
+  h1{
+    color: var(--color-Primary-light);
+    font-weight: 300;
+    margin-top: 3rem;
+  }
+}

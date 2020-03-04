@@ -26,12 +26,12 @@
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.144);
 
   // white background color with transparency
-  --white-gradient-1: rgba(255, 255, 255, 0.95);
-  --white-gradient-2: rgba(255, 255, 255, .8);
-
+  --white-transparent-dark: rgba(255, 255, 255, 0.95);
+  --white-transparent-medium: rgba(255, 255, 255, .8);
+  --white-transparent-light: rgba(255, 255, 255, 0.164);
   // main theme color with transparency
   --main-gradient-1: rgba(42, 8, 70, 0.822);
-  --main-gradient-2: rgba(19, 2, 92, 0.856);
+  --main-gradient-2: rgba(29, 1, 75, 0.856);
 }
 
 

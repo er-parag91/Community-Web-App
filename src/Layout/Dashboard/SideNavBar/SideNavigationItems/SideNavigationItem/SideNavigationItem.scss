@@ -1,0 +1,23 @@
+.SideNavigationItem {
+  a {
+    font-weight: 100;
+    display: block;
+    padding: 1.5rem 0;
+    padding-left: 25%;
+    color: var(--color-Grey-light-1);
+    text-decoration: none;
+    font-size: 1.5rem;
+    border-left: solid 1rem transparent;
+    border-bottom: 0.1px solid var(--color-Grey-dark-1);
+  }
+
+  a:active,
+  a.active{
+    border-left: solid 1rem var(--color-Primary-red);
+    background-color: var(--white-transparent-light);
+  }
+  a:hover{
+    font-weight: bold;
+    border-bottom: 0.1px solid var(--color-Grey-dark-2);
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import OutlinedButton from '../../../UI/OutlinedButton/OutlinedButton';
+import OutlinedButton from '../../../UI/InputAndButton/OutlinedButton/OutlinedButton';
 import './LoginHeader.scss';
 
 const LoginHeader = (props) => {

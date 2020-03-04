@@ -86,7 +86,7 @@ class LandingPage extends Component {
 
 LandingPage.propTypes = {
   isLoggedIn: PropTypes.bool,
-  history: PropTypes.shape().isRequired,
+  history: PropTypes.shape.isRequired,
 };
 
 LandingPage.defaultProps = {

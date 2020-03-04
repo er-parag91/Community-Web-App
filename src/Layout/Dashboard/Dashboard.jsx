@@ -1,13 +1,31 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import SideNavBar from './SideNavBar/SideNavBar';
+import './SideNavBar/SideNavBar.scss';
+import './Dashboard.scss';
+import Header from '../../Components/Header/Header';
+import DashboardRoutes from './DashboardRoutes/DashboardRoutes';
 
-const Dashboard = () => (
-  <div>
-    <h1>
-      you are now logged in
-    </h1>
-    <NavLink to="/">Home</NavLink>
-  </div>
-);
+const Dashboard = (props) => {
+  const { history } = props;
+  return (
+    <div className="Dashboard">
+      {
+        history.location.pathname === '/auth/dashboard'
+        && <Redirect to="/auth/dashboard/shopping/featured" />
+      }
+      <SideNavBar history={history} />
+      <div className="Dashboard__Body">
+        <Header />
+        <DashboardRoutes />
+      </div>
+    </div>
+  );
+};
+
+Dashboard.propTypes = {
+  history: PropTypes.shape().isRequired,
+};
 
 export default Dashboard;
