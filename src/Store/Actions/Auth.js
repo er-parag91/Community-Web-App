@@ -10,9 +10,12 @@ export const authSuccess = (email, name, token) => ({
   token,
 });
 
-export const loggedOut = () => ({
-  type: actionTypes.LOGOUT_SUCCESS,
-});
+export const loggedOut = (history) => {
+  history.push('/');
+  return {
+    type: actionTypes.LOGOUT_SUCCESS,
+  };
+};
 
 export const auth = (email, password) => (dispatch) => {
   dispatch(startLoading());
@@ -71,7 +74,7 @@ export const signUpUser = (signUpData) => (dispatch) => {
     });
 };
 
-export const logoutUser = (user) => (dispatch) => {
+export const logoutUser = (user, history) => (dispatch) => {
   dispatch(startLoading());
   axios.post(`${coreEndPoint}/users/logout`, null, {
     headers: {
@@ -82,7 +85,7 @@ export const logoutUser = (user) => (dispatch) => {
       localStorage.removeItem('email');
       localStorage.removeItem('firstName');
       localStorage.removeItem('token');
-      dispatch(loggedOut());
+      dispatch(loggedOut(history));
       dispatch(stopLoading());
       dispatch(userMessage('You are now logged out successfully! Come back soon!', 'success'));
     })

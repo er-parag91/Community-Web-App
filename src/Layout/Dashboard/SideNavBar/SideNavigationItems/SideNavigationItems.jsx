@@ -17,7 +17,7 @@ class SideNavigationItems extends Component {
     } = this.props;
     return (
       <div className="SideNavigationItems">
-        <Profile history={history} onLogout={() => onLogout(user)} />
+        <Profile history={history} onLogout={() => onLogout(user, history)} />
         <Divider />
         <div>
           <p className="SideNavigationItems__Manu">Shopping</p>
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onLogout: (user) => dispatch(actions.logoutUser(user)),
+  onLogout: (user, history) => dispatch(actions.logoutUser(user, history)),
 });
 
 SideNavigationItems.propTypes = {
