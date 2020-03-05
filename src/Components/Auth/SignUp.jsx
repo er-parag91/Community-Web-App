@@ -109,6 +109,7 @@ const SignUp = (props) => {
             <Grid item xs={8} sm={8}>
               <InputField
                 value={phone}
+                type="tel"
                 id="phone"
                 label="Phone"
                 placeholder="e.g. 888-888-8888"

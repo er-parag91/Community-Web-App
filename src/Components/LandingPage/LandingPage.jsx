@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import jump from 'jump.js';
 import sal from 'sal.js';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import NavBar from './Navigation/NavBar/NavBar';
 import SideDrawer from './SideDrawer/SideDrawer';
 import './LandingPage.scss';
@@ -12,6 +11,7 @@ import TestimonialSection from './TestimonialSection/TestimonialSection';
 import ContactSection from './ContactSection/ContactSection';
 import Spinner from '../../UI/Spinner/Spinner';
 import './sal.css';
+import HTMLTitle from '../../UI/HTMLTitle/HTMLTitle';
 
 class LandingPage extends Component {
   state = {
@@ -51,9 +51,7 @@ class LandingPage extends Component {
     return (
       <div>
         { loadingLandingPage && <Spinner />}
-        <Helmet>
-          <title>Hindustan - Home</title>
-        </Helmet>
+        <HTMLTitle title="Home" />
         <NavBar
           navLinkClicked={this.jumpToHandler}
           isTop={isTop}

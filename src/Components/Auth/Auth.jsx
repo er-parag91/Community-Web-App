@@ -5,7 +5,6 @@ import './Auth.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import '../../UI/Header.scss';
-import { Helmet } from 'react-helmet';
 import SignUp from './SignUp';
 import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
 import Login from './Login';
@@ -13,6 +12,7 @@ import Login from './Login';
 import OutlinedButton from '../../UI/InputAndButton/OutlinedButton/OutlinedButton';
 import LoginHeader from './LoginHeader/LoginHeader';
 import * as actions from '../../Store/Actions';
+import HTMLTitle from '../../UI/HTMLTitle/HTMLTitle';
 // const Logo = require('../../assets/images/logo__big.png');
 const Avatar = require('../../assets/SVGs/Avatar.svg');
 
@@ -167,12 +167,7 @@ onLoginPageClose = () => {
     } = this.state;
     return (
       <Grid item container className="login">
-        <Helmet>
-          <title>
-            Hindustan -
-            { isLoggingIn ? ' Log In' : ' Sign Up' }
-          </title>
-        </Helmet>
+        <HTMLTitle title={isLoggingIn ? ' Log In' : ' Sign Up'} />
         <LoginHeader onSignInModeToggle={this.loginTypeHandler} isSigningIn={isLoggingIn} />
         <span className="login__close"><i className="fa fa-times login__close--icon" onClick={this.onLoginPageClose} aria-hidden="true" /></span>
         {width > 601 && (

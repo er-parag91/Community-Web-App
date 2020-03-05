@@ -22,7 +22,7 @@
 
   // shadow and lines
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.301);
-  --line: 1px solid var(--color-Grey-light-2);
+  --line: 1px solid var(--color-Primary-transparent);
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.144);
 
   // white background color with transparency
@@ -70,6 +70,12 @@ body {
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px var(--color-Grey-light-4) inset !important;
+  }
+  // helper text for input
+  .MuiFormHelperText-root {
+    font-size: 1.2rem !important;
+    line-height: normal !important;
+    margin-top: 4px !important;
   }
 }
 

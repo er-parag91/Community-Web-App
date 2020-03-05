@@ -4,15 +4,17 @@ import ShoppingRoutes from './ShoppingRoutes/ShoppingRoutes';
 import SellingRoutes from './SellingRoutes/SellingRoutes';
 import './DashboardRoutes.scss';
 import SideNavBarManu from '../../../Data/SideNavBar';
+import AddProduct from './SellingRoutes/SelllingComponents/AddProduct/addProduct';
 
 const DashboardRoutes = () => (
   <div className="DashboardRoutes">
     <Switch>
       {SideNavBarManu.ShoppingMenu.map((manuItem) => (
-        <Route key={manuItem.value} path={`/auth/dashboard/shopping/${manuItem.value}`} render={() => <ShoppingRoutes requestedRoute={manuItem.label} />} />
+        <Route key={manuItem.value} path={`/auth/dashboard/shopping/${manuItem.value}`} render={() => <ShoppingRoutes requestedRoute={manuItem} />} />
       ))}
+      <Route path="/auth/dashboard/selling/addProduct" render={() => <AddProduct requestedRoute="Add Product" />} />
       {SideNavBarManu.SellingManu.map((manuItem) => (
-        <Route key={manuItem.value} path={`/auth/dashboard/selling/${manuItem.value}`} render={() => <SellingRoutes requestedRoute={manuItem.label} />} />
+        <Route key={manuItem.value} path={`/auth/dashboard/selling/${manuItem.value}`} render={() => <SellingRoutes requestedRoute={manuItem} />} />
       ))}
     </Switch>
   </div>

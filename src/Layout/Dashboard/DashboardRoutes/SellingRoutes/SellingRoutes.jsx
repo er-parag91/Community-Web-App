@@ -1,25 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import UnderConstruction from '../../../../UI/UnderConstruction/UnderConstruction';
+import HTMLTitle from '../../../../UI/HTMLTitle/HTMLTitle';
 
 const SellingRoutes = (props) => {
   const { requestedRoute } = props;
+  console.log(requestedRoute);
   return (
     <div>
-      <Helmet>
-        <title>
-          Hindustan -
-          {` ${requestedRoute}`}
-        </title>
-      </Helmet>
-      <UnderConstruction requestedRoute={requestedRoute} />
+      <HTMLTitle title={requestedRoute.label} />
+      <UnderConstruction requestedRoute={requestedRoute.label} />
     </div>
   );
 };
 
 SellingRoutes.propTypes = {
-  requestedRoute: PropTypes.string.isRequired,
+  requestedRoute: PropTypes.shape().isRequired,
 };
 
 export default SellingRoutes;

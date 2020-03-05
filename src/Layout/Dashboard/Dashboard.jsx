@@ -1,12 +1,12 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import SideNavBar from './SideNavBar/SideNavBar';
 import './SideNavBar/SideNavBar.scss';
 import './Dashboard.scss';
 import Header from '../../Components/Header/Header';
 import DashboardRoutes from './DashboardRoutes/DashboardRoutes';
+import HTMLTitle from '../../UI/HTMLTitle/HTMLTitle';
 
 const Dashboard = (props) => {
   const { history } = props;
@@ -16,9 +16,7 @@ const Dashboard = (props) => {
         history.location.pathname === '/auth/dashboard'
         && <Redirect to="/auth/dashboard/shopping/featured" />
       }
-      <Helmet>
-        <title>Hindustan - Dashboard</title>
-      </Helmet>
+      <HTMLTitle title="Dashboard" />
       <SideNavBar history={history} />
       <div className="Dashboard__Body">
         <Header />
