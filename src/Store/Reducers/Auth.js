@@ -3,8 +3,9 @@ import * as actionTypes from '../Actions/actionTypes';
 const initialState = {
   token: null,
   email: null,
-  name: null,
-  isLoggedIn: false,
+  firstName: null,
+  lastName: null,
+  isLoggedIn: true,
 };
 
 
@@ -15,14 +16,16 @@ const authReducer = (state = initialState, action) => {
         ...state,
         token: null,
         email: null,
-        name: null,
+        firstName: null,
+        lastName: null,
         isLoggedIn: false,
       };
     case actionTypes.AUTH_SUCCESS:
       return {
         ...state,
         email: action.email,
-        name: action.name,
+        firstName: action.firstName,
+        lastName: action.lastName,
         token: action.token,
         isLoggedIn: true,
       };
@@ -30,14 +33,16 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         email: null,
-        name: null,
+        firstName: null,
+        lastName: null,
         token: null,
         isLoggedIn: false,
       };
     case actionTypes.LOGOUT_SUCCESS:
       return {
         email: null,
-        name: null,
+        firstName: null,
+        lastName: null,
         token: null,
         isLoggedIn: false,
       };

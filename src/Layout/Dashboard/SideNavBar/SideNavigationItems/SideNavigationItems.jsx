@@ -17,7 +17,7 @@ class SideNavigationItems extends Component {
     } = this.props;
     return (
       <div className="SideNavigationItems">
-        <Profile history={history} onLogout={() => onLogout(user, history)} />
+        <Profile history={history} user={user} onLogout={() => onLogout(user, history)} />
         <Divider />
         <div>
           <p className="SideNavigationItems__Manu">Shopping</p>

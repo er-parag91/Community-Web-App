@@ -3,10 +3,11 @@ import * as actionTypes from './actionTypes';
 import { coreEndPoint } from '../../path/dev';
 import { startLoading, stopLoading, userMessage } from './general';
 
-export const authSuccess = (email, name, token) => ({
+export const authSuccess = (email, firstName, lastName, token) => ({
   type: actionTypes.AUTH_SUCCESS,
   email,
-  name,
+  firstName,
+  lastName,
   token,
 });
 
@@ -28,9 +29,13 @@ export const auth = (email, password) => (dispatch) => {
     .then((response) => {
       localStorage.setItem('email', response.data.user.email);
       localStorage.setItem('firstName', response.data.user.firstName);
+      localStorage.setItem('lastName', response.data.user.lastName);
       localStorage.setItem('token', response.data.token);
       dispatch(authSuccess(
-        response.data.user.email, response.data.user.firstName, response.data.token,
+        response.data.user.email,
+        response.data.user.firstName,
+        response.data.user.lastName,
+        response.data.token,
       ));
       dispatch(userMessage('Successfully Logged in!', 'success'));
       dispatch(stopLoading());
@@ -61,9 +66,13 @@ export const signUpUser = (signUpData) => (dispatch) => {
     .then((response) => {
       localStorage.setItem('email', response.data.user.email);
       localStorage.setItem('firstName', response.data.user.firstName);
+      localStorage.setItem('lastName', response.data.user.lastName);
       localStorage.setItem('token', response.data.token);
       dispatch(authSuccess(
-        response.data.user.email, response.data.user.firstName, response.data.token,
+        response.data.user.email,
+        response.data.user.firstName,
+        response.data.user.lastName,
+        response.data.token,
       ));
       dispatch(stopLoading());
       dispatch(userMessage('Welcome! You have signed up successfully!', 'success'));
@@ -84,13 +93,14 @@ export const logoutUser = (user, history) => (dispatch) => {
     .then(() => {
       localStorage.removeItem('email');
       localStorage.removeItem('firstName');
+      localStorage.removeItem('lastName');
       localStorage.removeItem('token');
       dispatch(loggedOut(history));
       dispatch(stopLoading());
       dispatch(userMessage('You are now logged out successfully! Come back soon!', 'success'));
     })
     .catch((error) => {
-      console.log(error.response);
+      dispatch(loggedOut(history));
       dispatch(stopLoading());
       dispatch(userMessage(error.response ? error.response.data : 'Something went wrong!', 'error'));
     });

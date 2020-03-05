@@ -8,11 +8,16 @@ import Button from '../../../../../UI/Button/Button';
 import Avatar from '../../../../../assets/SVGs/profile.svg';
 
 const Profile = (props) => {
-  const { image, history, onLogout } = props;
+  const {
+    image, history, onLogout, user,
+  } = props;
   return (
     <div className="Profile">
       <div className="Avatar">
         <img alt="Avatar" src={image} />
+        <h1 className="Avatar__Name">
+          {user.firstName && user.lastName ? `${user.firstName} ${user.lastName}` : ' User'}
+        </h1>
       </div>
       <Button text="Profile" />
       <div className="Profile__actions">
@@ -31,10 +36,12 @@ Profile.propTypes = {
   image: PropTypes.string,
   history: PropTypes.shape().isRequired,
   onLogout: PropTypes.func.isRequired,
+  user: PropTypes.shape(),
 };
 
 Profile.defaultProps = {
   image: Avatar,
+  user: {},
 };
 
 export default Profile;
