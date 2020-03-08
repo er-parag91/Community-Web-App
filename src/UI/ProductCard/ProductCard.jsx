@@ -6,9 +6,10 @@
 import React from 'react';
 import './ProductCard.scss';
 import PropTypes from 'prop-types';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const ProductCard = (props) => {
-  const { product, onProductClicked } = props;
+  const { product, onProductClicked, allowDelete } = props;
   let adminStatus = 'Pending';
   let adminStatusClassName = 'Admin__approval--warning';
   let statusSection = <div />;
@@ -65,9 +66,16 @@ const ProductCard = (props) => {
         {statusSection}
       </div>
       <div className="card__footer">
-        <button type="button">Add to Cart</button>
+        {!allowDelete && <button type="button">Add to Cart</button>}
+        {allowDelete && <button onClick={() => onProductClicked(product._id)} type="button">Actions</button>}
         <span>
-          <i className="fa fa-heart" />
+          {!allowDelete && <i className="fa fa-heart" onClick={() => {}} />}
+          {allowDelete
+          && (
+          <Tooltip disableFocusListener title="Not Allowed" arrow>
+            <i className="fa fa-heart" />
+          </Tooltip>
+          )}
           0 likes
         </span>
       </div>
@@ -78,6 +86,11 @@ const ProductCard = (props) => {
 ProductCard.propTypes = {
   product: PropTypes.shape().isRequired,
   onProductClicked: PropTypes.func.isRequired,
+  allowDelete: PropTypes.bool,
+};
+
+ProductCard.defaultProps = {
+  allowDelete: false,
 };
 
 export default ProductCard;

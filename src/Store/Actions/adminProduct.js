@@ -38,16 +38,15 @@ export const addProduct = (productData, user, history, productStatus) => (dispat
   })
     .then((response) => {
       dispatch(onNewProductAddStart());
-      dispatch(userMessage(response.data ? response.data : 'Product has been submitted for approval before start selling. Thanks!'));
       dispatch(stopLoading());
       history.push('/auth/dashboard/selling/yourProducts');
+      dispatch(userMessage(response.data ? response.data : 'Product has been submitted for approval before start selling. Thanks!'));
     })
     .catch((error) => {
       dispatch(stopLoading());
       if (error.response && error.response.status === 404) {
         dispatch(get404Page('/auth/dashboard', history, 'Add Product resouce does not exist or you are not authorized'));
       } else {
-        console.log(error);
         dispatch(userMessage(error.response ? error.response.data : 'Something went wrong!', 'error'));
       }
     });
@@ -62,12 +61,10 @@ export const getMyProducts = (user, history) => (dispatch) => {
   })
     .then((response) => {
       dispatch(productsLoaded(response.data));
-      dispatch(userMessage('Products has been loaded!'));
       dispatch(stopLoading());
     })
     .catch((error) => {
       dispatch(stopLoading());
-      console.log(error);
       if (error.response && error.response.status === 404) {
         dispatch(get404Page('/auth/dashboard', history, 'Your Products resouce does not exist or you are not authorized'));
       } else {
@@ -99,6 +96,27 @@ export const getRequestedProduct = (user, history, productId) => (dispatch) => {
     })
     .catch((error) => {
       dispatch(stopLoading());
+      if (error.response && error.response.status === 404) {
+        dispatch(get404Page('/auth/dashboard', history, 'Your Products resouce does not exist or you are not authorized'));
+      } else {
+        dispatch(userMessage(error.response ? error.response.data : 'Something went wrong!', 'error'));
+      }
+    });
+};
+
+export const onProductDelete = (productId, user, history) => (dispatch) => {
+  dispatch(startLoading());
+  axios.delete(`${coreEndPoint}/users/deleteMyProduct/${productId}`, {
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  })
+    .then((response) => {
+      history.push('/auth/dashboard/selling/yourProducts');
+      dispatch(userMessage(response.data ? response.data : 'Product has been deleted!'));
+      dispatch(stopLoading());
+    })
+    .catch((error) => {
       if (error.response && error.response.status === 404) {
         dispatch(get404Page('/auth/dashboard', history, 'Your Products resouce does not exist or you are not authorized'));
       } else {

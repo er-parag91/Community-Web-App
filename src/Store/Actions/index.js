@@ -8,5 +8,10 @@ export {
 export { dismissErrorMessage, get404Page } from './general';
 
 export {
-  addProduct, getMyProducts, getRequestedProduct, onProductDataChange, onNewProductAddStart,
+  addProduct,
+  getMyProducts,
+  getRequestedProduct,
+  onProductDataChange,
+  onNewProductAddStart,
+  onProductDelete,
 } from './adminProduct';

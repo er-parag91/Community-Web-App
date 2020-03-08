@@ -32,7 +32,9 @@ class AddProduct extends Component {
   }
 
   render() {
-    const { requestedRoute, products, onProductDataChange } = this.props;
+    const {
+      requestedRoute, products, onProductDataChange, user, onProductDelete, history,
+    } = this.props;
     const productData = products.product;
     return (
       <div className="AddProduct">
@@ -200,9 +202,10 @@ class AddProduct extends Component {
             </Grid>
           </div>
           <div className="Form__Button">
-            <Grid lg={3} sm={9}>
+            <Grid lg={4} sm={10}>
               <Button color="purple" text={products.productStatus.productId ? 'Update' : 'Submit'} size="regular" buttonType="submit" />
-              <Button color="purple" text="Delete" size="regular" buttonType="button" />
+              {products.productStatus.productId
+                && <Button buttonClicked={() => onProductDelete(products.productStatus.productId, user, history)} color="red" text="Delete" size="regular" buttonType="button" />}
             </Grid>
           </div>
         </form>
@@ -225,6 +228,9 @@ const mapDispatchToProps = (dispatch) => ({
     actions.getRequestedProduct(user, history, productId),
   ),
   onProductDataChange: (key, target) => dispatch(actions.onProductDataChange(key, target.value)),
+  onProductDelete: (productId, user, history) => dispatch(
+    actions.onProductDelete(productId, user, history),
+  ),
 });
 
 AddProduct.propTypes = {
@@ -237,6 +243,7 @@ AddProduct.propTypes = {
   history: PropTypes.shape().isRequired,
   products: PropTypes.shape(),
   onProductDataChange: PropTypes.func,
+  onProductDelete: PropTypes.func,
 };
 
 AddProduct.defaultProps = {
@@ -245,6 +252,7 @@ AddProduct.defaultProps = {
   onProductRequest: () => {},
   products: {},
   onProductDataChange: () => {},
+  onProductDelete: () => {},
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddProduct));

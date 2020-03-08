@@ -27,7 +27,7 @@ class YourProducts extends Component {
     return (
       <div className="container">
         <HTMLTitle title="Your Products" />
-        {products.products.map((product) => <ProductCard key={product._id} product={product} onProductClicked={(productId) => history.push(`/auth/dashboard/selling/addProduct/${productId}`)} />)}
+        {products.products.map((product) => <ProductCard allowDelete key={product._id} product={product} onProductClicked={(productId) => history.push(`/auth/dashboard/selling/addProduct/${productId}`)} />)}
       </div>
     );
   }
