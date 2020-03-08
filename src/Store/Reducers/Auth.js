@@ -1,10 +1,10 @@
 import * as actionTypes from '../Actions/actionTypes';
 
 const initialState = {
-  token: null,
-  email: null,
-  firstName: null,
-  lastName: null,
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTVlODAyOWEzNDgwMjMyYzRiNzg5YjEiLCJpYXQiOjE1ODM1MzcyMjN9.oMp_8eKOD-zLHS2R_mDqsMO9VpcOwzahzjn8Hy5KXuM',
+  email: 'paragpatel91@gmail.com',
+  firstName: 'Parag',
+  lastName: 'Patel',
   isLoggedIn: true,
 };
 

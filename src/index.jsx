@@ -11,11 +11,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import authReducer from './Store/Reducers/Auth';
 import generalReducer from './Store/Reducers/General';
-
+import productsReducer from './Store/Reducers/products';
 
 const rootReducer = combineReducers({
   user: authReducer,
   generalState: generalReducer,
+  products: productsReducer,
 });
 const composeEnhancers = process.env.NODE_ENV === 'development'
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

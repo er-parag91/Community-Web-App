@@ -3,5 +3,13 @@
     padding-left: 25rem;
     width: 100%;
     max-width: 100vw;
+    // background-color: var(--color-Grey-light-3);
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 1180px) {
+  .Dashboard__Body{
+    padding-left: 0;
   }
 }

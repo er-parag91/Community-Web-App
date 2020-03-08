@@ -11,3 +11,9 @@
   background-image: linear-gradient(to right bottom, var(--main-gradient-2), var(--main-gradient-2)), url(../../../assets/images/login-background.jpg);
   overflow: auto;
 }
+
+@media (max-width: 1180px) {
+  .SideNavBar{
+    display: none;
+  }
+}

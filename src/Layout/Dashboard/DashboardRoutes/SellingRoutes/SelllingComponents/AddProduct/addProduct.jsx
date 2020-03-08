@@ -1,6 +1,10 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import * as actions from '../../../../../../Store/Actions/index';
 import HTMLTitle from '../../../../../../UI/HTMLTitle/HTMLTitle';
 import '../../SellingRoutes.scss';
 import InputField from '../../../../../../UI/Input/TextField';
@@ -8,38 +12,28 @@ import Button from '../../../../../../UI/Button/Button';
 import ShoppingManu from '../../../../../../Data/SideNavBar';
 
 class AddProduct extends Component {
-  state = {
-    productData: {
-      productName: '',
-      productDescription: '',
-      productSizes: '',
-      productPrice: '',
-      productDiscountedPrice: '',
-      productCategory: '',
-      productStock: 'Yes',
-      productWarnings: '',
-      productBuyingFrequency: 'No',
-      productImage: '',
-    },
-  }
-
-  onProductDataChange = (key, target) => {
-    console.log(key, target.value);
-    this.setState((prevState) => {
-      const { productData } = prevState;
-      productData[key] = target.value;
-      return { productData };
-    });
+  componentWillMount() {
+    const {
+      match, user, history, onProductRequest, onNewProductAddStart,
+    } = this.props;
+    if (match.params.productId) {
+      onProductRequest(user, history, match.params.productId);
+    } else {
+      onNewProductAddStart();
+    }
   }
 
   productSubmitHandler= (e) => {
     e.preventDefault();
+    const {
+      onAddProduct, user, history, products,
+    } = this.props;
+    onAddProduct(products.product, user, history, products.productStatus);
   }
 
   render() {
-    console.log(this.state);
-    const { productData } = this.state;
-    const { requestedRoute } = this.props;
+    const { requestedRoute, products, onProductDataChange } = this.props;
+    const productData = products.product;
     return (
       <div className="AddProduct">
         <HTMLTitle title={requestedRoute} />
@@ -53,7 +47,7 @@ class AddProduct extends Component {
                 id="productName"
                 required
                 value={productData.productName}
-                changeHandler={this.onProductDataChange}
+                changeHandler={onProductDataChange}
               />
             </Grid>
           </div>
@@ -67,7 +61,7 @@ class AddProduct extends Component {
                 multiline
                 resize
                 value={productData.productDescription}
-                changeHandler={this.onProductDataChange}
+                changeHandler={onProductDataChange}
               />
             </Grid>
           </div>
@@ -75,10 +69,23 @@ class AddProduct extends Component {
             <Grid lg={9} xs={12}>
               <InputField
                 label="Product Sizes (optional)"
-                placeholder="Write all sizes seperated by comma"
+                placeholder="Write all sizes in ascending order and seperated by comma"
                 id="productSizes"
+                helperText="i.e. SM,MD,LG,XL or 31,32,33,44 etc."
                 value={productData.productSizes}
-                changeHandler={this.onProductDataChange}
+                changeHandler={onProductDataChange}
+              />
+            </Grid>
+          </div>
+          <div className="Form__Input">
+            <Grid lg={9} xs={12}>
+              <InputField
+                label="Product Colors (optional)"
+                placeholder="Write all colors seperated by comma"
+                id="productColors"
+                helperText="i.e. RED,PURPLE,GREEN etc."
+                value={productData.productColors}
+                changeHandler={onProductDataChange}
               />
             </Grid>
           </div>
@@ -90,8 +97,9 @@ class AddProduct extends Component {
                 id="productPrice"
                 required
                 type="number"
+                inputProps={{ step: 0.01, min: 0 }}
                 value={productData.productPrice}
-                changeHandler={this.onProductDataChange}
+                changeHandler={onProductDataChange}
               />
             </Grid>
           </div>
@@ -102,8 +110,9 @@ class AddProduct extends Component {
                 placeholder="$ Discounted Price"
                 id="productDiscountedPrice"
                 type="number"
+                inputProps={{ step: 0.01, min: 0 }}
                 value={productData.productDiscountedPrice}
-                changeHandler={this.onProductDataChange}
+                changeHandler={onProductDataChange}
               />
             </Grid>
           </div>
@@ -119,7 +128,7 @@ class AddProduct extends Component {
                 }}
                 InputLabelProps={{ shrink: true }}
                 value={productData.productCategory}
-                changeHandler={this.onProductDataChange}
+                changeHandler={onProductDataChange}
               >
                 <option value="">Select</option>
                 {ShoppingManu.ShoppingMenu.map((category) => (
@@ -140,7 +149,7 @@ class AddProduct extends Component {
                   native: true,
                 }}
                 value={productData.productStock}
-                changeHandler={this.onProductDataChange}
+                changeHandler={onProductDataChange}
               >
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
@@ -155,7 +164,7 @@ class AddProduct extends Component {
                 id="productWarnings"
                 type="text"
                 value={productData.productWarnings}
-                changeHandler={this.onProductDataChange}
+                changeHandler={onProductDataChange}
               />
             </Grid>
           </div>
@@ -171,7 +180,7 @@ class AddProduct extends Component {
                 }}
                 helperText="Select Yes if you want us to recommend this product frequently to customer who already bought"
                 value={productData.productBuyingFrequency}
-                changeHandler={this.onProductDataChange}
+                changeHandler={onProductDataChange}
               >
                 <option value="No">No</option>
                 <option value="Yes">Yes</option>
@@ -183,17 +192,17 @@ class AddProduct extends Component {
               <InputField
                 label="Product Image"
                 id="productImage"
-                required
                 type="file"
                 InputLabelProps={{ shrink: true }}
                 value={productData.productImage}
-                changeHandler={this.onProductDataChange}
+                changeHandler={onProductDataChange}
               />
             </Grid>
           </div>
           <div className="Form__Button">
             <Grid lg={3} sm={9}>
-              <Button color="purple" text="Submit" size="large" buttonType="submit" />
+              <Button color="purple" text={products.productStatus.productId ? 'Update' : 'Submit'} size="regular" buttonType="submit" />
+              <Button color="purple" text="Delete" size="regular" buttonType="button" />
             </Grid>
           </div>
         </form>
@@ -202,8 +211,40 @@ class AddProduct extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  user: state.user,
+  products: state.products,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onAddProduct: (productData, user, history, productStatus) => dispatch(
+    actions.addProduct(productData, user, history, productStatus),
+  ),
+  onNewProductAddStart: () => dispatch(actions.onNewProductAddStart()),
+  onProductRequest: (user, history, productId) => dispatch(
+    actions.getRequestedProduct(user, history, productId),
+  ),
+  onProductDataChange: (key, target) => dispatch(actions.onProductDataChange(key, target.value)),
+});
+
 AddProduct.propTypes = {
   requestedRoute: PropTypes.string.isRequired,
+  onProductRequest: PropTypes.func,
+  onAddProduct: PropTypes.func,
+  onNewProductAddStart: PropTypes.func,
+  user: PropTypes.shape().isRequired,
+  match: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired,
+  products: PropTypes.shape(),
+  onProductDataChange: PropTypes.func,
 };
 
-export default AddProduct;
+AddProduct.defaultProps = {
+  onAddProduct: () => {},
+  onNewProductAddStart: () => {},
+  onProductRequest: () => {},
+  products: {},
+  onProductDataChange: () => {},
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddProduct));

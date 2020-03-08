@@ -4,4 +4,9 @@ export {
   signUpUser,
   logoutUser,
 } from './Auth';
-export { dismissErrorMessage } from './general';
+
+export { dismissErrorMessage, get404Page } from './general';
+
+export {
+  addProduct, getMyProducts, getRequestedProduct, onProductDataChange, onNewProductAddStart,
+} from './adminProduct';
