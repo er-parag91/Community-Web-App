@@ -21,7 +21,7 @@ class App extends Component {
       auth, generalState, onCloseAlert, history,
     } = this.props;
     const { isLoggedIn } = auth;
-    const { alert, loading } = generalState;
+    const { alert, loading, concurrentLoadingCount } = generalState;
     if (!isLoggedIn) {
       return (
         <div>
@@ -36,7 +36,7 @@ class App extends Component {
             </Alert>
           </Snackbar>
           )}
-          {loading && <Spinner backgroundOpacity="0.85" />}
+          {(loading || concurrentLoadingCount > 0) && <Spinner backgroundOpacity="0.85" />}
           <Switch>
             <Route path="/auth" component={Auth} />
             <Route path="/" component={LandingPage} />
@@ -57,7 +57,7 @@ class App extends Component {
             </Alert>
           </Snackbar>
         )}
-        {loading && <Spinner backgroundOpacity="0.85" />}
+        {(loading || concurrentLoadingCount > 0) && <Spinner backgroundOpacity="0.85" />}
         {
           history.location.pathname === '/auth'
           && <Redirect exact from="/auth" to="/auth/dashboard" />

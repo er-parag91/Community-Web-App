@@ -76,7 +76,7 @@ const ProductCard = (props) => {
             <i className="fa fa-heart" />
           </Tooltip>
           )}
-          0 likes
+          {`${product.like} likes`}
         </span>
       </div>
     </div>

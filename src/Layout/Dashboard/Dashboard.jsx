@@ -8,6 +8,7 @@ import Header from '../../Components/Header/Header';
 import DashboardRoutes from './DashboardRoutes/DashboardRoutes';
 import HTMLTitle from '../../UI/HTMLTitle/HTMLTitle';
 import Backdrop from '../../UI/Backdrop/Backdrop';
+import Footer from '../../Components/Footer/footer';
 
 
 class Dashboard extends Component {
@@ -56,7 +57,10 @@ class Dashboard extends Component {
             isSideNavBarOpen={isSideNavBarOpen}
             openSideNavBar={() => this.setState({ isSideNavBarOpen: true })}
           />
-          <DashboardRoutes />
+          <div className="main">
+            <DashboardRoutes />
+          </div>
+          <Footer />
         </div>
       </div>
     );

@@ -1,7 +1,6 @@
 import * as actionTypes from '../Actions/actionTypes';
 
-const initialState = {
-  products: [],
+const productSampleObject = {
   productStatus: {
     productId: '',
     adminApproved: '',
@@ -23,29 +22,17 @@ const initialState = {
   },
 };
 
+const initialState = {
+  products: [],
+  ...productSampleObject,
+};
+
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ON_NEW_PRODUCT_ADD_START:
       return {
         ...state,
-        productStatus: {
-          productId: '',
-          adminApproved: '',
-          adminApprovalStatus: '',
-        },
-        product: {
-          productName: '',
-          productDescription: '',
-          productSizes: '',
-          productColors: '',
-          productPrice: '',
-          productDiscountedPrice: '',
-          productCategory: '',
-          productStock: 'Yes',
-          productWarnings: '',
-          productBuyingFrequency: 'No',
-          productImage: '',
-        },
+        ...productSampleObject,
       };
     case actionTypes.PRODUCTS_LOADED:
       return {
@@ -60,7 +47,6 @@ const productsReducer = (state = initialState, action) => {
       };
     case actionTypes.ADD_PRODUCT_INPUT_CHANGE:
       if (action.key === 'productImage') {
-        console.log(action.value.name);
         return {
           ...state,
           product: {

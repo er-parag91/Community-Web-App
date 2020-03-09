@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable no-unused-vars */
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import { coreEndPoint } from '../../path/dev';

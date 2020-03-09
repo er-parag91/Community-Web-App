@@ -15,12 +15,12 @@ class YourProducts extends Component {
   }
 
   render() {
-    const { products, history } = this.props;
+    const { products, history, requestedRoute } = this.props;
     if (!products.products || products.products.length === 0) {
       return (
         <div>
-          <HTMLTitle title="Your Products" />
-          <h1 className="Title">Your Products</h1>
+          <HTMLTitle title={requestedRoute.label} />
+          <h1 className="Title">{requestedRoute.label}</h1>
           <h3 className="No__Products">You have not added any products yet :(</h3>
         </div>
       );
@@ -30,7 +30,7 @@ class YourProducts extends Component {
         <h1 className="Title">Your Products</h1>
         <div className="container">
           <HTMLTitle title="Your Products" />
-          {products.products.map((product) => <ProductCard allowDelete key={product._id} product={product} onProductClicked={(productId) => history.push(`/auth/dashboard/selling/addProduct/${productId}`)} />)}
+          {products.products.map((product) => <ProductCard allowDelete key={product._id} product={product} onProductClicked={(productId) => history.push(`/auth/dashboard/selling/yourProducts/${productId}`)} />)}
         </div>
       </div>
     );
@@ -51,11 +51,12 @@ YourProducts.propTypes = {
   user: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired,
   products: PropTypes.shape(),
+  requestedRoute: PropTypes.string.isRequired,
 };
 
 YourProducts.defaultProps = {
   onProductsRequest: () => {},
-  products: [],
+  products: {},
 };
 
 

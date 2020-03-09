@@ -13,8 +13,8 @@ const DashboardRoutes = () => (
       {SideNavBarManu.ShoppingMenu.map((manuItem) => (
         <Route key={manuItem.value} path={`/auth/dashboard/shopping/${manuItem.value}`} render={() => <ShoppingRoutes requestedRoute={manuItem} />} />
       ))}
-      <Route path="/auth/dashboard/selling/addProduct/:productId" render={() => <AddProduct requestedRoute="Update Product" />} />
       <Route path="/auth/dashboard/selling/addProduct" render={() => <AddProduct requestedRoute="Add Product" />} />
+      <Route path="/auth/dashboard/selling/yourProducts/:productId" render={() => <AddProduct requestedRoute="Update Product" />} />
       <Route path="/auth/dashboard/selling/yourProducts" render={() => <YourProduct requestedRoute="Your Product" />} />
 
       {SideNavBarManu.SellingManu.map((manuItem) => (

@@ -162,7 +162,7 @@ class AddProduct extends Component {
               >
                 <option value="">Select</option>
                 {ShoppingManu.ShoppingMenu.map((category) => (
-                  <option key={category.label} value={category.label}>{category.label}</option>
+                  <option key={category.label} value={category.value}>{category.label}</option>
                 ))}
               </InputField>
             </Grid>

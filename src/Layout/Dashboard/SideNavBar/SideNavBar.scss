@@ -6,7 +6,7 @@
   left: 0;
   top: 0;
   box-shadow: 0 10px 20px var(--color-black);
-  z-index: 1000;
+  z-index: 500;
   transform: translateX(-100%);
   background-image: linear-gradient(to right bottom, var(--main-gradient-2), var(--main-gradient-2)), url(../../../assets/images/login-background.jpg);
   overflow: auto;

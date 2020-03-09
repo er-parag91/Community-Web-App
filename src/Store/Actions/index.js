@@ -15,3 +15,7 @@ export {
   onNewProductAddStart,
   onProductDelete,
 } from './adminProduct';
+
+export {
+  getProductsByCategory,
+} from './customerProducts';
