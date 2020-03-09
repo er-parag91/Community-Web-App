@@ -9,7 +9,9 @@ import PropTypes from 'prop-types';
 import Tooltip from '@material-ui/core/Tooltip';
 
 const ProductCard = (props) => {
-  const { product, onProductClicked, allowDelete } = props;
+  const {
+    product, onProductClicked, allowDelete, onProductLike,
+  } = props;
   let adminStatus = 'Pending';
   let adminStatusClassName = 'Admin__approval--warning';
   let statusSection = <div />;
@@ -69,14 +71,14 @@ const ProductCard = (props) => {
         {!allowDelete && <button type="button">Add to Cart</button>}
         {allowDelete && <button onClick={() => onProductClicked(product._id)} type="button">Actions</button>}
         <span>
-          {!allowDelete && <i className="fa fa-heart" onClick={() => {}} />}
+          {!allowDelete && <i className="fa fa-heart" onClick={() => onProductLike(product._id)} />}
           {allowDelete
           && (
           <Tooltip disableFocusListener title="Not Allowed" arrow>
             <i className="fa fa-heart" />
           </Tooltip>
           )}
-          {`${product.like} likes`}
+          {`${product.like > 1000 ? `${((product.like) / 1000).toFixed(1)}k` : product.like} likes`}
         </span>
       </div>
     </div>
@@ -87,10 +89,12 @@ ProductCard.propTypes = {
   product: PropTypes.shape().isRequired,
   onProductClicked: PropTypes.func.isRequired,
   allowDelete: PropTypes.bool,
+  onProductLike: PropTypes.func,
 };
 
 ProductCard.defaultProps = {
   allowDelete: false,
+  onProductLike: () => {},
 };
 
 export default ProductCard;

@@ -16,7 +16,9 @@ class YourProducts extends Component {
   }
 
   render() {
-    const { products, history, requestedRoute } = this.props;
+    const {
+      products, history, requestedRoute,
+    } = this.props;
     if (!products.products || products.products.length === 0) {
       return (
         <div>
@@ -31,7 +33,14 @@ class YourProducts extends Component {
         <h1 className="Title">Your Products</h1>
         <div className="container">
           <HTMLTitle title="Your Products" />
-          {products.products.map((product) => <ProductCard allowDelete key={product._id} product={product} onProductClicked={(productId) => history.push(`/auth/dashboard/selling/yourProducts/${productId}`)} />)}
+          {products.products.map((product) => (
+            <ProductCard
+              allowDelete
+              key={product._id}
+              product={product}
+              onProductClicked={(productId) => history.push(`/auth/dashboard/selling/yourProducts/${productId}`)}
+            />
+          ))}
         </div>
       </div>
     );

@@ -26,7 +26,7 @@ class App extends Component {
       return (
         <div>
           {alert.message && (
-          <Snackbar open autoHideDuration={12000} onClose={onCloseAlert}>
+          <Snackbar open autoHideDuration={6000} onClose={onCloseAlert}>
             <Alert
               onCloseAlert={onCloseAlert}
               AlertTitle={alert.severity}
@@ -78,7 +78,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCloseAlert: () => dispatch(actions.dismissErrorMessage()),
+  onCloseAlert: () => dispatch(actions.dismissUserMessage()),
 });
 
 App.propTypes = {

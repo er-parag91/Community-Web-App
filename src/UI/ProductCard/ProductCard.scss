@@ -11,6 +11,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  transition: all 500ms;
+  &:hover{
+    transform: scale(1.05);
+  }
 
   // image
   &__image {

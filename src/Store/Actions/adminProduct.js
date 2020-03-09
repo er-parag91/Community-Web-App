@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import { coreEndPoint } from '../../path/dev';
 import {
-  startLoading, stopLoading, userMessage, get404Page,
+  startLoading, stopLoading, userMessage, get404Page, dismissUserMessage,
 } from './general';
 
 export const onNewProductAddStart = () => ({
@@ -28,6 +28,7 @@ export const requestedProductLoaded = (product, productStatus) => ({
 });
 
 export const addProduct = (productData, user, history, productStatus) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
   const endPoint = productStatus.productId ? `${coreEndPoint}/users/addProduct/${productStatus.productId}` : `${coreEndPoint}/users/addProduct`;
   axios.post(endPoint, productData, {
@@ -52,6 +53,7 @@ export const addProduct = (productData, user, history, productStatus) => (dispat
 };
 
 export const getMyProducts = (user, history) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
   axios.get(`${coreEndPoint}/users/getMyProducts`, {
     headers: {
@@ -73,6 +75,7 @@ export const getMyProducts = (user, history) => (dispatch) => {
 };
 
 export const getRequestedProduct = (user, history, productId) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
 
   axios.get(`${coreEndPoint}/users/getRequestedProduct/${productId}`, {
@@ -104,6 +107,7 @@ export const getRequestedProduct = (user, history, productId) => (dispatch) => {
 };
 
 export const onProductDelete = (productId, user, history) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
   axios.delete(`${coreEndPoint}/users/deleteMyProduct/${productId}`, {
     headers: {

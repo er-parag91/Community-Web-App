@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import { coreEndPoint } from '../../path/dev';
 import {
-  startLoading, stopLoading, userMessage, get404Page,
+  startLoading, stopLoading, userMessage, get404Page, dismissUserMessage,
 } from './general';
 
 export const productsByCategoryLoaded = (products) => ({
@@ -11,8 +11,13 @@ export const productsByCategoryLoaded = (products) => ({
   products,
 });
 
+export const productLikeSuccess = (productId) => ({
+  type: actionTypes.PRODUCT_LIKE_SUCCESS,
+  productId,
+});
 
 export const getProductsByCategory = (user, route, history) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
   axios.get(`${coreEndPoint}/customer/customerProducts/${route.value}`, {
     headers: {
@@ -30,5 +35,19 @@ export const getProductsByCategory = (user, route, history) => (dispatch) => {
       } else {
         dispatch(userMessage(error.response ? error.response.data : 'Something went wrong!', 'error'));
       }
+    });
+};
+
+export const likeProduct = (productId, user) => (dispatch) => {
+  dispatch(dismissUserMessage());
+  axios.post(`${coreEndPoint}/customer/customerProducts/customerLikedProduct/${productId}`, null, {
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  }).then(() => {
+    dispatch(userMessage('Like registered!'));
+  })
+    .catch((err) => {
+      dispatch(userMessage(err.response.data ? err.response.data : 'Can not process like request', 'error'));
     });
 };

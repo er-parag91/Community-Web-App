@@ -1,7 +1,9 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import { coreEndPoint } from '../../path/dev';
-import { startLoading, stopLoading, userMessage } from './general';
+import {
+  startLoading, stopLoading, userMessage, dismissUserMessage,
+} from './general';
 
 export const authSuccess = (email, firstName, lastName, token) => ({
   type: actionTypes.AUTH_SUCCESS,
@@ -19,6 +21,7 @@ export const loggedOut = (history) => {
 };
 
 export const auth = (email, password) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
   const authData = {
     email,
@@ -31,6 +34,7 @@ export const auth = (email, password) => (dispatch) => {
       localStorage.setItem('firstName', response.data.user.firstName);
       localStorage.setItem('lastName', response.data.user.lastName);
       localStorage.setItem('token', response.data.token);
+      dispatch(stopLoading());
       dispatch(authSuccess(
         response.data.user.email,
         response.data.user.firstName,
@@ -38,7 +42,6 @@ export const auth = (email, password) => (dispatch) => {
         response.data.token,
       ));
       dispatch(userMessage('Successfully Logged in!', 'success'));
-      dispatch(stopLoading());
     })
     .catch((error) => {
       dispatch(stopLoading());
@@ -47,6 +50,7 @@ export const auth = (email, password) => (dispatch) => {
 };
 
 export const forgotPassword = (email) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
 
   axios.post(`${coreEndPoint}/users/forgotPassword`, { email })
@@ -61,6 +65,7 @@ export const forgotPassword = (email) => (dispatch) => {
 };
 
 export const signUpUser = (signUpData) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
   axios.post(`${coreEndPoint}/users`, signUpData)
     .then((response) => {
@@ -84,6 +89,7 @@ export const signUpUser = (signUpData) => (dispatch) => {
 };
 
 export const logoutUser = (user, history) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
   axios.post(`${coreEndPoint}/users/logout`, null, {
     headers: {

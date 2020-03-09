@@ -14,7 +14,7 @@ export const userMessage = (message, severity) => ({
   severity,
 });
 
-export const dismissErrorMessage = () => ({
+export const dismissUserMessage = () => ({
   type: actionTypes.DISMISS_USER_MESSAGE,
 });
 

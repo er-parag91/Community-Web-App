@@ -18,7 +18,9 @@ class ShoppingRoutes extends Component {
   }
 
   render() {
-    const { customer, requestedRoute } = this.props;
+    const {
+      customer, requestedRoute, onProductLike, user,
+    } = this.props;
     if (!customer.productsByCategory || customer.productsByCategory.length === 0) {
       return (
         <div>
@@ -35,7 +37,13 @@ class ShoppingRoutes extends Component {
           <HTMLTitle title="Your Products" />
           {
             customer.productsByCategory.map(
-              (product) => <ProductCard product={product} onProductClicked={() => {}} />,
+              (product) => (
+                <ProductCard
+                  product={product}
+                  onProductClicked={() => {}}
+                  onProductLike={(productId) => onProductLike(productId, user)}
+                />
+              ),
             )
           }
         </div>
@@ -50,6 +58,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onProductLike: (productId, user) => dispatch(actions.likeProduct(productId, user)),
   onGetProductsByCategory: (user, route, history) => dispatch(
     actions.getProductsByCategory(user, route, history),
   ),
@@ -61,11 +70,13 @@ ShoppingRoutes.propTypes = {
   history: PropTypes.shape().isRequired,
   customer: PropTypes.shape(),
   requestedRoute: PropTypes.shape().isRequired,
+  onProductLike: PropTypes.func,
 };
 
 ShoppingRoutes.defaultProps = {
   onGetProductsByCategory: () => {},
   customer: {},
+  onProductLike: () => {},
 };
 
 

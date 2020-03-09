@@ -3,9 +3,14 @@ export {
   forgotPassword,
   signUpUser,
   logoutUser,
-} from './Auth';
+}
+  from './Auth';
 
-export { dismissErrorMessage, get404Page } from './general';
+export {
+  dismissUserMessage,
+  get404Page,
+}
+  from './general';
 
 export {
   addProduct,
@@ -14,8 +19,11 @@ export {
   onProductDataChange,
   onNewProductAddStart,
   onProductDelete,
-} from './adminProduct';
+}
+  from './adminProduct';
 
 export {
   getProductsByCategory,
-} from './customerProducts';
+  likeProduct,
+}
+  from './customerProducts';
