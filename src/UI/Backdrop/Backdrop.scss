@@ -1,4 +1,5 @@
 .Backdrop{
+  display: inline;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -8,3 +9,12 @@
     background-color: rgba(0, 0, 0, 0.7);
   }
   
+  .notShowOn1180{
+    display: none;
+  }
+  
+  @media (max-width: 1180px) {
+    .notShowOn1180{
+      display: block;
+    }
+  }

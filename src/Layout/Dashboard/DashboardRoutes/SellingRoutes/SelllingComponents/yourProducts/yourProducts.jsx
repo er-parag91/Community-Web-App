@@ -20,14 +20,18 @@ class YourProducts extends Component {
       return (
         <div>
           <HTMLTitle title="Your Products" />
-          <h1>No Products Fount yet!</h1>
+          <h1 className="Title">Your Products</h1>
+          <h3 className="No__Products">You have not added any products yet :(</h3>
         </div>
       );
     }
     return (
-      <div className="container">
-        <HTMLTitle title="Your Products" />
-        {products.products.map((product) => <ProductCard allowDelete key={product._id} product={product} onProductClicked={(productId) => history.push(`/auth/dashboard/selling/addProduct/${productId}`)} />)}
+      <div>
+        <h1 className="Title">Your Products</h1>
+        <div className="container">
+          <HTMLTitle title="Your Products" />
+          {products.products.map((product) => <ProductCard allowDelete key={product._id} product={product} onProductClicked={(productId) => history.push(`/auth/dashboard/selling/addProduct/${productId}`)} />)}
+        </div>
       </div>
     );
   }

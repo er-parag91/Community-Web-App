@@ -45,7 +45,7 @@ $default-font-size: 1.6rem;
 * {
   margin: 0;
   padding: 0;
-  
+
 }
 
 *,
@@ -66,6 +66,7 @@ html {
 body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
+
   /* Change the white to any color ;) */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -73,18 +74,18 @@ body {
   input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px var(--color-Grey-light-4) inset !important;
   }
+
   // helper text for input
   .MuiFormHelperText-root {
-    font-size: 1.2rem !important;
+    font-size: 1rem !important;
+    font-weight: 100 !important;
     line-height: normal !important;
+    margin: 0 !important;
     margin-top: 4px !important;
   }
 }
 
-@media
-only screen and (-webkit-min-device-pixel-ratio: 1.5),
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
 only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min--moz-device-pixel-ratio: 1.5),
-only screen and (min-device-pixel-ratio: 1.5){
-
-}
+only screen and (min-device-pixel-ratio: 1.5) {}

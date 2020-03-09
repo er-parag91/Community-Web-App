@@ -1,0 +1,33 @@
+.Admin__Info {
+  margin: 1.5rem 0;
+  font-size: 1.5rem;
+  color: var(--color-Grey-dark-1);
+  text-align: left;
+  padding: 1.5rem;
+  background-color: #f0eeee;
+  border-radius: 1rem;
+  text-align: left;
+  font-weight: 400;
+  
+  &--warning {
+    margin-left: 0.5rem;
+    color: var(--color-warning);
+  }
+
+  &--danger {
+    color: var(--color-Primary-red);
+    margin-left: 0.5rem;
+
+  }
+
+  &--success {
+    color: var(--color-greenish);
+    margin-left: 0.5rem;
+
+  }
+
+  &--message {
+    padding-top: 0.5rem;
+    display: block;
+  }
+}

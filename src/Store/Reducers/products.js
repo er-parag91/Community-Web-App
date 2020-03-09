@@ -59,6 +59,16 @@ const productsReducer = (state = initialState, action) => {
         productStatus: action.productStatus,
       };
     case actionTypes.ADD_PRODUCT_INPUT_CHANGE:
+      if (action.key === 'productImage') {
+        console.log(action.value.name);
+        return {
+          ...state,
+          product: {
+            ...state.product,
+            [action.key]: action.value.name,
+          },
+        };
+      }
       return {
         ...state,
         product: {

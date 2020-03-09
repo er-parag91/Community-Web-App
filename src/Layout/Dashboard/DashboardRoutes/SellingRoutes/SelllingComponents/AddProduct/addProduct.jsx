@@ -10,6 +10,7 @@ import '../../SellingRoutes.scss';
 import InputField from '../../../../../../UI/Input/TextField';
 import Button from '../../../../../../UI/Button/Button';
 import ShoppingManu from '../../../../../../Data/SideNavBar';
+import './addProducts.scss';
 
 class AddProduct extends Component {
   componentWillMount() {
@@ -36,10 +37,37 @@ class AddProduct extends Component {
       requestedRoute, products, onProductDataChange, user, onProductDelete, history,
     } = this.props;
     const productData = products.product;
+    let adminStatus = 'Still pending';
+    let adminStatusClassName = 'Admin__Info--warning';
+    let statusSection = <div />;
+    if (products.productStatus.adminApproved) {
+      if (products.productStatus.adminApproved === 'true') {
+        adminStatus = 'Approved';
+        adminStatusClassName = 'Admin__Info--success';
+      } else if (products.productStatus.adminApprovalStatus) {
+        adminStatus = 'This Product is Rejected by admin.';
+        adminStatusClassName = 'Admin__Info--danger';
+      }
+      statusSection = (
+        <p className="Admin__Info">
+            Admin Approval Status:
+          <span className={adminStatusClassName}>
+            {adminStatus}
+          </span>
+          {products.productStatus.adminApprovalStatus && (
+          <span className="Admin__Info--message">
+            Admin Message:
+            {`  ${products.productStatus.adminApprovalStatus}`}
+          </span>
+          )}
+        </p>
+      );
+    }
     return (
       <div className="AddProduct">
         <HTMLTitle title={requestedRoute} />
         <h1 className="Title">Add Product</h1>
+        {statusSection}
         <form className="Form" onSubmit={this.productSubmitHandler}>
           <div className="Form__Input">
             <Grid lg={9} xs={12}>
@@ -49,7 +77,7 @@ class AddProduct extends Component {
                 id="productName"
                 required
                 value={productData.productName}
-                changeHandler={onProductDataChange}
+                changeHandler={(key, target) => onProductDataChange(key, target.value)}
               />
             </Grid>
           </div>
@@ -63,7 +91,7 @@ class AddProduct extends Component {
                 multiline
                 resize
                 value={productData.productDescription}
-                changeHandler={onProductDataChange}
+                changeHandler={(key, target) => onProductDataChange(key, target.value)}
               />
             </Grid>
           </div>
@@ -75,7 +103,7 @@ class AddProduct extends Component {
                 id="productSizes"
                 helperText="i.e. SM,MD,LG,XL or 31,32,33,44 etc."
                 value={productData.productSizes}
-                changeHandler={onProductDataChange}
+                changeHandler={(key, target) => onProductDataChange(key, target.value)}
               />
             </Grid>
           </div>
@@ -87,12 +115,12 @@ class AddProduct extends Component {
                 id="productColors"
                 helperText="i.e. RED,PURPLE,GREEN etc."
                 value={productData.productColors}
-                changeHandler={onProductDataChange}
+                changeHandler={(key, target) => onProductDataChange(key, target.value)}
               />
             </Grid>
           </div>
           <div className="Form__Input">
-            <Grid lg={2} xs={6}>
+            <Grid lg={2} xs={8}>
               <InputField
                 label="Price in US dollars"
                 placeholder="$ Price"
@@ -101,12 +129,12 @@ class AddProduct extends Component {
                 type="number"
                 inputProps={{ step: 0.01, min: 0 }}
                 value={productData.productPrice}
-                changeHandler={onProductDataChange}
+                changeHandler={(key, target) => onProductDataChange(key, target.value)}
               />
             </Grid>
           </div>
           <div className="Form__Input">
-            <Grid lg={2} xs={6}>
+            <Grid lg={2} xs={8}>
               <InputField
                 label="Discounted Price (optional)"
                 placeholder="$ Discounted Price"
@@ -114,12 +142,12 @@ class AddProduct extends Component {
                 type="number"
                 inputProps={{ step: 0.01, min: 0 }}
                 value={productData.productDiscountedPrice}
-                changeHandler={onProductDataChange}
+                changeHandler={(key, target) => onProductDataChange(key, target.value)}
               />
             </Grid>
           </div>
           <div className="Form__Input">
-            <Grid lg={3} xs={6}>
+            <Grid lg={3} xs={8}>
               <InputField
                 label="Product Category"
                 id="productCategory"
@@ -130,7 +158,7 @@ class AddProduct extends Component {
                 }}
                 InputLabelProps={{ shrink: true }}
                 value={productData.productCategory}
-                changeHandler={onProductDataChange}
+                changeHandler={(key, target) => onProductDataChange(key, target.value)}
               >
                 <option value="">Select</option>
                 {ShoppingManu.ShoppingMenu.map((category) => (
@@ -140,7 +168,7 @@ class AddProduct extends Component {
             </Grid>
           </div>
           <div className="Form__Input">
-            <Grid lg={3} xs={6}>
+            <Grid lg={3} xs={8}>
               <InputField
                 label="In stock?"
                 helperText="Is This Product in stock?"
@@ -151,7 +179,7 @@ class AddProduct extends Component {
                   native: true,
                 }}
                 value={productData.productStock}
-                changeHandler={onProductDataChange}
+                changeHandler={(key, target) => onProductDataChange(key, target.value)}
               >
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
@@ -166,7 +194,7 @@ class AddProduct extends Component {
                 id="productWarnings"
                 type="text"
                 value={productData.productWarnings}
-                changeHandler={onProductDataChange}
+                changeHandler={(key, target) => onProductDataChange(key, target.value)}
               />
             </Grid>
           </div>
@@ -182,7 +210,7 @@ class AddProduct extends Component {
                 }}
                 helperText="Select Yes if you want us to recommend this product frequently to customer who already bought"
                 value={productData.productBuyingFrequency}
-                changeHandler={onProductDataChange}
+                changeHandler={(key, target) => onProductDataChange(key, target.value)}
               >
                 <option value="No">No</option>
                 <option value="Yes">Yes</option>
@@ -190,14 +218,15 @@ class AddProduct extends Component {
             </Grid>
           </div>
           <div className="Form__Input">
-            <Grid lg={6} xs={9}>
+            <Grid lg={6} xs={10}>
               <InputField
                 label="Product Image"
                 id="productImage"
                 type="file"
+                helperText={products.productStatus.productId && 'While editing product, you could leave image empty to have existing image for this product.'}
                 InputLabelProps={{ shrink: true }}
                 value={productData.productImage}
-                changeHandler={onProductDataChange}
+                changeHandler={(key, target) => onProductDataChange(key, target.files[0])}
               />
             </Grid>
           </div>
@@ -227,7 +256,7 @@ const mapDispatchToProps = (dispatch) => ({
   onProductRequest: (user, history, productId) => dispatch(
     actions.getRequestedProduct(user, history, productId),
   ),
-  onProductDataChange: (key, target) => dispatch(actions.onProductDataChange(key, target.value)),
+  onProductDataChange: (key, value) => dispatch(actions.onProductDataChange(key, value)),
   onProductDelete: (productId, user, history) => dispatch(
     actions.onProductDelete(productId, user, history),
   ),
