@@ -22,7 +22,7 @@ const Spinner = (props) => {
 };
 
 Spinner.propTypes = {
-  backgroundOpacity: PropTypes.string,
+  backgroundOpacity: PropTypes.number,
 };
 
 Spinner.defaultProps = {

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -6,14 +7,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../../../../../Store/Actions/index';
 import HTMLTitle from '../../../../../../UI/HTMLTitle/HTMLTitle';
-import '../../SellingRoutes.scss';
 import InputField from '../../../../../../UI/Input/TextField';
 import Button from '../../../../../../UI/Button/Button';
 import ShoppingManu from '../../../../../../Data/SideNavBar';
 import './addProducts.scss';
 
 class AddProduct extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const {
       match, user, history, onProductRequest, onNewProductAddStart,
     } = this.props;

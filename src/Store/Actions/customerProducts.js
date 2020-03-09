@@ -20,7 +20,6 @@ export const getProductsByCategory = (user, route, history) => (dispatch) => {
     },
   })
     .then((response) => {
-      console.log(response);
       dispatch(productsByCategoryLoaded(response.data));
       dispatch(stopLoading());
     })
@@ -29,7 +28,6 @@ export const getProductsByCategory = (user, route, history) => (dispatch) => {
       if (error.response && error.response.status === 404) {
         dispatch(get404Page('/auth/dashboard', history, 'Requested resource does not exist or You are not authenticated to access it.'));
       } else {
-        console.log(error);
         dispatch(userMessage(error.response ? error.response.data : 'Something went wrong!', 'error'));
       }
     });

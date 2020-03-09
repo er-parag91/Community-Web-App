@@ -5,7 +5,7 @@ const initialState = {
   email: '',
   firstName: '',
   lastName: '',
-  isLoggedIn: true,
+  isLoggedIn: false,
 };
 
 

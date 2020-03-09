@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -9,7 +10,7 @@ import '../SellingRoutes/SelllingComponents/yourProducts/yourProducts.scss';
 import ProductCard from '../../../../UI/ProductCard/ProductCard';
 
 class ShoppingRoutes extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const {
       user, onGetProductsByCategory, history, requestedRoute,
     } = this.props;
@@ -32,7 +33,11 @@ class ShoppingRoutes extends Component {
         <h1 className="Title">{requestedRoute.label}</h1>
         <div className="container">
           <HTMLTitle title="Your Products" />
-          {customer.productsByCategory.map((product) => <ProductCard product={product} />)}
+          {
+            customer.productsByCategory.map(
+              (product) => <ProductCard product={product} onProductClicked={() => {}} />,
+            )
+          }
         </div>
       </div>
     );

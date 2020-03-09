@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -9,7 +10,7 @@ import './yourProducts.scss';
 import ProductCard from '../../../../../../UI/ProductCard/ProductCard';
 
 class YourProducts extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const { user, onProductsRequest, history } = this.props;
     onProductsRequest(user, history);
   }

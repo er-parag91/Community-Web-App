@@ -65,7 +65,7 @@ class App extends Component {
         <Switch>
           <Route path="/" exact render={() => <LandingPage isLoggedIn={isLoggedIn} />} />
           <Route path="/auth/dashboard" component={Dashboard} />
-          <Route component={LandingPage} />
+          <Route render={() => <LandingPage isLoggedIn={isLoggedIn} history={history} />} />
         </Switch>
       </div>
     );

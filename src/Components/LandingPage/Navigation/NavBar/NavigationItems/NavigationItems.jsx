@@ -60,7 +60,7 @@ NavigationItems.propTypes = {
   isTop: PropTypes.bool,
   closeSideDrawer: PropTypes.func,
   onNavLinkClick: PropTypes.func.isRequired,
-  history: PropTypes.shape,
+  history: PropTypes.shape(),
 };
 
 NavigationItems.defaultProps = {

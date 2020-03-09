@@ -47,7 +47,6 @@ class LandingPage extends Component {
   render() {
     const { showSideDrawer, isTop, loadingLandingPage } = this.state;
     const { isLoggedIn, history } = this.props;
-    console.log(isLoggedIn);
     return (
       <div>
         { loadingLandingPage && <Spinner />}
@@ -61,7 +60,7 @@ class LandingPage extends Component {
         />
         <SideDrawer
           navLinkClicked={this.jumpToHandler}
-          isAuth
+          isAuth={isLoggedIn}
           open={showSideDrawer}
           drawerToggleClicked={this.sideDrawerOpenHandler}
           closed={this.sideDrawerClosedHandler}
@@ -88,7 +87,7 @@ class LandingPage extends Component {
 
 LandingPage.propTypes = {
   isLoggedIn: PropTypes.bool,
-  history: PropTypes.shape.isRequired,
+  history: PropTypes.shape().isRequired,
 };
 
 LandingPage.defaultProps = {

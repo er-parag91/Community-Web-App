@@ -247,8 +247,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Auth.propTypes = {
-  generalState: PropTypes.shape.isRequired,
-  history: PropTypes.shape.isRequired,
+  generalState: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired,
   onAuth: PropTypes.func.isRequired,
   onForgotPassword: PropTypes.func.isRequired,
   onUserSignUp: PropTypes.func.isRequired,

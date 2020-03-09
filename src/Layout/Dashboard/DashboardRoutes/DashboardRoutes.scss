@@ -1,3 +1,27 @@
 .DashboardRoutes{
   margin: 3rem;
 }
+
+
+// general styling for all shopping and selling routes
+.Title {
+  color: var(--color-Primary-light);
+  font-weight: 300;
+  margin-top: 3rem;
+  border-bottom: var(--line);
+}
+
+hr {
+}
+
+.Form {
+  padding: 5rem;
+
+  &__Input {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.Form__Button {
+  margin: 5rem 0 2rem;
+}

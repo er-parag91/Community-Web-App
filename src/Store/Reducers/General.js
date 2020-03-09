@@ -7,7 +7,7 @@ const initialState = {
     message: null,
     severity: '',
   },
-  loading: true,
+  loading: false,
   concurrentLoadingCount: 0,
 };
 
