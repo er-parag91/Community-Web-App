@@ -8,6 +8,7 @@ const initialState = {
   cartQuantity: 0,
   myCart: [],
   isLoggedIn: false,
+  profile: {},
 };
 
 
@@ -43,11 +44,14 @@ const authReducer = (state = initialState, action) => {
       };
     case actionTypes.LOGOUT_SUCCESS:
       return {
-        email: null,
-        firstName: null,
-        lastName: null,
-        token: null,
+        token: '',
+        email: '',
+        firstName: '',
+        lastName: '',
+        cartQuantity: 0,
+        myCart: [],
         isLoggedIn: false,
+        profile: {},
       };
     case actionTypes.ADDED_TO_CART:
       return {
@@ -58,6 +62,11 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         myCart: action.cartItems,
+      };
+    case actionTypes.MY_PROFILE_LOADED:
+      return {
+        ...state,
+        profile: action.profile,
       };
     default:
       return state;

@@ -26,13 +26,12 @@ export const myCartLoaded = (cartItems) => ({
   cartItems,
 });
 
-export const myProfileLoaded = (data) => {
-  console.log(data);
-  return {
+export const myProfileLoaded = (profile) => (
+  {
     type: actionTypes.MY_PROFILE_LOADED,
-    data,
-  };
-};
+    profile,
+  });
+
 
 export const loggedOut = (history) => {
   history.push('/');
@@ -135,6 +134,7 @@ export const logoutUser = (user, history) => (dispatch) => {
 
 
 export const getMyCart = (user, history) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
   axios.get(`${coreEndPoint}/users/me/myCart`, {
     headers: {
@@ -157,6 +157,7 @@ export const getMyCart = (user, history) => (dispatch) => {
 };
 
 export const onCartItemDelete = (cartItemId, user, history) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
   axios.delete(`${coreEndPoint}/users/me/myCart/delete/${cartItemId}`, {
     headers: {
@@ -180,8 +181,9 @@ export const onCartItemDelete = (cartItemId, user, history) => (dispatch) => {
 };
 
 export const onGetMyProfile = (user, history) => (dispatch) => {
+  dispatch(dismissUserMessage());
   dispatch(startLoading());
-  axios.get(`${coreEndPoint}/users/me/myProfile`, {
+  axios.get(`${coreEndPoint}/users/me`, {
     headers: {
       Authorization: `Bearer ${user.token}`,
     },
@@ -189,7 +191,7 @@ export const onGetMyProfile = (user, history) => (dispatch) => {
     .then((response) => {
       dispatch(stopLoading());
       dispatch(myProfileLoaded(response.data));
-      dispatch(userMessage('You have deleted cart item.', 'success'));
+      dispatch(userMessage('Here is your Profile', 'success'));
     })
     .catch((error) => {
       dispatch(stopLoading());

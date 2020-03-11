@@ -7,6 +7,14 @@ import * as actions from '../../../../Store/Actions/index';
 import HTMLTitle from '../../../../UI/HTMLTitle/HTMLTitle';
 
 class MyProfile extends Component {
+  state = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    state: 'AL',
+  }
+
   UNSAFE_componentWillMount() {
     const {
       user, history, onGetMyProfile,
@@ -16,14 +24,7 @@ class MyProfile extends Component {
 
   render() {
     const { user } = this.props;
-    if (!user.myCart || !user.myCart.length) {
-      return (
-        <div>
-          <HTMLTitle title="My Profile" />
-          <h1 className="Title">My Profile</h1>
-        </div>
-      );
-    }
+    console.log(this.state, user);
     return (
       <div>
         <div>
