@@ -13,7 +13,7 @@
   align-items: flex-end;
   transition: all 500ms;
   &:hover{
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 
   // image
@@ -129,6 +129,9 @@
       i {
         padding: 0.5rem;
         cursor: pointer;
+        &:hover{
+          transform: scale(1.2);
+        }
       }
     }
   }

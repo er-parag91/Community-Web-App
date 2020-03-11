@@ -5,10 +5,14 @@ import './DashboardRoutes.scss';
 import SideNavBarManu from '../../../Data/SideNavBar';
 import AddProduct from './SellingRoutes/SelllingComponents/AddProduct/addProduct';
 import YourProduct from './SellingRoutes/SelllingComponents/yourProducts/yourProducts';
+import MyCart from './User/MyCart';
+import MyProfile from './User/MyProfile';
 
 const DashboardRoutes = () => (
   <div className="DashboardRoutes">
     <Switch>
+      <Route path="/auth/dashboard/user/myProfile" render={() => <MyProfile />} />
+      <Route path="/auth/dashboard/user/myCart" render={() => <MyCart />} />
       {SideNavBarManu.ShoppingMenu.map((manuItem) => (
         <Route key={manuItem.value} path={`/auth/dashboard/shopping/${manuItem.value}`} render={() => <ShoppingRoutes requestedRoute={manuItem} />} />
       ))}

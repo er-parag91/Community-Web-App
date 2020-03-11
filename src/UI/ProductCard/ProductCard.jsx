@@ -10,7 +10,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 const ProductCard = (props) => {
   const {
-    product, onProductClicked, allowDelete, onProductLike,
+    product, onProductClicked, allowDelete, onProductLike, onAddToCart,
   } = props;
   let adminStatus = 'Pending';
   let adminStatusClassName = 'Admin__approval--warning';
@@ -41,7 +41,7 @@ const ProductCard = (props) => {
         <img src={product.productImage} alt={product.productName} />
       </div>
       <div className="card__body">
-        <p className="card__body__seller">By Parag Patel</p>
+        <p className="card__body__seller">{`by ${product.createdBy.firstName} ${product.createdBy.lastName}`}</p>
         <div className="card__body--container">
           <h1 className="card__body--container--title" onClick={() => onProductClicked(product._id)}>{product.productName}</h1>
         </div>
@@ -68,17 +68,17 @@ const ProductCard = (props) => {
         {statusSection}
       </div>
       <div className="card__footer">
-        {!allowDelete && <button type="button">Add to Cart</button>}
+        {!allowDelete && <button type="button" onClick={() => onAddToCart(product._id)}>Add to Cart</button>}
         {allowDelete && <button onClick={() => onProductClicked(product._id)} type="button">Actions</button>}
         <span>
-          {!allowDelete && <i className="fa fa-heart" onClick={() => onProductLike(product._id)} />}
+          {!allowDelete && <i className="fa fa-heart-o" onClick={() => onProductLike(product._id)} />}
           {allowDelete
           && (
           <Tooltip disableFocusListener title="Not Allowed" arrow>
             <i className="fa fa-heart" />
           </Tooltip>
           )}
-          {`${product.like > 1000 ? `${((product.like) / 1000).toFixed(1)}k` : product.like} likes`}
+          {`${product.like > 1000 ? `${((product.like) / 1000).toFixed(1)}k` : product.like} ${product.like > 1 ? 'likes' : 'like'}`}
         </span>
       </div>
     </div>
@@ -90,11 +90,13 @@ ProductCard.propTypes = {
   onProductClicked: PropTypes.func.isRequired,
   allowDelete: PropTypes.bool,
   onProductLike: PropTypes.func,
+  onAddToCart: PropTypes.func,
 };
 
 ProductCard.defaultProps = {
   allowDelete: false,
   onProductLike: () => {},
+  onAddToCart: () => {},
 };
 
 export default ProductCard;

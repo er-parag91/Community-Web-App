@@ -29,14 +29,13 @@ class App extends Component {
           <Snackbar open autoHideDuration={6000} onClose={onCloseAlert}>
             <Alert
               onCloseAlert={onCloseAlert}
-              AlertTitle={alert.severity}
               severity={alert.severity}
             >
               {alert.message}
             </Alert>
           </Snackbar>
           )}
-          {(loading || concurrentLoadingCount > 0) && <Spinner backgroundOpacity="0.85" />}
+          {(loading || concurrentLoadingCount > 0) && <Spinner backgroundOpacity={0.85} />}
           <Switch>
             <Route path="/auth" component={Auth} />
             <Route path="/" component={LandingPage} />
@@ -50,14 +49,13 @@ class App extends Component {
           <Snackbar open autoHideDuration={12000} onClose={onCloseAlert}>
             <Alert
               onCloseAlert={onCloseAlert}
-              AlertTitle={alert.severity}
               severity={alert.severity}
             >
               {alert.message}
             </Alert>
           </Snackbar>
         )}
-        {(loading || concurrentLoadingCount > 0) && <Spinner backgroundOpacity="0.85" />}
+        {(loading || concurrentLoadingCount > 0) && <Spinner backgroundOpacity={0.85} />}
         {
           history.location.pathname === '/auth'
           && <Redirect exact from="/auth" to="/auth/dashboard" />

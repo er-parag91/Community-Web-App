@@ -6,10 +6,7 @@ import './Alert.scss';
 
 const AlertBox = (props) => {
   const { onCloseAlert } = props;
-  const closeAlert = () => {
-    onCloseAlert();
-  };
-  return <Alert onClose={closeAlert} className="MuiAlert-root" variant="filled" {...props} />;
+  return <Alert onClose={() => onCloseAlert()} className="MuiAlert-root" variant="filled" {...props} />;
 };
 
 AlertBox.propTypes = {

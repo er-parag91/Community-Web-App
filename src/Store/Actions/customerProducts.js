@@ -16,6 +16,16 @@ export const productLikeSuccess = (productId) => ({
   productId,
 });
 
+export const addedToCart = (cartQuantity) => ({
+  type: actionTypes.ADDED_TO_CART,
+  cartQuantity,
+});
+
+export const productLiked = (productId) => ({
+  type: actionTypes.PRODUCT_LIKED,
+  productId,
+});
+
 export const getProductsByCategory = (user, route, history) => (dispatch) => {
   dispatch(dismissUserMessage());
   dispatch(startLoading());
@@ -46,8 +56,35 @@ export const likeProduct = (productId, user) => (dispatch) => {
     },
   }).then(() => {
     dispatch(userMessage('Like registered!'));
+    dispatch(productLiked(productId));
   })
     .catch((err) => {
       dispatch(userMessage(err.response.data ? err.response.data : 'Can not process like request', 'error'));
+    });
+};
+
+export const onAddToCart = (productId, user, history) => (dispatch) => {
+  dispatch(dismissUserMessage());
+  dispatch(startLoading());
+  if (!user.token) {
+    dispatch(get404Page('/auth/dashboard', history, 'Requested resource does not exist or You are not authenticated to access it.'));
+  }
+  axios.post(`${coreEndPoint}/customer/customerProducts/addToCart/${productId}`, null, {
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  })
+    .then((response) => {
+      dispatch(stopLoading());
+      dispatch(addedToCart(response.data.cartQuantity ? response.data.cartQuantity : 0));
+      dispatch(userMessage(response.data.message ? response.data.message : 'Added to Cart'));
+    })
+    .catch((error) => {
+      dispatch(stopLoading());
+      if (error.response && error.response.status === 404) {
+        dispatch(get404Page('/auth/dashboard', history, 'Requested resource does not exist or You are not authenticated to access it.'));
+      } else {
+        dispatch(userMessage(error.response ? error.response.data : 'Something went wrong!', 'error'));
+      }
     });
 };

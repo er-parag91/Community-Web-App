@@ -3,6 +3,9 @@ export {
   forgotPassword,
   signUpUser,
   logoutUser,
+  getMyCart,
+  onCartItemDelete,
+  onGetMyProfile,
 }
   from './Auth';
 
@@ -25,5 +28,6 @@ export {
 export {
   getProductsByCategory,
   likeProduct,
+  onAddToCart,
 }
   from './customerProducts';

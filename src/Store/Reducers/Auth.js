@@ -5,6 +5,8 @@ const initialState = {
   email: '',
   firstName: '',
   lastName: '',
+  cartQuantity: 0,
+  myCart: [],
   isLoggedIn: false,
 };
 
@@ -26,6 +28,7 @@ const authReducer = (state = initialState, action) => {
         email: action.email,
         firstName: action.firstName,
         lastName: action.lastName,
+        cartQuantity: action.cartQuantity,
         token: action.token,
         isLoggedIn: true,
       };
@@ -45,6 +48,16 @@ const authReducer = (state = initialState, action) => {
         lastName: null,
         token: null,
         isLoggedIn: false,
+      };
+    case actionTypes.ADDED_TO_CART:
+      return {
+        ...state,
+        cartQuantity: action.cartQuantity,
+      };
+    case actionTypes.MY_CART_LOADED:
+      return {
+        ...state,
+        myCart: action.cartItems,
       };
     default:
       return state;

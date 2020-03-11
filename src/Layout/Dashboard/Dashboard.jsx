@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import SideNavBar from './SideNavBar/SideNavBar';
 import './SideNavBar/SideNavBar.scss';
 import './Dashboard.scss';
@@ -29,7 +30,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { history } = this.props;
+    const { history, user } = this.props;
     const { isSideNavBarOpen } = this.state;
     let dashboardBodyClasses = ['Dashboard__Body', 'No__Slide-Dashboard'];
     if (isSideNavBarOpen) {
@@ -54,8 +55,10 @@ class Dashboard extends Component {
         />
         <div className={dashboardBodyClasses.join(' ')}>
           <Header
+            history={history}
             isSideNavBarOpen={isSideNavBarOpen}
             openSideNavBar={() => this.setState({ isSideNavBarOpen: true })}
+            cartQuantity={user.cartQuantity}
           />
           <div className="main">
             <DashboardRoutes />
@@ -67,8 +70,13 @@ class Dashboard extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
 Dashboard.propTypes = {
   history: PropTypes.shape().isRequired,
+  user: PropTypes.shape().isRequired,
 };
 
-export default withRouter(Dashboard);
+export default withRouter(connect(mapStateToProps)(Dashboard));

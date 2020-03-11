@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import * as actioTypes from '../Actions/actionTypes';
 
 const initialState = {
@@ -11,6 +12,21 @@ const customerReducer = (state = initialState, action) => {
         ...state,
         productsByCategory: action.products,
       };
+    case actioTypes.PRODUCT_LIKED: {
+      const newProductByCategory = state.productsByCategory.map((product) => {
+        if (product._id === action.productId) {
+          return {
+            ...product,
+            like: product.like + 1,
+          };
+        }
+        return product;
+      });
+      return {
+        ...state,
+        productsByCategory: newProductByCategory,
+      };
+    }
     default:
       return state;
   }

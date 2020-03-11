@@ -19,7 +19,7 @@ const Profile = (props) => {
           {user.firstName && user.lastName ? `${user.firstName} ${user.lastName}` : ' User'}
         </h1>
       </div>
-      <Button text="Profile" />
+      <Button text="Profile" buttonClicked={() => history.push('/auth/dashboard/user/myProfile')} />
       <div className="Profile__actions">
         <Tooltip title="Back to Home" arrow>
           <i className="fa fa-home" onClick={() => history.push('/')} />
