@@ -7,6 +7,7 @@ import AddProduct from './SellingRoutes/SelllingComponents/AddProduct/addProduct
 import YourProduct from './SellingRoutes/SelllingComponents/yourProducts/yourProducts';
 import MyCart from './User/MyCart';
 import MyProfile from './User/MyProfile';
+import UpdateProduct from './SellingRoutes/SelllingComponents/AddProduct/updateProduct';
 
 const DashboardRoutes = () => (
   <div className="DashboardRoutes">
@@ -17,7 +18,7 @@ const DashboardRoutes = () => (
         <Route key={manuItem.value} path={`/auth/dashboard/shopping/${manuItem.value}`} render={() => <ShoppingRoutes requestedRoute={manuItem} />} />
       ))}
       <Route path="/auth/dashboard/selling/addProduct" render={() => <AddProduct requestedRoute="Add Product" />} />
-      <Route path="/auth/dashboard/selling/yourProducts/:productId" render={() => <AddProduct requestedRoute="Update Product" />} />
+      <Route path="/auth/dashboard/selling/yourProducts/:productId" render={() => <UpdateProduct requestedRoute="Update Product" />} />
       <Route path="/auth/dashboard/selling/yourProducts" render={() => <YourProduct requestedRoute="Your Product" />} />
     </Switch>
   </div>
