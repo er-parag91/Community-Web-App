@@ -23,7 +23,7 @@ const ProductForm = (props) => {
       {statusSection}
       <form className="Form" onSubmit={productSubmitHandler}>
         <div className="Form__Input">
-          <Grid lg={9} xs={12}>
+          <Grid item lg={9} xs={12}>
             <InputField
               label="Product Name"
               placeholder="Product Name"
@@ -35,21 +35,20 @@ const ProductForm = (props) => {
           </Grid>
         </div>
         <div className="Form__Input">
-          <Grid lg={9} xs={12}>
+          <Grid item lg={9} xs={12}>
             <InputField
               label="Product Description"
               placeholder="Product Description"
               id="productDescription"
               required
               multiline
-              resize
               value={productData.productDescription}
               changeHandler={(key, target) => onProductDataChange(key, target.value)}
             />
           </Grid>
         </div>
         <div className="Form__Input">
-          <Grid lg={9} xs={12}>
+          <Grid item lg={9} xs={12}>
             <InputField
               label="Product Sizes (optional)"
               placeholder="Write all sizes in ascending order and seperated by comma"
@@ -61,7 +60,7 @@ const ProductForm = (props) => {
           </Grid>
         </div>
         <div className="Form__Input">
-          <Grid lg={9} xs={12}>
+          <Grid item lg={9} xs={12}>
             <InputField
               label="Product Colors (optional)"
               placeholder="Write all colors seperated by comma"
@@ -73,7 +72,7 @@ const ProductForm = (props) => {
           </Grid>
         </div>
         <div className="Form__Input">
-          <Grid lg={2} xs={8}>
+          <Grid item lg={2} xs={8}>
             <InputField
               label="Price in US dollars"
               placeholder="$ Price"
@@ -87,7 +86,7 @@ const ProductForm = (props) => {
           </Grid>
         </div>
         <div className="Form__Input">
-          <Grid lg={2} xs={8}>
+          <Grid item lg={2} xs={8}>
             <InputField
               label="Discounted Price (optional)"
               placeholder="$ Discounted Price"
@@ -100,7 +99,7 @@ const ProductForm = (props) => {
           </Grid>
         </div>
         <div className="Form__Input">
-          <Grid lg={3} xs={8}>
+          <Grid item lg={3} xs={8}>
             <InputField
               label="Product Category"
               id="productCategory"
@@ -121,7 +120,7 @@ const ProductForm = (props) => {
           </Grid>
         </div>
         <div className="Form__Input">
-          <Grid lg={3} xs={8}>
+          <Grid item lg={3} xs={8}>
             <InputField
               label="In stock?"
               helperText="Is This Product in stock?"
@@ -140,7 +139,7 @@ const ProductForm = (props) => {
           </Grid>
         </div>
         <div className="Form__Input">
-          <Grid lg={9} xs={12}>
+          <Grid item lg={9} xs={12}>
             <InputField
               label="Product Warnings for Customer"
               placeholder="Write Warnings seperated by comma"
@@ -152,7 +151,7 @@ const ProductForm = (props) => {
           </Grid>
         </div>
         <div className="Form__Input">
-          <Grid lg={9} xs={9}>
+          <Grid item lg={9} xs={9}>
             <InputField
               label="Will customer buy this frequently?"
               id="productBuyingFrequency"
@@ -171,7 +170,7 @@ const ProductForm = (props) => {
           </Grid>
         </div>
         <div className="Form__Input">
-          <Grid lg={6} xs={10}>
+          <Grid item lg={6} xs={10}>
             <InputField
               label="Product Image"
               id="productImage"
@@ -184,7 +183,7 @@ const ProductForm = (props) => {
           </Grid>
         </div>
         <div className="Form__Button">
-          <Grid lg={4} sm={10}>
+          <Grid item lg={4} sm={10}>
             <Button color="purple" text={editing ? 'Update' : 'Submit'} size="regular" buttonType="submit" />
             {editing
                 && <Button buttonClicked={() => onProductDelete()} color="red" text="Delete" size="regular" buttonType="button" />}
@@ -197,7 +196,7 @@ const ProductForm = (props) => {
 
 ProductForm.propTypes = {
   requestedRoute: PropTypes.string.isRequired,
-  statusSection: PropTypes.shape(),
+  statusSection: PropTypes.shape().isRequired,
   productSubmitHandler: PropTypes.func.isRequired,
   onProductDataChange: PropTypes.func.isRequired,
   productData: PropTypes.shape().isRequired,
@@ -206,7 +205,6 @@ ProductForm.propTypes = {
 };
 
 ProductForm.defaultProps = {
-  statusSection: '',
   editing: false,
   onProductDelete: () => {},
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 import React, { Component } from 'react';
@@ -12,6 +13,8 @@ const homeFour = require('../../../assets/images/main-4.jpg');
 const homeFive = require('../../../assets/images/main-5.jpg');
 
 class HomeSection extends Component {
+  _isMounted = false;
+
   state = {
     images: [
       homeOne,
@@ -26,9 +29,14 @@ class HomeSection extends Component {
 
   // auto slide show for images
   componentDidMount() {
+    this._isMounted = true;
     setInterval(() => {
       this.goToNextSlide();
     }, 5000);
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   // slide to prev image
@@ -38,10 +46,12 @@ class HomeSection extends Component {
     if (currentIndex === 0) { return; }
 
     // This will not run if we met the if condition above
-    this.setState((prevState) => ({
-      currentIndex: prevState.currentIndex - 1,
-      translateValue: prevState.translateValue + this.slideWidth(),
-    }));
+    if (this._isMounted) {
+      this.setState((prevState) => ({
+        currentIndex: prevState.currentIndex - 1,
+        translateValue: prevState.translateValue + this.slideWidth(),
+      }));
+    }
   }
 
   // slide to next image
@@ -50,18 +60,19 @@ class HomeSection extends Component {
     // Exiting the method early if we are at the end of the images array.
     // We also want to reset currentIndex and translateValue, so we return
     // to the first image in the array.
-    if (currentIndex === images.length - 1) {
+    if (currentIndex === images.length - 1 && this._isMounted) {
       return this.setState({
         currentIndex: 0,
         translateValue: 0,
       });
-    }
-
+    } if (this._isMounted) {
     // This will not run if we met the if condition above
-    return this.setState((prevState) => ({
-      currentIndex: prevState.currentIndex + 1,
-      translateValue: prevState.translateValue + -(this.slideWidth()),
-    }));
+      return this.setState((prevState) => ({
+        currentIndex: prevState.currentIndex + 1,
+        translateValue: prevState.translateValue + -(this.slideWidth()),
+      }));
+    }
+    return null;
   }
 
   // takes image width from the DOM and this width is useful

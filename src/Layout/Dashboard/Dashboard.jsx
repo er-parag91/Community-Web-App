@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -13,18 +14,26 @@ import Footer from '../../Components/Footer/footer';
 
 
 class Dashboard extends Component {
+  _isMounted = false;
+
   state = {
     isSideNavBarOpen: true,
   }
 
   componentDidMount() {
+    this._isMounted = true;
+
     const { isSideNavBarOpen } = this.state;
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 1180 && isSideNavBarOpen) {
-        this.setState({ isSideNavBarOpen: true });
+        if (this._isMounted) {
+          this.setState({ isSideNavBarOpen: true });
+        }
       }
       if (window.innerWidth < 1180 && isSideNavBarOpen) {
-        this.setState({ isSideNavBarOpen: false });
+        if (this._isMounted) {
+          this.setState({ isSideNavBarOpen: false });
+        }
       }
     });
   }

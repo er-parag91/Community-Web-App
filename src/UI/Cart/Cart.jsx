@@ -6,7 +6,6 @@ import './Cart.scss';
 const Cart = (props) => {
   const { cartItem, onCartItemDelete } = props;
   const { productId } = cartItem;
-  console.log(cartItem);
   return (
     <div className="Cart">
       <div className="Cart__Quantity">

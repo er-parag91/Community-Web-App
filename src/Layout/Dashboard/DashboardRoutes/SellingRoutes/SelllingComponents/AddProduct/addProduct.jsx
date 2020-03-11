@@ -32,6 +32,7 @@ class AddProduct extends Component {
         onProductDataChange={onProductDataChange}
         productSubmitHandler={this.productSubmitHandler}
         productData={productData}
+        statusSection={<div />}
       />
     );
   }

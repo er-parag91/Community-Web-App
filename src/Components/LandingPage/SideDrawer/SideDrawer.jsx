@@ -7,7 +7,7 @@ import Backdrop from '../../../UI/Backdrop/Backdrop';
 const SideDrawer = (props) => {
   let attachedClass = ['SideDrawer', 'Close'];
   const {
-    open, closed, isAuth, navLinkClicked,
+    open, closed, isAuth, navLinkClicked, history, onLogout,
   } = props;
   if (open) {
     attachedClass = ['SideDrawer', 'Open'];
@@ -24,6 +24,8 @@ const SideDrawer = (props) => {
           closeSideDrawer={closed}
           isTop={false}
           onNavLinkClick={navLinkClicked}
+          history={history}
+          onLogout={onLogout}
         />
       </div>
     </div>
@@ -35,10 +37,13 @@ SideDrawer.propTypes = {
   isAuth: PropTypes.bool,
   closed: PropTypes.func.isRequired,
   navLinkClicked: PropTypes.func.isRequired,
+  history: PropTypes.shape().isRequired,
+  onLogout: PropTypes.func,
 };
 
 SideDrawer.defaultProps = {
   isAuth: false,
+  onLogout: () => {},
 };
 
 export default SideDrawer;

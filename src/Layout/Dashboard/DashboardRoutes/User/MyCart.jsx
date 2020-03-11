@@ -1,4 +1,4 @@
-/* eslint-disable camelcase */
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -8,11 +8,10 @@ import HTMLTitle from '../../../../UI/HTMLTitle/HTMLTitle';
 import Cart from '../../../../UI/Cart/Cart';
 
 class MyCart extends Component {
-  UNSAFE_componentWillMount() {
+  componentWillMount() {
     const {
       user, onGetMyCart, history,
     } = this.props;
-    console.log(history);
     onGetMyCart(user, history);
   }
 
@@ -35,7 +34,7 @@ class MyCart extends Component {
         </div>
         {user.myCart.map((item) => (
           <Cart
-            key={item.productId.productName}
+            key={item._id}
             cartItem={item}
             onCartItemDelete={(cartItemId) => onCartItemDelete(cartItemId, user, history)}
           />

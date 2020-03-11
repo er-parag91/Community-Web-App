@@ -39,6 +39,7 @@ class ShoppingRoutes extends Component {
             customer.productsByCategory.map(
               (product) => (
                 <ProductCard
+                  key={product._id}
                   product={product}
                   onProductClicked={() => {}}
                   onProductLike={(productId) => onProductLike(productId, user)}
