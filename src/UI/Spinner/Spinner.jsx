@@ -1,6 +1,7 @@
 import React from 'react';
 import './Spinner.scss';
 import PropTypes from 'prop-types';
+import HTMLTitle from '../HTMLTitle/HTMLTitle';
 
 const logo = require('../../assets/images/logo_spinner.png');
 
@@ -12,6 +13,7 @@ const Spinner = (props) => {
   return (
     <div className="Spinner" style={{ opacity: backgroundOpacity }}>
       <div className="lds-ring">
+        <HTMLTitle title="Loading" />
         <img src={logo} alt="logo spinner" />
         <p>Loading...</p>
       </div>
@@ -20,7 +22,7 @@ const Spinner = (props) => {
 };
 
 Spinner.propTypes = {
-  backgroundOpacity: PropTypes.string,
+  backgroundOpacity: PropTypes.number,
 };
 
 Spinner.defaultProps = {

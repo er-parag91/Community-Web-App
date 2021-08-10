@@ -18,25 +18,24 @@ import Spinner from './UI/Spinner/Spinner';
 class App extends Component {
   render() {
     const {
-      auth, generalState, onCloseAlert, history,
+      auth, generalState, onCloseAlert, history, onLogout,
     } = this.props;
     const { isLoggedIn } = auth;
-    const { alert, loading } = generalState;
+    const { alert, loading, concurrentLoadingCount } = generalState;
     if (!isLoggedIn) {
       return (
         <div>
           {alert.message && (
-          <Snackbar open autoHideDuration={12000} onClose={onCloseAlert}>
+          <Snackbar open autoHideDuration={6000} onClose={onCloseAlert}>
             <Alert
-              onCloseAlert={onCloseAlert}
-              AlertTitle={alert.severity}
+              onClose={onCloseAlert}
               severity={alert.severity}
             >
               {alert.message}
             </Alert>
           </Snackbar>
           )}
-          {loading && <Spinner backgroundOpacity="0.85" />}
+          {(loading || concurrentLoadingCount > 0) && <Spinner backgroundOpacity={0.85} />}
           <Switch>
             <Route path="/auth" component={Auth} />
             <Route path="/" component={LandingPage} />
@@ -49,23 +48,22 @@ class App extends Component {
         {alert.message && (
           <Snackbar open autoHideDuration={12000} onClose={onCloseAlert}>
             <Alert
-              onCloseAlert={onCloseAlert}
-              AlertTitle={alert.severity}
+              onClose={onCloseAlert}
               severity={alert.severity}
             >
               {alert.message}
             </Alert>
           </Snackbar>
         )}
-        {loading && <Spinner backgroundOpacity="0.85" />}
+        {(loading || concurrentLoadingCount > 0) && <Spinner backgroundOpacity={0.85} />}
         {
           history.location.pathname === '/auth'
           && <Redirect exact from="/auth" to="/auth/dashboard" />
         }
         <Switch>
-          <Route path="/" exact render={() => <LandingPage isLoggedIn={isLoggedIn} />} />
+          <Route path="/" exact render={() => <LandingPage history={history} isLoggedIn={isLoggedIn} onLogout={() => onLogout(auth, history)} />} />
           <Route path="/auth/dashboard" component={Dashboard} />
-          <Route component={LandingPage} />
+          <Route render={() => <LandingPage isLoggedIn={isLoggedIn} history={history} />} />
         </Switch>
       </div>
     );
@@ -78,11 +76,13 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCloseAlert: () => dispatch(actions.dismissErrorMessage()),
+  onCloseAlert: () => dispatch(actions.dismissUserMessage()),
+  onLogout: (user, history) => dispatch(actions.logoutUser(user, history)),
 });
 
 App.propTypes = {
   generalState: PropTypes.shape().isRequired,
+  onLogout: PropTypes.func.isRequired,
   auth: PropTypes.shape().isRequired,
   onCloseAlert: PropTypes.func,
   history: PropTypes.shape().isRequired,

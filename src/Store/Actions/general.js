@@ -1,6 +1,5 @@
 import * as actionTypes from './actionTypes';
 
-
 export const startLoading = () => ({
   type: actionTypes.START_LOADING,
 });
@@ -15,6 +14,15 @@ export const userMessage = (message, severity) => ({
   severity,
 });
 
-export const dismissErrorMessage = () => ({
+export const dismissUserMessage = () => ({
   type: actionTypes.DISMISS_USER_MESSAGE,
 });
+
+export const get404Page = (toPath, history, message) => {
+  history.push(`${toPath}/404`);
+  return {
+    type: actionTypes.USER_MESSAGE,
+    message,
+    severity: 'error',
+  };
+};

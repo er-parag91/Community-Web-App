@@ -41,6 +41,7 @@ const Login = (props) => {
     <div className="login__right--signin">
       <form onSubmit={(e) => handleSubmit(e)}>
         <Grid
+          item
           container
           direction="column"
           justify="space-around"
@@ -70,6 +71,7 @@ const Login = (props) => {
             changeHandler={onChangeHandler}
           />
           <Grid
+            item
             xs={12}
             sm={12}
             container
@@ -114,7 +116,7 @@ const Login = (props) => {
 };
 
 Login.propTypes = {
-  loginData: PropTypes.shape,
+  loginData: PropTypes.shape(),
   onLoginTextChange: PropTypes.func.isRequired,
   onRememberMeClick: PropTypes.func.isRequired,
   onForgotPasswordClicked: PropTypes.func.isRequired,

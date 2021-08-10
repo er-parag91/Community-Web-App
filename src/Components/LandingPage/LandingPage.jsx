@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 import jump from 'jump.js';
 import sal from 'sal.js';
@@ -11,8 +12,11 @@ import TestimonialSection from './TestimonialSection/TestimonialSection';
 import ContactSection from './ContactSection/ContactSection';
 import Spinner from '../../UI/Spinner/Spinner';
 import './sal.css';
+import HTMLTitle from '../../UI/HTMLTitle/HTMLTitle';
 
 class LandingPage extends Component {
+  _isMounted = false;
+
   state = {
     showSideDrawer: false,
     isTop: true,
@@ -20,14 +24,24 @@ class LandingPage extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
+
     setTimeout(() => {
       sal();
       document.addEventListener('scroll', () => {
         const currentScroll = window.scrollY < 50;
-        this.setState({ isTop: currentScroll });
+        if (this._isMounted) {
+          this.setState({ isTop: currentScroll });
+        }
       });
-      this.setState({ loadingLandingPage: false, isTop: window.pageYOffset < 50 });
+      if (this._isMounted) {
+        this.setState({ loadingLandingPage: false, isTop: window.pageYOffset < 50 });
+      }
     }, 1000);
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   sideDrawerClosedHandler = () => {
@@ -45,24 +59,27 @@ class LandingPage extends Component {
 
   render() {
     const { showSideDrawer, isTop, loadingLandingPage } = this.state;
-    const { isLoggedIn, history } = this.props;
-    console.log(isLoggedIn);
+    const { isLoggedIn, history, onLogout } = this.props;
     return (
       <div>
         { loadingLandingPage && <Spinner />}
+        <HTMLTitle title="Home" />
         <NavBar
           navLinkClicked={this.jumpToHandler}
           isTop={isTop}
           drawerToggleClicked={this.sideDrawerOpenHandler}
           isAuth={isLoggedIn}
           history={history}
+          onLogout={onLogout}
         />
         <SideDrawer
           navLinkClicked={this.jumpToHandler}
-          isAuth
+          isAuth={isLoggedIn}
           open={showSideDrawer}
           drawerToggleClicked={this.sideDrawerOpenHandler}
           closed={this.sideDrawerClosedHandler}
+          onLogout={onLogout}
+          history={history}
         />
         <section
           id="home"
@@ -86,11 +103,13 @@ class LandingPage extends Component {
 
 LandingPage.propTypes = {
   isLoggedIn: PropTypes.bool,
-  history: PropTypes.shape.isRequired,
+  history: PropTypes.shape().isRequired,
+  onLogout: PropTypes.func,
 };
 
 LandingPage.defaultProps = {
   isLoggedIn: false,
+  onLogout: () => {},
 };
 
 export default LandingPage;

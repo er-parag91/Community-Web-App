@@ -13,19 +13,19 @@ import SideNavBarManu from '../../../../Data/SideNavBar';
 class SideNavigationItems extends Component {
   render() {
     const {
-      rootPath, history, user, onLogout,
+      rootPath, history, user, onLogout, sideNavClicked,
     } = this.props;
     return (
       <div className="SideNavigationItems">
-        <Profile history={history} onLogout={() => onLogout(user, history)} />
+        <Profile history={history} user={user} onLogout={() => onLogout(user, history)} />
         <Divider />
         <div>
           <p className="SideNavigationItems__Manu">Shopping</p>
-          {SideNavBarManu.ShoppingMenu.map((manuItem) => <SideNavigationItem key={manuItem.value} Link={`${rootPath}/shopping/${manuItem.value}`}>{manuItem.label}</SideNavigationItem>)}
+          {SideNavBarManu.ShoppingMenu.map((manuItem) => <SideNavigationItem sideNavClicked={sideNavClicked} key={manuItem.value} Link={`${rootPath}/shopping/${manuItem.value}`}>{manuItem.label}</SideNavigationItem>)}
         </div>
         <div>
           <p className="SideNavigationItems__Manu">Selling</p>
-          {SideNavBarManu.SellingManu.map((manuItem) => <SideNavigationItem key={manuItem.value} Link={`${rootPath}/selling/${manuItem.value}`}>{manuItem.label}</SideNavigationItem>)}
+          {SideNavBarManu.SellingManu.map((manuItem) => <SideNavigationItem sideNavClicked={sideNavClicked} key={manuItem.value} Link={`${rootPath}/selling/${manuItem.value}`}>{manuItem.label}</SideNavigationItem>)}
         </div>
       </div>
     );
@@ -45,6 +45,11 @@ SideNavigationItems.propTypes = {
   history: PropTypes.shape().isRequired,
   user: PropTypes.shape().isRequired,
   onLogout: PropTypes.func.isRequired,
+  sideNavClicked: PropTypes.func,
+};
+
+SideNavigationItems.defaultProps = {
+  sideNavClicked: () => {},
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SideNavigationItems));

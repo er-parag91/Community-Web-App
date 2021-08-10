@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable max-len */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
@@ -39,7 +40,11 @@ class TextContent extends Component {
     isMouseFocused: false,
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillMount() {
+    clearTimeout(this.carouselTimer);
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { isMouseFocused } = this.state;
     const { currentIndex } = this.props;
     if (!isMouseFocused) {
@@ -51,10 +56,6 @@ class TextContent extends Component {
       }
       this.carouselTimer();
     }
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.carouselTimer);
   }
 
   carouselTimer = () => {
@@ -98,7 +99,7 @@ class TextContent extends Component {
 TextContent.propTypes = {
   loggingIn: PropTypes.func.isRequired,
   signUpEmail: PropTypes.func.isRequired,
-  history: PropTypes.shape.isRequired,
+  history: PropTypes.shape().isRequired,
   currentIndex: PropTypes.number.isRequired,
 };
 

@@ -5,14 +5,14 @@ import './Auth.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import '../../UI/Header.scss';
+import { Hidden } from '@material-ui/core';
 import SignUp from './SignUp';
 import SignUpTermsAndCondition from './Fixtures/SignUpTermsAndCondition';
 import Login from './Login';
-// eslint-disable-next-line no-unused-vars
-import OutlinedButton from '../../UI/InputAndButton/OutlinedButton/OutlinedButton';
 import LoginHeader from './LoginHeader/LoginHeader';
 import * as actions from '../../Store/Actions';
-// const Logo = require('../../assets/images/logo__big.png');
+import HTMLTitle from '../../UI/HTMLTitle/HTMLTitle';
+
 const Avatar = require('../../assets/SVGs/Avatar.svg');
 
 class Auth extends Component {
@@ -32,19 +32,12 @@ state = {
     state: 'AK',
     agree: false,
   },
-  width: null,
   isLoggingIn: this.props.generalState.isLoggingIn,
   open: false,
   dialog: false,
   isForgotPassword: false,
   resetPasswordEmail: '',
 };
-
-// on component mount, adds event handler for window dimensions chanage
-componentDidMount() {
-  this.updateDimensions();
-  window.addEventListener('resize', this.updateDimensions.bind(this));
-}
 
 onLoginPageClose = () => {
   const { history } = this.props;
@@ -154,27 +147,22 @@ onLoginPageClose = () => {
     }
   }
 
-  // changes a width in state to current width, gets fired on resizing window
-  updateDimensions() {
-    this.setState({ width: window.innerWidth });
-  }
-
-
   render() {
     const {
-      width, isLoggingIn, signUp, login, dialog, isForgotPassword, resetPasswordEmail,
+      isLoggingIn, signUp, login, dialog, isForgotPassword, resetPasswordEmail,
     } = this.state;
     return (
       <Grid item container className="login">
+        <HTMLTitle title={isLoggingIn ? ' Log In' : ' Sign Up'} />
         <LoginHeader onSignInModeToggle={this.loginTypeHandler} isSigningIn={isLoggingIn} />
         <span className="login__close"><i className="fa fa-times login__close--icon" onClick={this.onLoginPageClose} aria-hidden="true" /></span>
-        {width > 601 && (
-        <Grid item xs={1} sm={6} md={7} lg={8}>
-          <div className="login__left">
-            <div className="login__left--image" />
-          </div>
-        </Grid>
-        )}
+        <Hidden xsDown>
+          <Grid item xs={1} sm={6} md={7} lg={8}>
+            <div className="login__left">
+              <div className="login__left--image" />
+            </div>
+          </Grid>
+        </Hidden>
         <Grid item xs={12} sm={6} md={5} lg={4}>
           <Grid
             className="login__right"
@@ -245,8 +233,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Auth.propTypes = {
-  generalState: PropTypes.shape.isRequired,
-  history: PropTypes.shape.isRequired,
+  generalState: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired,
   onAuth: PropTypes.func.isRequired,
   onForgotPassword: PropTypes.func.isRequired,
   onUserSignUp: PropTypes.func.isRequired,

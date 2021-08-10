@@ -1,0 +1,162 @@
+.card {
+  width: 325px;
+  max-width: 325px;
+  min-height: 450px;
+  max-height: 450px;
+  flex-grow: 1;
+  margin: 2.5rem 1.5rem;
+  background-color: var(--color-white);
+  border-radius: 1rem;
+  box-shadow: 0.15rem 2rem 2.5rem rgba(151, 151, 151, 0.205);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transition: all 500ms;
+  &:hover{
+    transform: scale(1.03);
+  }
+
+  // image
+  &__image {
+    height: 60%;
+    width: 100%;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      width: 100%;
+      transition: all 400ms;
+
+      &:hover {
+        position: relative;
+        z-index: 20;
+        transform: scale(1.1);
+        box-shadow: var(--shadow-dark);
+      }
+    }
+  }
+
+  // body
+  &__body {
+    padding: 0.5rem;
+    width: 100%;
+
+    &__seller {
+      text-align: center;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 200;
+      font-size: 1rem;
+      color: var(--color-Grey-dark-2);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    &--container {
+      padding: 0.25rem 1.5rem;
+      min-height: 4.5rem;
+      max-height: 4.5rem;
+      cursor: pointer;
+      overflow: hidden;
+
+      &--title {
+        text-align: center;
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: var(--color-Grey-dark-1);
+
+        &:hover {
+          color: var(--color-primary);
+        }
+
+      }
+
+    }
+
+    &--price {
+      margin: 1.25rem 0;
+      text-align: center;
+      font-size: 1.5rem;
+      color: var(--color-Primary-light);
+
+      &-unChecked {
+        font-size: 2.25rem;
+        padding-right: 0.5rem;
+        padding-left: 0.25rem;
+      }
+
+      &-checked {
+        text-decoration-line: line-through;
+      }
+    }
+  }
+
+  // footer
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-grow: 1;
+    padding: 2rem;
+
+    button {
+      display: inline-block;
+      width: 60%;
+      padding: 0.75rem;
+      outline: none;
+      background-image: linear-gradient(to right, var(--color-Primary-light), var(--color-Primary-dark));
+      color: var(--color-white);
+      border-radius: 1rem;
+      font-size: 1.25rem;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 200;
+      border: none;
+
+      &:hover {
+        background-image: linear-gradient(to left, var(--color-Primary-light), var(--color-Primary-dark));
+        cursor: pointer;
+      }
+    }
+
+    span {
+      padding: 0.75rem;
+      font-size: 1.25rem;
+      border-radius: 1rem;
+      border: 1px solid var(--color-Primary-light);
+      color: var(--color-Primary-light);
+      align-self: center;
+      i {
+        padding: 0.5rem;
+        cursor: pointer;
+        &:hover{
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+}
+
+.Admin__approval {
+  font-size: 0.85rem;
+  font-weight: 200;
+  text-align: center;
+
+  &--warning {
+    color: var(--color-warning);
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+
+  &--danger {
+    color: var(--color-Primary-red);
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+
+  &--success {
+    color: var(--color-greenish);
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+}

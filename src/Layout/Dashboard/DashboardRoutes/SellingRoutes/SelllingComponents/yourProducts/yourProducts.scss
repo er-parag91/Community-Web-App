@@ -1,0 +1,15 @@
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto !important;
+}
+
+.No__Products{
+  font-weight: 400;
+  font-family: sans-serif;
+  margin-top:3rem;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-Primary-dark);
+}

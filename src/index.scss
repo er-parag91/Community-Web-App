@@ -1,7 +1,7 @@
 :root {
   // Primary color for website buttons, background, text color etc.
   --color-primary: #6444e4;
-  --color-Primary-light: #4a35a0;
+  --color-Primary-light: #3f289b;
   --color-Primary-dark: #342961;
   --color-Primary-transparent: #382c6a82;
   --color-Grey-light-1: #f7f7f7;
@@ -10,6 +10,7 @@
   --color-Grey-light-4: #ccc;
   --color-greenish: rgb(99, 136, 99);
   --color-Primary-red: #DC3545;
+  --color-warning: #ff9800;
   // text colors mostly
   --color-Grey-dark-1: #333;
   --color-Grey-dark-2: #777;
@@ -22,7 +23,7 @@
 
   // shadow and lines
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.301);
-  --line: 1px solid var(--color-Grey-light-2);
+  --line: 1px solid var(--color-Primary-transparent);
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.144);
 
   // white background color with transparency
@@ -44,6 +45,7 @@ $default-font-size: 1.6rem;
 * {
   margin: 0;
   padding: 0;
+
 }
 
 *,
@@ -64,6 +66,7 @@ html {
 body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
+
   /* Change the white to any color ;) */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -71,12 +74,23 @@ body {
   input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px var(--color-Grey-light-4) inset !important;
   }
+
+  // helper text for input
+  .MuiFormHelperText-root {
+    font-size: 1rem !important;
+    font-weight: 100 !important;
+    line-height: normal !important;
+    margin: 0 !important;
+    margin-top: 4px !important;
+  }
 }
 
-@media
-only screen and (-webkit-min-device-pixel-ratio: 1.5),
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
 only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min--moz-device-pixel-ratio: 1.5),
-only screen and (min-device-pixel-ratio: 1.5){
-
-}
+only screen and (min-device-pixel-ratio: 1.5) {}

@@ -44,6 +44,7 @@ const SignUp = (props) => {
             <Grid item xs={6} sm={6}>
               <InputField
                 value={firstName}
+                required
                 type="text"
                 id="firstName"
                 label="First Name"
@@ -56,6 +57,7 @@ const SignUp = (props) => {
               <InputField
                 type="text"
                 value={lastName}
+                required
                 id="lastName"
                 label="Last Name"
                 placeholder="e.g. Smith"
@@ -66,6 +68,7 @@ const SignUp = (props) => {
           </Grid>
           <InputField
             value={email}
+            required
             type="email"
             id="email"
             label="E-Mail Address"
@@ -73,10 +76,11 @@ const SignUp = (props) => {
             autoComplete="email"
             changeHandler={changeHandler}
           />
-          <Grid container spacing={1}>
+          <Grid item container spacing={1}>
             <Grid item xs={6} sm={6}>
               <InputField
                 value={password}
+                required
                 type="password"
                 id="password"
                 inputProps={{
@@ -91,6 +95,7 @@ const SignUp = (props) => {
             <Grid item xs={6} sm={6}>
               <InputField
                 value={confirmPassword}
+                required
                 id="confirmPassword"
                 type="password"
                 inputProps={{
@@ -109,6 +114,8 @@ const SignUp = (props) => {
             <Grid item xs={8} sm={8}>
               <InputField
                 value={phone}
+                required
+                type="tel"
                 id="phone"
                 label="Phone"
                 placeholder="e.g. 888-888-8888"
@@ -138,7 +145,7 @@ const SignUp = (props) => {
                 ))}
               </InputField>
             </Grid>
-            <Grid xs={12} sm={12}>
+            <Grid item xs={12} sm={12}>
               <div style={{ marginTop: '1rem' }}>
                 <label htmlFor="agree">
                   <input
@@ -167,7 +174,7 @@ const SignUp = (props) => {
 };
 
 SignUp.propTypes = {
-  userData: PropTypes.shape,
+  userData: PropTypes.shape(),
   onTextChange: PropTypes.func.isRequired,
   onCheckboxChange: PropTypes.func.isRequired,
   onTermsAndConditionClicked: PropTypes.func.isRequired,

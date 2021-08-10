@@ -1,13 +1,40 @@
 .SideNavBar {
-  display: flex;
-  flex-direction: column;
+  display: block;
   width: 25rem;
   height: 100vh;
   position: fixed;
   left: 0;
   top: 0;
   box-shadow: 0 10px 20px var(--color-black);
-  z-index: 1000;
+  z-index: 500;
+  transform: translateX(-100%);
   background-image: linear-gradient(to right bottom, var(--main-gradient-2), var(--main-gradient-2)), url(../../../assets/images/login-background.jpg);
   overflow: auto;
+  transition: all 500ms;
+  .Close_Icon{
+    font-weight: 100;
+    color: var(--color-white);
+    font-size: 2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+  }
 }
+
+  
+.SideNavBar__Open{
+  transform: translateX(0%)
+}
+
+.SideNavBar__Close{
+  transform: translateX(-110%)
+}
+
+// .Close {
+//   transform: translateX(0%);
+// }
+
+
+

@@ -8,6 +8,7 @@ const initialState = {
     severity: '',
   },
   loading: false,
+  concurrentLoadingCount: 0,
 };
 
 
@@ -31,16 +32,19 @@ const generalReducer = (state = initialState, action) => {
           severity: '',
         },
         loading: true,
+        concurrentLoadingCount: state.concurrentLoadingCount + 1,
       };
     case actionTypes.STOP_LOADING:
       return {
         ...state,
         loading: false,
+        concurrentLoadingCount: state.concurrentLoadingCount > 0
+          ? state.concurrentLoadingCount - 1
+          : 0,
       };
     case actionTypes.USER_MESSAGE:
       return {
         ...state,
-        loading: false,
         alert: {
           message: action.message,
           severity: action.severity,

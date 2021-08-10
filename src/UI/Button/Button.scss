@@ -7,5 +7,35 @@
     border-radius: 3rem;
     outline: none;
     cursor: pointer;
+    color: var(--color-Primary-dark);
+    background-color: var(--color-white);
+  }
+}
+
+.PurpleButton{
+  display: inline-block;
+  button{
+    padding: 1.25rem;
+    font-size: 1.5rem;
+    width: 100%;
+    border-radius: 3rem;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--color-Primary-dark);
+    color: var(--color-white);
+  }
+}
+
+.RedButton{
+  display: inline-block;
+  button{
+    padding: 1.25rem;
+    font-size: 1.5rem;
+    width: 100%;
+    border-radius: 3rem;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--color-Primary-red);
+    color: var(--color-white);
   }
 }
